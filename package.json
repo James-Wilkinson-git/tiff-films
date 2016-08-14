@@ -1,0 +1,32 @@
+{
+  "name": "tiff16-films",
+  "version": "1.0.0",
+  "description": "an app to learn react redux node express and more while displaying tiff16 film data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwilkinson/tiff16-films.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "tiff16",
+    "node",
+    "express",
+    "router",
+    "babel",
+    "webpack"
+  ],
+  "author": "James Wilkinson <james@jerw.ca>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwilkinson/tiff16-films/issues"
+  },
+  "homepage": "https://github.com/jwilkinson/tiff16-films#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
