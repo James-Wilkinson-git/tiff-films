@@ -1,7 +1,3 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-ReactDOM.render(
-  <h1>Hello, People!</h1>,
-  document.getElementById('app')
-);
+import Films from "./components/Films.jsx"
