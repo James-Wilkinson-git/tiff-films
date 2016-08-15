@@ -21480,25 +21480,81 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _film = __webpack_require__(176);
+
+	var _film2 = _interopRequireDefault(_film);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var data = __webpack_require__(177);
 
 	var Films = _react2.default.createClass({
 	  displayName: 'Films',
 
 	  render: function render() {
-	    var data = __webpack_require__(177);
+	    var filmNodes = this.props.data.map(function (film) {
+	      console.log(film);
+	      _react2.default.createElement(_film2.default, film);
+	    });
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'commentBox' },
-	      JSON.stringify(data)
+	      null,
+	      filmNodes
 	    );
 	  }
 	});
 
-	_reactDom2.default.render(_react2.default.createElement(Films, null), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(Films, { data: data }), document.getElementById('app'));
 
 /***/ },
-/* 176 */,
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Film = _react2.default.createClass({
+	  displayName: "Film",
+
+	  propTypes: {
+	    "name": _react2.default.PropTypes.string,
+	    "director": _react2.default.PropTypes.string,
+	    "countries": _react2.default.PropTypes.string,
+	    "runtime": _react2.default.PropTypes.string,
+	    "premiere": _react2.default.PropTypes.string,
+	    "year": _react2.default.PropTypes.string,
+	    "language": _react2.default.PropTypes.string,
+	    "pitch": _react2.default.PropTypes.string,
+	    "production": _react2.default.PropTypes.string,
+	    "producers": _react2.default.PropTypes.string,
+	    "screenplay": _react2.default.PropTypes.string,
+	    "cinematographers": _react2.default.PropTypes.string,
+	    "editors": _react2.default.PropTypes.string,
+	    "score": _react2.default.PropTypes.string,
+	    "sound": _react2.default.PropTypes.string,
+	    "cast": _react2.default.PropTypes.string
+	  },
+	  render: function render(props) {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "film" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        this.props.name
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Film;
+
+/***/ },
 /* 177 */
 /***/ function(module, exports) {
 

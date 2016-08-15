@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Film from './film.jsx';
+
+var data = require("!json!../data/films.json");
 
 var Films = React.createClass({
   render: function() {
-    var data = require("!json!../data/films.json");
+    var filmNodes = this.props.data.map(function(film) {
+      console.log(film);
+      <Film {...film} />
+    });
     return (
-      <div className="commentBox">
-        {JSON.stringify(data)}
+      <div>
+        {filmNodes}
       </div>
     );
   }
 });
 
-ReactDOM.render(<Films />, document.getElementById('app'));
+ReactDOM.render(<Films data={data} />, document.getElementById('app'));
