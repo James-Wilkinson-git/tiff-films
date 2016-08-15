@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Film from './film.jsx';
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Film = require('./Film.jsx');
 
 var data = require("!json!../data/films.json");
 
 var Films = React.createClass({
   render: function() {
-    var filmNodes = this.props.data.map(function(film) {
-      console.log(film);
-      <Film {...film} />
+    var filmNodes = this.props.data.map(function(film, i) {
+      return (<Film {...film} key={i} />);
     });
     return (
       <div>

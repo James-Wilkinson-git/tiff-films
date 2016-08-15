@@ -21472,31 +21472,22 @@
 
 	'use strict';
 
-	var _react = __webpack_require__(1);
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(35);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _film = __webpack_require__(176);
-
-	var _film2 = _interopRequireDefault(_film);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(35);
+	var Film = __webpack_require__(178);
 
 	var data = __webpack_require__(177);
 
-	var Films = _react2.default.createClass({
+	var Films = React.createClass({
 	  displayName: 'Films',
 
 	  render: function render() {
-	    var filmNodes = this.props.data.map(function (film) {
-	      console.log(film);
-	      _react2.default.createElement(_film2.default, film);
+	    var filmNodes = this.props.data.map(function (film, i) {
+	      return React.createElement(Film, _extends({}, film, { key: i }));
 	    });
-	    return _react2.default.createElement(
+	    return React.createElement(
 	      'div',
 	      null,
 	      filmNodes
@@ -21504,57 +21495,10 @@
 	  }
 	});
 
-	_reactDom2.default.render(_react2.default.createElement(Films, { data: data }), document.getElementById('app'));
+	ReactDOM.render(React.createElement(Films, { data: data }), document.getElementById('app'));
 
 /***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Film = _react2.default.createClass({
-	  displayName: "Film",
-
-	  propTypes: {
-	    "name": _react2.default.PropTypes.string,
-	    "director": _react2.default.PropTypes.string,
-	    "countries": _react2.default.PropTypes.string,
-	    "runtime": _react2.default.PropTypes.string,
-	    "premiere": _react2.default.PropTypes.string,
-	    "year": _react2.default.PropTypes.string,
-	    "language": _react2.default.PropTypes.string,
-	    "pitch": _react2.default.PropTypes.string,
-	    "production": _react2.default.PropTypes.string,
-	    "producers": _react2.default.PropTypes.string,
-	    "screenplay": _react2.default.PropTypes.string,
-	    "cinematographers": _react2.default.PropTypes.string,
-	    "editors": _react2.default.PropTypes.string,
-	    "score": _react2.default.PropTypes.string,
-	    "sound": _react2.default.PropTypes.string,
-	    "cast": _react2.default.PropTypes.string
-	  },
-	  render: function render(props) {
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "film" },
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        this.props.name
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Film;
-
-/***/ },
+/* 176 */,
 /* 177 */
 /***/ function(module, exports) {
 
@@ -25916,6 +25860,163 @@
 			"cast": "Natalie Krill, Erika Linder, Sebastian Pigott, Mayko Nguyen, Tommie-Amber Pirie, Melanie Leishman, Andrea Stefancikova"
 		}
 	];
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var Film = React.createClass({
+	  displayName: "Film",
+
+	  propTypes: {
+	    "name": React.PropTypes.string,
+	    "director": React.PropTypes.string,
+	    "countries": React.PropTypes.string,
+	    "runtime": React.PropTypes.string,
+	    "premiere": React.PropTypes.string,
+	    "year": React.PropTypes.string,
+	    "language": React.PropTypes.string,
+	    "pitch": React.PropTypes.string,
+	    "production": React.PropTypes.string,
+	    "producers": React.PropTypes.string,
+	    "screenplay": React.PropTypes.string,
+	    "cinematographers": React.PropTypes.string,
+	    "editors": React.PropTypes.string,
+	    "score": React.PropTypes.string,
+	    "sound": React.PropTypes.string,
+	    "cast": React.PropTypes.string
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "film card" },
+	      React.createElement(
+	        "h1",
+	        null,
+	        this.props.name,
+	        "(",
+	        this.props.runtime,
+	        ")"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        React.createElement(
+	          "em",
+	          null,
+	          this.props.director,
+	          " | ",
+	          this.props.language,
+	          " | ",
+	          this.props.premiere,
+	          " | ",
+	          this.props.year
+	        )
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        this.props.pitch
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Credits"
+	        ),
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Director:"
+	        ),
+	        " ",
+	        this.props.director,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Cast:"
+	        ),
+	        " ",
+	        this.props.cast,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Screenplay:"
+	        ),
+	        " ",
+	        this.props.screenplay,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Cinematography:"
+	        ),
+	        " ",
+	        this.props.cinematographers,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Editing:"
+	        ),
+	        " ",
+	        this.props.editors,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Score:"
+	        ),
+	        " ",
+	        this.props.score,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Sound:"
+	        ),
+	        " ",
+	        this.props.sound,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Producers:"
+	        ),
+	        " ",
+	        this.props.producers,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Production:"
+	        ),
+	        " ",
+	        this.props.production,
+	        React.createElement("br", null),
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Countries:"
+	        ),
+	        " ",
+	        this.props.countries,
+	        React.createElement("br", null)
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Film;
 
 /***/ }
 /******/ ]);
