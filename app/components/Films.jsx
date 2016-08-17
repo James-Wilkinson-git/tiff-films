@@ -1,12 +1,15 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Film = require('./Film.jsx');
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Film from './Film.jsx'
+import data from '!json!../data/films.json'
 
-var data = require("!json!../data/films.json");
+class Films extends React.Component{
+  constructor(props) {
+    super(props);
+  }
 
-var Films = React.createClass({
-  render: function() {
-    var filmNodes = this.props.data.map(function(film, i) {
+  render() {
+    let filmNodes = this.props.data.map(function(film, i) {
       return (<Film {...film} key={i} />);
     });
     return (
@@ -15,6 +18,6 @@ var Films = React.createClass({
       </div>
     );
   }
-});
+};
 
 ReactDOM.render(<Films data={data} />, document.getElementById('app'));

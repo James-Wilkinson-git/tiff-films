@@ -458,6 +458,13 @@ h1,h2,h3,h4,h5,h6 {
   border-bottom: 1px solid rgba(160, 160, 160, 0.298039);
   padding-bottom: 0.5%;
 }
+.film__image--container{
+  width: 100%;
+}
+.film__image--container img {
+  width: 100%;
+  height: auto;
+}
 .film__credits {
   font-size: 12px;
   line-height: 2em;
