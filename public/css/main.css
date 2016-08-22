@@ -444,16 +444,6 @@ h1,h2,h3,h4,h5,h6 {
   padding: 2%;
   border: 1px solid rgba(160, 160, 160, 0.298039);
 }
-@media only screen and (min-width: 768px) {
-    .film {
-      width: 30%;
-      margin: 2% 1.66%;
-      float: left;
-    }
-    .film:nth-child(3n+1){
-        clear:left
-    }
-}
 .film__header {
   border-bottom: 1px solid rgba(160, 160, 160, 0.298039);
   padding-bottom: 0.5%;
@@ -469,4 +459,14 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 12px;
   line-height: 2em;
   border-top: 1px solid rgba(160, 160, 160, 0.298039);
+}
+@media (min-width: 768px) {
+    .film {
+      width: 30%;
+      margin: 2% 1.66%;
+      float: left;
+    }
+    .film:nth-child(3n+1){
+        clear:left
+    }
 }

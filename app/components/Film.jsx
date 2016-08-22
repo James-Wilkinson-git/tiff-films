@@ -11,6 +11,7 @@ class Film extends React.Component {
       <div className="film card">
         <div className="film__header">
           <h2>{this.props.name} ({this.props.runtime})</h2>
+          <div className="film__image--container"><img src={this.props.image} alt="" /></div>
           <p><em>{this.props.director} | {this.props.language} | {this.props.premiere} | {this.props.year}</em></p>
         </div>
         <p>{this.props.pitch}</p>
