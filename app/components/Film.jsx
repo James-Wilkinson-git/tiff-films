@@ -3,29 +3,46 @@ import React from 'react';
 class Film extends React.Component {
   constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.creditsToggle = this.creditsToggle.bind(this);
+    this.addToWatchList = this.addToWatchList.bind(this);
     this.state = {
       showCredits: false
     };
   }
-  handleClick() {
+  creditsToggle() {
     this.setState(
       {showCredits: !this.state.showCredits}
     )
+  }
+  addToWatchList() {
+    console.log(this.props);
   }
   render() {
     return (
       <div className="film card">
         <div className="film__header">
           <h2>{this.props.name} ({this.props.runtime})</h2>
+
+          <h4><span>{this.props.director}</span> | <span>{this.props.program}</span></h4>
+
           <div className="film__image--container"><img src={this.props.image} alt="" /></div>
-          <p><em>{this.props.director} | {this.props.language} | {this.props.premiere} | {this.props.year}</em></p>
+
+          <p><em><span>{this.props.language}</span> | <span>{this.props.premiere}</span> | <span>{this.props.year}</span></em></p>
         </div>
+
         <p>{this.props.pitch}</p>
+
+        <button className="film__button--add" onClick={this.addToWatchList}>Add To Watch List</button>
+
         <div className="film__credits">
-          <p><button onClick={this.handleClick}>Click to Show/Hide Credits</button><br /></p>
+          <p><button onClick={this.creditsToggle}>Click to Show/Hide Credits</button><br /></p>
+
           <div className={this.state.showCredits ? 'show' : 'hide'}>
             <strong>Director:</strong> {this.props.director}<br />
+            <strong>Program:</strong> {this.props.program}<br />
+            <strong>Year:</strong> {this.props.year}<br />
+            <strong>Premier:</strong> {this.props.premier}<br />
+            <strong>Language:</strong> {this.props.language}<br />
             <strong>Cast:</strong> {this.props.cast}<br />
             <strong>Screenplay:</strong> {this.props.screenplay}<br />
             <strong>Cinematography:</strong> {this.props.cinematographers}<br />
@@ -41,45 +58,5 @@ class Film extends React.Component {
     );
   }
 };
-Film.propTypes = {
-  name: React.PropTypes.string,
-  director: React.PropTypes.string,
-  countries: React.PropTypes.string,
-  runtime: React.PropTypes.string,
-  premiere: React.PropTypes.string,
-  year: React.PropTypes.string,
-  language: React.PropTypes.string,
-  pitch: React.PropTypes.string,
-  production: React.PropTypes.string,
-  producers: React.PropTypes.string,
-  screenplay: React.PropTypes.string,
-  cinematographers: React.PropTypes.string,
-  editors: React.PropTypes.string,
-  score: React.PropTypes.string,
-  sound: React.PropTypes.string,
-  cast: React.PropTypes.string,
-  image: React.PropTypes.string,
-  url: React.PropTypes.string
-}
-Film.defaultProps = {
-  name: "Title",
-  director: "Directors",
-  countries: "Countries",
-  runtime: "Runtime",
-  premiere: "Premier",
-  year: "Year",
-  language: "Languages",
-  pitch: "Synopsis",
-  production: "Production Company",
-  producers: "Producers",
-  screenplay: "Screen Play Writers",
-  cinematographers: "Cinematographers",
-  editors: "Editors",
-  score: "Score",
-  sound: "Sound",
-  cast: "Cast",
-  image: "https://placeholdit.imgix.net/~text?txtsize=33&txt=No-Image&w=300&h=150",
-  url: "http://www.tiff.net/?filter=festival"
-}
 
 export default Film;

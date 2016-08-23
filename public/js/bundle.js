@@ -27172,8 +27172,24 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "app" },
-	        _react2.default.createElement("header", { className: "primary-header" }),
-	        _react2.default.createElement("aside", { className: "primary-aside" }),
+	        _react2.default.createElement(
+	          "header",
+	          { className: "primary-header" },
+	          _react2.default.createElement(
+	            "h1",
+	            null,
+	            "TIFF 16 Film Reference"
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "container" },
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Use of this data is provided under the terms and conditions of the Toronto Internation Film Festival site terms and conditions. Watch list functionailty is not currently programed. Search the page with your browser."
+	          )
+	        ),
 	        _react2.default.createElement(
 	          "main",
 	          null,
@@ -27290,7 +27306,8 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Film).call(this, props));
 
-	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.creditsToggle = _this.creditsToggle.bind(_this);
+	    _this.addToWatchList = _this.addToWatchList.bind(_this);
 	    _this.state = {
 	      showCredits: false
 	    };
@@ -27298,9 +27315,14 @@
 	  }
 
 	  _createClass(Film, [{
-	    key: "handleClick",
-	    value: function handleClick() {
+	    key: "creditsToggle",
+	    value: function creditsToggle() {
 	      this.setState({ showCredits: !this.state.showCredits });
+	    }
+	  }, {
+	    key: "addToWatchList",
+	    value: function addToWatchList() {
+	      console.log(this.props);
 	    }
 	  }, {
 	    key: "render",
@@ -27320,6 +27342,21 @@
 	            ")"
 	          ),
 	          _react2.default.createElement(
+	            "h4",
+	            null,
+	            _react2.default.createElement(
+	              "span",
+	              null,
+	              this.props.director
+	            ),
+	            " | ",
+	            _react2.default.createElement(
+	              "span",
+	              null,
+	              this.props.program
+	            )
+	          ),
+	          _react2.default.createElement(
 	            "div",
 	            { className: "film__image--container" },
 	            _react2.default.createElement("img", { src: this.props.image, alt: "" })
@@ -27330,13 +27367,23 @@
 	            _react2.default.createElement(
 	              "em",
 	              null,
-	              this.props.director,
+	              _react2.default.createElement(
+	                "span",
+	                null,
+	                this.props.language
+	              ),
 	              " | ",
-	              this.props.language,
+	              _react2.default.createElement(
+	                "span",
+	                null,
+	                this.props.premiere
+	              ),
 	              " | ",
-	              this.props.premiere,
-	              " | ",
-	              this.props.year
+	              _react2.default.createElement(
+	                "span",
+	                null,
+	                this.props.year
+	              )
 	            )
 	          )
 	        ),
@@ -27346,6 +27393,11 @@
 	          this.props.pitch
 	        ),
 	        _react2.default.createElement(
+	          "button",
+	          { className: "film__button--add", onClick: this.addToWatchList },
+	          "Add To Watch List"
+	        ),
+	        _react2.default.createElement(
 	          "div",
 	          { className: "film__credits" },
 	          _react2.default.createElement(
@@ -27353,7 +27405,7 @@
 	            null,
 	            _react2.default.createElement(
 	              "button",
-	              { onClick: this.handleClick },
+	              { onClick: this.creditsToggle },
 	              "Click to Show/Hide Credits"
 	            ),
 	            _react2.default.createElement("br", null)
@@ -27368,6 +27420,38 @@
 	            ),
 	            " ",
 	            this.props.director,
+	            _react2.default.createElement("br", null),
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Program:"
+	            ),
+	            " ",
+	            this.props.program,
+	            _react2.default.createElement("br", null),
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Year:"
+	            ),
+	            " ",
+	            this.props.year,
+	            _react2.default.createElement("br", null),
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Premier:"
+	            ),
+	            " ",
+	            this.props.premier,
+	            _react2.default.createElement("br", null),
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Language:"
+	            ),
+	            " ",
+	            this.props.language,
 	            _react2.default.createElement("br", null),
 	            _react2.default.createElement(
 	              "strong",
@@ -27451,46 +27535,6 @@
 	}(_react2.default.Component);
 
 	;
-	Film.propTypes = {
-	  name: _react2.default.PropTypes.string,
-	  director: _react2.default.PropTypes.string,
-	  countries: _react2.default.PropTypes.string,
-	  runtime: _react2.default.PropTypes.string,
-	  premiere: _react2.default.PropTypes.string,
-	  year: _react2.default.PropTypes.string,
-	  language: _react2.default.PropTypes.string,
-	  pitch: _react2.default.PropTypes.string,
-	  production: _react2.default.PropTypes.string,
-	  producers: _react2.default.PropTypes.string,
-	  screenplay: _react2.default.PropTypes.string,
-	  cinematographers: _react2.default.PropTypes.string,
-	  editors: _react2.default.PropTypes.string,
-	  score: _react2.default.PropTypes.string,
-	  sound: _react2.default.PropTypes.string,
-	  cast: _react2.default.PropTypes.string,
-	  image: _react2.default.PropTypes.string,
-	  url: _react2.default.PropTypes.string
-	};
-	Film.defaultProps = {
-	  name: "Title",
-	  director: "Directors",
-	  countries: "Countries",
-	  runtime: "Runtime",
-	  premiere: "Premier",
-	  year: "Year",
-	  language: "Languages",
-	  pitch: "Synopsis",
-	  production: "Production Company",
-	  producers: "Producers",
-	  screenplay: "Screen Play Writers",
-	  cinematographers: "Cinematographers",
-	  editors: "Editors",
-	  score: "Score",
-	  sound: "Sound",
-	  cast: "Cast",
-	  image: "https://placeholdit.imgix.net/~text?txtsize=33&txt=No-Image&w=300&h=150",
-	  url: "http://www.tiff.net/?filter=festival"
-	};
 
 	exports.default = Film;
 
@@ -27501,6 +27545,7 @@
 	module.exports = [
 		{
 			"name": "Transparent Season 3",
+			"program": "Primetime",
 			"director": "Jill Soloway, Silas Howard",
 			"countries": "USA",
 			"runtime": "88 minutes",
@@ -27521,6 +27566,7 @@
 		},
 		{
 			"name": "Daughters of the Dust",
+			"program": "TIFF Cinematheque",
 			"director": "Julie Dash",
 			"countries": "USA",
 			"runtime": "112 minutes",
@@ -27541,6 +27587,7 @@
 		},
 		{
 			"name": "Hello Destroyer",
+			"program": "Discovery",
 			"director": "Kevan Funk",
 			"countries": "Canada",
 			"runtime": "110 minutes",
@@ -27555,12 +27602,13 @@
 			"editors": "Ajla Odobasic",
 			"score": "Edo Van Breemen",
 			"sound": "Eugenio Battaglia",
-			"cast": "Jared Abrahamson, Kurt Max Runte, Joe Dion Buffalo, Paul McGillion, Ian Tracey, Ben Cotton, Sara Canning, Maxwell Haynes, R.J. Fetherstonhaugh, Darren Mann, Shane Leydon, Phil Prajoux",
+			"cast": "Jared Abrahamson, Kurt Max Runte, Joe Dion Buffalo, Paul McGillion, Ian Tracey, Ben Cotton, Sara Canning, Maxwell Haynes, R.J. Fetherstonhaugh, Darren Mann, Shane Leydon, Phil Prajoux, David Lennon",
 			"image": "https://images.contentful.com/22n7d68fswlw/7t3FKIF42IiwaMeg04uIuC/3afafc1478ce845c210492c0523a88d1/hellodestroyer_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/hello-destroyer"
 		},
 		{
 			"name": "Deepwater Horizon",
+			"program": "Gala Presentations",
 			"director": "Peter Berg",
 			"countries": "USA",
 			"runtime": "107 minutes",
@@ -27581,6 +27629,7 @@
 		},
 		{
 			"name": "A Monster Calls",
+			"program": "Gala Presentations",
 			"director": "J. A. Bayona",
 			"countries": "USA / Spain",
 			"runtime": "108 minutes",
@@ -27601,19 +27650,20 @@
 		},
 		{
 			"name": "Snowden",
+			"program": "Gala Presentations",
 			"director": "Oliver Stone",
 			"countries": "Germany / USA",
 			"runtime": "134 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "Joseph Gordon-Levitt stars as NSA whistleblower Edward Snowden in this real-life political thriller from Oscar winner Oliver Stone, co-starring Shailene Woodley, Melissa Leo, Zachary Quinto, Timothy Olyphant and Nicolas Cage.\n",
 			"production": "Sacha, Inc., Wild Bunch, TG Media, Krautpack Entertainment",
 			"producers": "Moritz Borman, Fernando Sulichin, Philip Schulz-Deyle, Eric Kopeloff",
 			"screenplay": "Oliver Stone, Kieran Fitzgerald",
 			"cinematographers": "Anthony Dod Mantle",
 			"editors": "Alex Márquez, Lee Percy",
-			"score": "",
+			"score": "Craig Armstrong",
 			"sound": "Frank Heidbrink",
 			"cast": "Joseph Gordon-Levitt, Shailene Woodley, Melissa Leo, Zachary Quinto, Tom Wilkinson, Scott Eastwood, Logan Marshall-Green, Timothy Olyphant, Ben Schnetzer, Lakeith Lee Stanfield, Rhys Ifans, Nicolas Cage",
 			"image": "https://images.contentful.com/22n7d68fswlw/13PJjFrHIk0gaiiYiOYqea/b1245e9529f602f08a3c95fab07f99d9/snowden_01_banner.jpg?w=300&q=40",
@@ -27621,19 +27671,20 @@
 		},
 		{
 			"name": "Their Finest",
+			"program": "Gala Presentations",
 			"director": "Lone Scherfig",
 			"countries": "United Kingdom",
 			"runtime": "110 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "Danish filmmaker Lone Scherfig (An Education, The Riot Club) directs a sterling British cast — including Gemma Arterton, Bill Nighy, Jack Huston and Richard E. Grant — in this period comedy-drama about a group of filmmakers struggling to make an inspirational film to boost morale during the Blitz of London in World War II. \n",
 			"production": "Number 9 Films, Wildgaze Films",
 			"producers": "Stephen Woolley, Amanda Posey, Finola Dwyer, Elizabeth Karlsen",
 			"screenplay": "Gaby Chiappe",
 			"cinematographers": "Sebastian Blenkov",
 			"editors": "Lucia Zucchetti",
-			"score": "",
+			"score": "Rachel Portman",
 			"sound": "Ben Barker",
 			"cast": "Gemma Arterton, Sam Claflin, Bill Nighy, Jack Huston, Helen McCrory, Eddie Marsan, Jake Lacy, Rachel Stirling, Richard E. Grant",
 			"image": "https://images.contentful.com/22n7d68fswlw/2C3J5ZdLEc0y6KwUIEAu4K/d10484a1494b110f42c5dfedd8044e3c/theirfinest_01_banner.jpg?w=300&q=40",
@@ -27641,6 +27692,7 @@
 		},
 		{
 			"name": "Blind Sun",
+			"program": "Vanguard",
 			"director": "Joyce A. Nashawati",
 			"countries": "France / Greece",
 			"runtime": "87 minutes",
@@ -27661,6 +27713,7 @@
 		},
 		{
 			"name": "La La Land",
+			"program": "Special Presentations",
 			"director": "Damien Chazelle",
 			"countries": "USA",
 			"runtime": "126 minutes",
@@ -27681,6 +27734,7 @@
 		},
 		{
 			"name": "One-Eyed Jacks",
+			"program": "TIFF Cinematheque",
 			"director": "Marlon Brando",
 			"countries": "USA",
 			"runtime": "141 minutes",
@@ -27701,6 +27755,7 @@
 		},
 		{
 			"name": "After the Storm",
+			"program": "Masters",
 			"director": "Hirokazu Kore-eda",
 			"countries": "Japan",
 			"runtime": "117 minutes",
@@ -27721,19 +27776,20 @@
 		},
 		{
 			"name": "BrOTHERHOOD",
+			"program": "Special Presentations",
 			"director": "Noel Clarke",
 			"countries": "United Kingdom",
 			"runtime": "105 minutes",
 			"premiere": "International Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "Writer-director-star Noel Clarke completes the British crime-drama trilogy he began with Kidulthood and Adulthood, in this gritty tale of an ex-con whose dreams of settling down and going straight run up against the long memories (and itchy trigger fingers) of a crew of old enemies. \n",
 			"production": "Unstoppable Entertainment, Dignity Film Finance",
 			"producers": "Noel Clarke, Jason Maza, Gina Powell, Maggie Monteith",
 			"screenplay": "Noel Clarke",
 			"cinematographers": "Aaron Reid",
 			"editors": "Tommy Boulding",
-			"score": "",
+			"score": "Tom Linden, Brandon \"Maniac\" Jolie",
 			"sound": "Mario Mooney",
 			"cast": "Noel Clarke, Arnold Oceng, David Ajala, Cornell S John, Shanika Warren-Markland, Jason Maza, Michael \"Stormzy\" Omari, Ashley Thomas, Leeshon Alexander, Jack McMullen, Calvin Demba, Fady Elsayed, Red Madrell, Adjoa Andoh, Steven Cree",
 			"image": "https://images.contentful.com/22n7d68fswlw/EWAF3JfaeWGG8WMUKMUu2/9e7279a4d73e3d906c057c95ca85f8c0/brotherhood_01.jpg?w=300&q=40",
@@ -27741,6 +27797,7 @@
 		},
 		{
 			"name": "Fire at Sea",
+			"program": "Masters",
 			"director": "Gianfranco Rosi",
 			"countries": "Italy / France",
 			"runtime": "108 minutes",
@@ -27761,19 +27818,20 @@
 		},
 		{
 			"name": "The Birth of a Nation",
+			"program": "Special Presentations",
 			"director": "Nate Parker",
 			"countries": "USA",
 			"runtime": "120 minutes",
 			"premiere": "International Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "Writer-director Nate Parker reclaims the title of D.W. Griffith’s KKK-boosting 1916 milestone for this epic chronicle of the life of Nat Turner, who led a slave rebellion against white plantation owners in 1831 Virginia. \n",
 			"production": "Bron Studios Inc, Phantom 4 Films, Mandalay Pictures, Tiny Giant Productions",
 			"producers": "Nate Parker, Kevin Turen, Jason Michael Berman, Aaron L. Gilbert, Preston L. Holmes",
 			"screenplay": "Nate Parker",
 			"cinematographers": "Elliot Davis",
 			"editors": "Steven Rosenblum",
-			"score": "",
+			"score": "Henry Jackman",
 			"sound": "",
 			"cast": "Nate Parker, Armie Hammer, Mark Boone Jr., Colman Domingo, Aunjanue Ellis, Dwight Henry, Aja Naomi King, Esther Scott, Roger Guenveur Smith, Gabrielle Union, Penelope Ann Miller, Jackie Earle Haley",
 			"image": "https://images.contentful.com/22n7d68fswlw/1pDtf1uFdq6G6OUEC0iGKi/091fcb3f35180cc0dba744f0a42ec627/birthofanation_01.jpg?w=300&q=40",
@@ -27781,6 +27839,7 @@
 		},
 		{
 			"name": "Hermia & Helena",
+			"program": "Wavelengths",
 			"director": "Matías Piñeiro",
 			"countries": "USA / Argentina",
 			"runtime": "86 minutes",
@@ -27801,6 +27860,7 @@
 		},
 		{
 			"name": "Manchester by the Sea",
+			"program": "Special Presentations",
 			"director": "Kenneth Lonergan",
 			"countries": "USA",
 			"runtime": "136 minutes",
@@ -27821,6 +27881,7 @@
 		},
 		{
 			"name": "Free Fire",
+			"program": "Midnight Madness",
 			"director": "Ben Wheatley",
 			"countries": "United Kingdom",
 			"runtime": "90 minutes",
@@ -27835,32 +27896,13 @@
 			"editors": "Amy Jump, Ben Wheatley",
 			"score": "Ben Salisbury, Geoff Barrow",
 			"sound": "Martin Pavey",
-			"cast": "Sharlto Copley, Armie Hammer, Brie Larson, Cillian Murphy, Jack Reynor",
+			"cast": "Sharlto Copley, Armie Hammer, Cillian Murphy, Jack Reynor, Sam Riley, Noah Taylor, Babou Ceesay, Enzo Cilenti, Michael Smiley, Brie Larson",
 			"image": "https://images.contentful.com/22n7d68fswlw/4qgNnRTFvWQeiWmsiSc4kw/4c85b3ae1c7ab33b6313567e1b04020b/FREEFIRE_01.jpeg?w=300&q=40",
 			"url": "http://tiff.net/films/free-fire"
 		},
 		{
-			"name": "Maudie",
-			"director": "Aisling Walsh",
-			"countries": "Canada / Ireland",
-			"runtime": "115 minutes",
-			"premiere": "Canadian Premiere",
-			"year": "2016",
-			"language": "",
-			"pitch": "Academy Award nominees Sally Hawkins (Happy-Go-Lucky, Blue Jasmine) and Ethan Hawke star in the true story of Maud Lewis, who overcame the physical challenge of juvenile rheumatoid arthritis to become one of Canada’s premier folk artists.\n",
-			"production": "Small Shack Productions Inc., Painted House Films, Parallel Films",
-			"producers": "Bob Cooper, Mary Young Leckie, Mary  Sexton, Susan Mullen",
-			"screenplay": "Sherry White",
-			"cinematographers": "Guy Godfree",
-			"editors": "Stephen O'Connell",
-			"score": "",
-			"sound": "Steven Munro",
-			"cast": "Sally Hawkins, Ethan Hawke",
-			"image": "https://images.contentful.com/22n7d68fswlw/43fKCLCvFKEougg2gkaqwo/13a4f38fc185180c55de41604b739580/maudie_01.jpg?w=300&q=40",
-			"url": "http://tiff.net/films/maudie"
-		},
-		{
 			"name": "The Patriarch",
+			"program": "Contemporary World Cinema",
 			"director": "Lee Tamahori",
 			"countries": "New Zealand",
 			"runtime": "103 minutes",
@@ -27880,7 +27922,29 @@
 			"url": "http://tiff.net/films/the-patriarch"
 		},
 		{
+			"name": "Maudie",
+			"program": "Special Presentations",
+			"director": "Aisling Walsh",
+			"countries": "Canada / Ireland",
+			"runtime": "115 minutes",
+			"premiere": "Canadian Premiere",
+			"year": "2016",
+			"language": "English",
+			"pitch": "Academy Award nominees Sally Hawkins (Happy-Go-Lucky, Blue Jasmine) and Ethan Hawke star in the true story of Maud Lewis, who overcame the physical challenge of juvenile rheumatoid arthritis to become one of Canada’s premier folk artists.\n",
+			"production": "Small Shack Productions Inc., Painted House Films, Parallel Films",
+			"producers": "Bob Cooper, Mary Young Leckie, Mary  Sexton, Susan Mullen",
+			"screenplay": "Sherry White",
+			"cinematographers": "Guy Godfree",
+			"editors": "Stephen O'Connell",
+			"score": "Michael Timmins",
+			"sound": "Steven Munro",
+			"cast": "Sally Hawkins, Ethan Hawke, Kate Ross, Zachary Bennett, Gabrielle Rose, Keri Matchett",
+			"image": "https://images.contentful.com/22n7d68fswlw/43fKCLCvFKEougg2gkaqwo/13a4f38fc185180c55de41604b739580/maudie_01.jpg?w=300&q=40",
+			"url": "http://tiff.net/films/maudie"
+		},
+		{
 			"name": "The Battle of Algiers",
+			"program": "TIFF Cinematheque",
 			"director": "Gillo Pontecorvo",
 			"countries": "Algeria / Italy",
 			"runtime": "123 minutes",
@@ -27901,6 +27965,7 @@
 		},
 		{
 			"name": "WITHOUT NAME",
+			"program": "Vanguard",
 			"director": "Lorcan Finnegan",
 			"countries": "Ireland",
 			"runtime": "93 minutes",
@@ -27921,6 +27986,7 @@
 		},
 		{
 			"name": "The Death of Louis XIV",
+			"program": "Wavelengths",
 			"director": "Albert Serra",
 			"countries": "France / Portugal / Spain",
 			"runtime": "115 minutes",
@@ -27941,6 +28007,7 @@
 		},
 		{
 			"name": "A Quiet Passion",
+			"program": "Masters",
 			"director": "Terence Davies",
 			"countries": "United Kingdom / Belgium",
 			"runtime": "124 minutes",
@@ -27961,6 +28028,7 @@
 		},
 		{
 			"name": "Paris Can Wait",
+			"program": "Special Presentations",
 			"director": "Eleanor Coppola",
 			"countries": "USA",
 			"runtime": "92 minutes",
@@ -27981,6 +28049,7 @@
 		},
 		{
 			"name": "Queen of Katwe",
+			"program": "Gala Presentations",
 			"director": "Mira Nair",
 			"countries": "Uganda / South Africa",
 			"runtime": "124 minutes",
@@ -27995,12 +28064,13 @@
 			"editors": "Barry Alexander Brown",
 			"score": "Alex Heffes",
 			"sound": "",
-			"cast": "David Oyelowo, Lupita Nyong'o, Madina Nalwanga",
+			"cast": "David Oyelowo, Lupita Nyong'o, Madina Nalwanga, Dinaz Stafford, Hope Katende, Mark Mugwana, Robert Katende, Sarah Katende, Zohran Kwame Mamdani, Phiona Mutesi",
 			"image": "https://images.contentful.com/22n7d68fswlw/6tej2re9pYKSS6aeKIgGau/137edd4048bceadb1e8a233ca54de6a9/QueenOfKatwe_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/queen-of-katwe"
 		},
 		{
 			"name": "Daguerrotype",
+			"program": "Platform",
 			"director": "Kiyoshi Kurosawa",
 			"countries": "France / Japan / Belgium",
 			"runtime": "131 minutes",
@@ -28021,19 +28091,20 @@
 		},
 		{
 			"name": "The Handmaiden",
+			"program": "Special Presentations",
 			"director": "Park Chan-wook",
 			"countries": "South Korea",
 			"runtime": "145 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Korean Japanese",
 			"pitch": "A crook-turned-servant falls for the vulnerable heiress she had originally schemed to swindle, in this audacious, visually sumptuous, and highly erotic period piece from acclaimed writer-director Park Chan-wook.\n",
 			"production": "Moho Film",
 			"producers": "Lim Syd, Park Chan-wook",
 			"screenplay": "Park Chan-wook, Chung Seo-kyung",
 			"cinematographers": "Chung Chung-hoon",
 			"editors": "Kim Sang-bum, Kim Jae-bum",
-			"score": "",
+			"score": "Cho Young-wuk",
 			"sound": "Kim Suk-won",
 			"cast": "Kim Min-hee, Kim Tae-ri, Ha Jung-woo, Cho Jin-woong, Kim Hae-sook, Moon So-ri",
 			"image": "https://images.contentful.com/22n7d68fswlw/59WzVBPnQACKaSi6UGIEYy/0d2db1386ddce4ce24be76591e47c082/handmaiden_01.jpg?w=300&q=40",
@@ -28041,6 +28112,7 @@
 		},
 		{
 			"name": "The Skyjacker's Tale",
+			"program": "TIFF Docs",
 			"director": "Jamie Kastner",
 			"countries": "Canada",
 			"runtime": "75 minutes",
@@ -28061,6 +28133,7 @@
 		},
 		{
 			"name": "The Limehouse Golem",
+			"program": "Special Presentations",
 			"director": "Juan Carlos Medina",
 			"countries": "United Kingdom",
 			"runtime": "105 minutes",
@@ -28081,6 +28154,7 @@
 		},
 		{
 			"name": "Lion",
+			"program": "Special Presentations",
 			"director": "Garth Davis",
 			"countries": "Australia",
 			"runtime": "129 minutes",
@@ -28101,6 +28175,7 @@
 		},
 		{
 			"name": "Nocturama",
+			"program": "Platform",
 			"director": "Bertrand Bonello",
 			"countries": "France / Germany / Belgium",
 			"runtime": "130 minutes",
@@ -28121,19 +28196,20 @@
 		},
 		{
 			"name": "Harmonium",
-			"director": "Kôji Fukada",
+			"program": "Special Presentations",
+			"director": "Koji Fukada",
 			"countries": "Japan / France",
 			"runtime": "118 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Japanese",
 			"pitch": "A Japanese family’s humdrum daily routine is fatefully upset by the arrival of a stranger from the father’s past, in this slow-burning dramatic thriller.\n",
 			"production": "Comme des Cinémas, Nagoya Broadcasting, MAM Films",
 			"producers": "Masa Sawada, Hiroshi Niimura",
-			"screenplay": "Kôji Fukada",
+			"screenplay": "Koji Fukada",
 			"cinematographers": "Kenichi Negishi",
-			"editors": "Kôji Fukada",
-			"score": "",
+			"editors": "Koji Fukada",
+			"score": "Hiroyuki Onogawa",
 			"sound": "Junji Yoshikata",
 			"cast": "Tadanobu Asano, Mariko Tsutsui, Kanji Furutachi, Taiga , Momone Shinokawa, Kana Mahiro",
 			"image": "https://images.contentful.com/22n7d68fswlw/5Dv0gAOpMIQQm4ugsGOaoO/dbaf4b4792e0c852952c5fdf6b8090e1/harmonium_01.jpg?w=300&q=40",
@@ -28141,19 +28217,20 @@
 		},
 		{
 			"name": "The Magnificent Seven",
+			"program": "Gala Presentations",
 			"director": "Antoine Fuqua",
 			"countries": "USA",
 			"runtime": "133 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "An all-star cast — including Denzel Washington, Chris Pratt, Ethan Hawke, Vincent D’Onofrio, Lee Byung-hun and Peter Sarsgaard — saddles up for this blazing remake of the 1960 western classic from director Antoine Fuqua (The Equalizer), about seven gunslinging mercenaries protecting a small community from a rapacious robber baron.\n",
 			"production": "Metro-Goldwyn-Mayer Pictures, Columbia Pictures, LStar Capital, Village Roadshow Pictures, Pin High Productions, Escape Artists Productions",
 			"producers": "Roger Birnbaum, Todd Black",
 			"screenplay": "Nic Pizzolatto, Richard Wenk",
 			"cinematographers": "Mauro Fiore",
 			"editors": "John Refoua",
-			"score": "",
+			"score": "James Horner, Simon Franglen",
 			"sound": "Ed Novick",
 			"cast": "Denzel Washington, Chris Pratt, Ethan Hawke, Vincent D'Onofrio, Byung-Hun Lee, Manuel Garcia-Rulfo, Martin Sensmeier, Haley Bennett, Peter Sarsgaard, Luke Grimes, Matt Bomer",
 			"image": "https://images.contentful.com/22n7d68fswlw/3Bham629QISCUqAWqE8m86/4cd39c124803e5521e3c2eeb73a17967/magnificentseven_01_mustuse.jpg?w=300&q=40",
@@ -28161,12 +28238,13 @@
 		},
 		{
 			"name": "JT + The Tennessee Kids",
+			"program": "Gala Presentations",
 			"director": "Jonathan Demme",
 			"countries": "USA",
 			"runtime": "90 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "Oscar winner Jonathan Demme (The Silence of the Lambs, Stop Making Sense) directs this thrilling concert doc that captures the spectacular closing performances of the pop superstar’s world tour in Las Vegas.\n",
 			"production": "Playtone, Clinica Estetico",
 			"producers": "Gary Goetzman",
@@ -28181,6 +28259,7 @@
 		},
 		{
 			"name": "Mimosas",
+			"program": "Wavelengths",
 			"director": "Oliver Laxe",
 			"countries": "Spain / Morocco / France / Qatar",
 			"runtime": "93 minutes",
@@ -28201,6 +28280,7 @@
 		},
 		{
 			"name": "Handsome Devil",
+			"program": "Contemporary World Cinema",
 			"director": "John Butler",
 			"countries": "Ireland",
 			"runtime": "95 minutes",
@@ -28215,12 +28295,13 @@
 			"editors": "John O'Connor",
 			"score": "John McPhillips",
 			"sound": "Hugh Fox",
-			"cast": "Fionn O'Shea, Nicholas Galitzine, Moe Dunford, Michael McElhatton, Andrew Scott",
+			"cast": "Fionn O'Shea, Nicholas Galitzine, Moe Dunford, Michael McElhatton, Andrew Scott, Jay Duffy, Mark Lavery, Jamie Hallahan",
 			"image": "https://images.contentful.com/22n7d68fswlw/6o8tZ5MyyIQwiOqyW408EC/12244054c9bd44430bb4f2337755e1c2/handsomedevil_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/handsome-devil"
 		},
 		{
 			"name": "Mean Dreams",
+			"program": "Special Presentations",
 			"director": "Nathan Morlando",
 			"countries": "Canada",
 			"runtime": "104 minutes",
@@ -28241,6 +28322,7 @@
 		},
 		{
 			"name": "Below Her Mouth",
+			"program": "Special Presentations",
 			"director": "April Mullen",
 			"countries": "Canada",
 			"runtime": "92 minutes",
@@ -28261,19 +28343,20 @@
 		},
 		{
 			"name": "American Pastoral",
+			"program": "Special Presentations",
 			"director": "Ewan McGregor",
 			"countries": "USA",
 			"runtime": "126 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "Ewan McGregor makes his directing debut and stars alongside Oscar winner Jennifer Connelly and Dakota Fanning in this ambitious adaptation of Philip Roth’s Pulitzer Prize–winning novel, about a \"perfect\" American family that is torn apart by the social and political upheavals of the 1960s.\n",
 			"production": "Lakeshore Entertainment",
 			"producers": "Tom Rosenberg, Gary Lucchesi, Andre Lamal",
 			"screenplay": "John Romano",
 			"cinematographers": "Martin Ruhe",
 			"editors": "Melissa Kent",
-			"score": "",
+			"score": "Alexandre Desplat",
 			"sound": "",
 			"cast": "Ewan McGregor, Jennifer Connelly, Dakota Fanning, Uzo Aduba, David Strathairn, Valorie Curry, Peter Riegert, Rupert Evans",
 			"image": "https://images.contentful.com/22n7d68fswlw/7PvsOXBL5mIgqumGa2a8i/63181a9ff61de3b84e90bc675ecb4af6/AmericanPastoral_01.jpg?w=300&q=40",
@@ -28281,6 +28364,7 @@
 		},
 		{
 			"name": "King of the Dancehall",
+			"program": "Special Presentations",
 			"director": "Nick Cannon",
 			"countries": "USA / Jamaica",
 			"runtime": "100 minutes",
@@ -28293,7 +28377,7 @@
 			"screenplay": "Nick Cannon",
 			"cinematographers": "Luis Perez",
 			"editors": "Erik C. Andersen, Harvey White",
-			"score": "",
+			"score": "Salaam Remi",
 			"sound": "Geoff Green",
 			"cast": "Nick Cannon, Whoopi Goldberg, Busta Rhymes, Peter Stormare, Kimberly Patterson, Lou Gossett Jr., Kreesha Turner, Ky Mani Marley, Collie Budz, Killer Bean, Beenie Man",
 			"image": "https://images.contentful.com/22n7d68fswlw/5mekXKo9qM66aQO80Aiwm2/09aae405f983712b3bb51bab55c7c499/KingOfTheDancehall_01.jpg?w=300&q=40",
@@ -28301,6 +28385,7 @@
 		},
 		{
 			"name": "Raw",
+			"program": "Midnight Madness",
 			"director": "Julia Ducournau",
 			"countries": "France / Belgium",
 			"runtime": "98 minutes",
@@ -28314,13 +28399,14 @@
 			"cinematographers": "Ruben Impens",
 			"editors": "Jean-Christophe Bouzy",
 			"score": "Jim Williams",
-			"sound": "Mathieu Descamps, Severin Favriau, Stephane Thiebaut",
+			"sound": "Mathieu Descamps, Séverin Favriau, Stéphane Thiébaut",
 			"cast": "Garance Marillier, Ella Rumpf, Rabah Nait Oufella",
 			"image": "https://images.contentful.com/22n7d68fswlw/10EUsEaxby0wG0IIWUSwkq/8b336fcae24dcb2ec1a45692636b72a6/RAW_01.jpeg?w=300&q=40",
 			"url": "http://tiff.net/films/raw"
 		},
 		{
 			"name": "Vaya",
+			"program": "Contemporary World Cinema",
 			"director": "Akin Omotoso",
 			"countries": "South Africa",
 			"runtime": "110 minutes",
@@ -28341,6 +28427,7 @@
 		},
 		{
 			"name": "The Cinema Travellers",
+			"program": "TIFF Docs",
 			"director": "Shirley Abraham, Amit Madheshiya",
 			"countries": "India",
 			"runtime": "96 minutes",
@@ -28361,6 +28448,7 @@
 		},
 		{
 			"name": "White Sun",
+			"program": "Contemporary World Cinema",
 			"director": "Deepak Rauniyar",
 			"countries": "Nepal / USA / Qatar / Netherlands",
 			"runtime": "87 minutes",
@@ -28381,6 +28469,7 @@
 		},
 		{
 			"name": "The Girl with All the Gifts",
+			"program": "Midnight Madness",
 			"director": "Colm McCarthy",
 			"countries": "United Kingdom",
 			"runtime": "110 minutes",
@@ -28401,6 +28490,7 @@
 		},
 		{
 			"name": "The War Show",
+			"program": "TIFF Docs",
 			"director": "Andreas Dalsgaard, Obaidah Zytoon",
 			"countries": "Denmark / Finland / Syria",
 			"runtime": "100 minutes",
@@ -28421,6 +28511,7 @@
 		},
 		{
 			"name": "Catfight",
+			"program": "Special Presentations",
 			"director": "Onur Tukel",
 			"countries": "USA",
 			"runtime": "96 minutes",
@@ -28441,19 +28532,20 @@
 		},
 		{
 			"name": "Denial",
+			"program": "Special Presentations",
 			"director": "Mick Jackson",
 			"countries": "USA / United Kingdom",
 			"runtime": "110 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English Hebrew German",
 			"pitch": "Academy Award winner Rachel Weisz (The Deep Blue Sea) and Timothy Spall (Mr. Turner) star in this riveting, true-life drama about the courtroom showdown between historian Deborah Lipstadt and notorious Holocaust denier David Irving.\n",
 			"production": "Krasnoff/Foster Entertainment, Participant Media, BBC Films",
 			"producers": "Gary Foster, Russ Krasnoff",
 			"screenplay": "David Hare",
 			"cinematographers": "Haris Zambarloukos",
 			"editors": "Justine Wright",
-			"score": "",
+			"score": "Howard Shore",
 			"sound": "Ian Wilson",
 			"cast": "Rachel Weisz, Tom Wilkinson, Timothy Spall, Andrew Scott, Jack Lowden, Caren Pistorius, Alex Jennings",
 			"image": "https://images.contentful.com/22n7d68fswlw/7lQyLkn7eEscKQm02OO4CO/39b0f47e6013c733ecbad1af3a7723a1/denial_01.jpg?w=300&q=40",
@@ -28461,6 +28553,7 @@
 		},
 		{
 			"name": "It's Only the End of the World",
+			"program": "Special Presentations",
 			"director": "Xavier Dolan",
 			"countries": "Canada / France",
 			"runtime": "95 minutes",
@@ -28481,6 +28574,7 @@
 		},
 		{
 			"name": "Pyromaniac",
+			"program": "Contemporary World Cinema",
 			"director": "Erik Skjoldbjærg",
 			"countries": "Norway",
 			"runtime": "98 minutes",
@@ -28501,6 +28595,7 @@
 		},
 		{
 			"name": "Layla M.",
+			"program": "Platform",
 			"director": "Mijke de Jong",
 			"countries": "Netherlands / Belgium / Germany / Jordan",
 			"runtime": "98 minutes",
@@ -28515,12 +28610,13 @@
 			"editors": "Dorith Vinken",
 			"score": "Can Erdogan ",
 			"sound": "Mark Glynne",
-			"cast": "Nora El Koussour, Ilias Addab ",
+			"cast": "Nora El Koussour, Ilias Addab",
 			"image": "https://images.contentful.com/22n7d68fswlw/6EvthH1EaWAswq0y6ceWcu/1e45dfdc7f1aeff7d738a70c97477aae/laylam_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/layla-m"
 		},
 		{
 			"name": "The Net",
+			"program": "Masters",
 			"director": "Kim Ki-duk",
 			"countries": "South Korea",
 			"runtime": "114 minutes",
@@ -28541,6 +28637,7 @@
 		},
 		{
 			"name": "General Report II. The New Abduction of Europe",
+			"program": "Wavelengths",
 			"director": "Pere Portabella",
 			"countries": "Spain",
 			"runtime": "126 minutes",
@@ -28561,6 +28658,7 @@
 		},
 		{
 			"name": "The Animal's Wife",
+			"program": "Contemporary World Cinema",
 			"director": "Víctor Gaviria",
 			"countries": "Colombia",
 			"runtime": "116 minutes",
@@ -28581,6 +28679,7 @@
 		},
 		{
 			"name": "I Called Him Morgan",
+			"program": "TIFF Docs",
 			"director": "Kasper Collin",
 			"countries": "Sweden / USA",
 			"runtime": "91 minutes",
@@ -28601,6 +28700,7 @@
 		},
 		{
 			"name": "Karl Marx City",
+			"program": "TIFF Docs",
 			"director": "Petra Epperlein, Michael Tucker",
 			"countries": "USA / Germany",
 			"runtime": "89 minutes",
@@ -28621,6 +28721,7 @@
 		},
 		{
 			"name": "ABACUS: Small Enough to Jail",
+			"program": "TIFF Docs",
 			"director": "Steve James",
 			"countries": "USA",
 			"runtime": "90 minutes",
@@ -28641,6 +28742,7 @@
 		},
 		{
 			"name": "Citizen Jane: Battle for the City",
+			"program": "TIFF Docs",
 			"director": "Matt Tyrnauer",
 			"countries": "USA",
 			"runtime": "92 minutes",
@@ -28661,6 +28763,7 @@
 		},
 		{
 			"name": "Sadako vs. Kayako",
+			"program": "Midnight Madness",
 			"director": "Kôji Shiraishi",
 			"countries": "Japan",
 			"runtime": "98 minutes",
@@ -28681,6 +28784,7 @@
 		},
 		{
 			"name": "Politics, Instructions Manual",
+			"program": "TIFF Docs",
 			"director": "Fernando León de Aranoa",
 			"countries": "Spain",
 			"runtime": "115 minutes",
@@ -28701,6 +28805,7 @@
 		},
 		{
 			"name": "Something Wild",
+			"program": "TIFF Cinematheque",
 			"director": "Jonathan Demme",
 			"countries": "USA",
 			"runtime": "113 minutes",
@@ -28721,6 +28826,7 @@
 		},
 		{
 			"name": "Irma Vep",
+			"program": "TIFF Cinematheque",
 			"director": "Olivier Assayas",
 			"countries": "France",
 			"runtime": "96 minutes",
@@ -28741,6 +28847,7 @@
 		},
 		{
 			"name": "Souvenir",
+			"program": "Special Presentations",
 			"director": "Bavo Defurne",
 			"countries": "Belgium / Luxembourg / France",
 			"runtime": "90 minutes",
@@ -28761,6 +28868,7 @@
 		},
 		{
 			"name": "Toni Erdmann",
+			"program": "Special Presentations",
 			"director": "Maren Ade",
 			"countries": "Germany",
 			"runtime": "162 minutes",
@@ -28781,6 +28889,7 @@
 		},
 		{
 			"name": "Sing",
+			"program": "Special Presentations",
 			"director": "Garth Jennings",
 			"countries": "USA / France",
 			"runtime": "110 minutes",
@@ -28793,7 +28902,7 @@
 			"screenplay": "Garth Jennings",
 			"cinematographers": "",
 			"editors": "Gregory Perler",
-			"score": "",
+			"score": "Joby Talbot",
 			"sound": "",
 			"cast": "Matthew McConaughey, Reese Witherspoon, Seth MacFarlane, Scarlett Johansson, John C. Reilly, Tori Kelly, Taron Egerton, Garth Jennings, Jennifer Saunders, Peter Serafinowicz, Nick Kroll, Beck Bennett, Jennifer Hudson, Nick Offerman, Jay Pharoah, Leslie Jones",
 			"image": "https://images.contentful.com/22n7d68fswlw/1B8lBphaOUaigkIoqGYSkE/4b3177a49060ff6bb0bae54735cbb8af/sing_02_USEFORANNOUNCEMENT.jpg?w=300&q=40",
@@ -28801,6 +28910,7 @@
 		},
 		{
 			"name": "The Headhunter's Calling",
+			"program": "Gala Presentations",
 			"director": "Mark Williams",
 			"countries": "Canada",
 			"runtime": "108 minutes",
@@ -28815,12 +28925,13 @@
 			"editors": "Tom Noble",
 			"score": "Mark Isham",
 			"sound": "J.T. Mueller, Glen Gauthier",
-			"cast": "Gerard Butler, Alison Brie, Willem Dafoe, Gretchen Mol, Alfred Molina",
+			"cast": "Gerard Butler, Alison Brie, Willem Dafoe, Gretchen Mol, Alfred Molina, Kathleen Munroe, Dylan Roberts",
 			"image": "https://images.contentful.com/22n7d68fswlw/1VuCq48X4IsksassM4g08s/7b78449997485220827516c2b208fd1a/headhunterscalling_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-headhunters-calling"
 		},
 		{
 			"name": "The Journey is the Destination",
+			"program": "Gala Presentations",
 			"director": "Bronwen Hughes",
 			"countries": "United Kingdom / South Africa / Canada",
 			"runtime": "119 minutes",
@@ -28835,12 +28946,13 @@
 			"editors": "Robert Ivison, Natan Moss",
 			"score": "Duncan Bridgeman",
 			"sound": "",
-			"cast": "Ben Schnetzer, Kelly MacDonald, Sam Hazeldine, Ella Purnell, Maria Bello",
+			"cast": "Ben Schnetzer, Kelly MacDonald, Sam Hazeldine, Ella Purnell, Maria Bello, Sam Hazedine, Yusra Warsama, James Alexander",
 			"image": "https://images.contentful.com/22n7d68fswlw/546ymmROv6cuu8yKkww4OE/1db8a52de7c9e9ced9cb5d4f59a1d84d/journeyisthedestination_01_MUSTUSE.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-journey-is-the-destination"
 		},
 		{
 			"name": "Una",
+			"program": "Special Presentations",
 			"director": "Benedict Andrews",
 			"countries": "United Kingdom",
 			"runtime": "94 minutes",
@@ -28849,11 +28961,11 @@
 			"language": "",
 			"pitch": "Rooney Mara (Carol) and Ben Mendelsohn (Mississippi Grind, Netflix’s Bloodline) star in this adaptation of David Harrower’s play Blackbird, about a young woman who arrives in the workplace of an older man from her past, seeking answers for the long-ago events that have fatefully shaped both of their lives.\n",
 			"production": "WestEnd Blackbird Ltd",
-			"producers": "Maya Amsellem, Jean Doumanian, Patrick Daly",
+			"producers": "Jean Doumanian, Patrick Daly, Maya Amsellem",
 			"screenplay": "David Harrower",
 			"cinematographers": "Thimios Bakatakis",
 			"editors": "Nick Fenton",
-			"score": "",
+			"score": "Jed Kurzel",
 			"sound": "Danny Hambrook",
 			"cast": "Rooney Mara, Ben Mendelsohn, Riz Ahmed",
 			"image": "https://images.contentful.com/22n7d68fswlw/KNU2FHs8c6gw64wWMi68a/1a3d65fc968b2e82c213f429e60a3e96/UNA_01_MUSTUSE.png?w=300&q=40",
@@ -28861,12 +28973,13 @@
 		},
 		{
 			"name": "I Am Not Madame Bovary",
+			"program": "Special Presentations",
 			"director": "Feng Xiaogang",
 			"countries": "China",
 			"runtime": "128 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Mandarin",
 			"pitch": "A café proprietor spends a decade petitioning the Chinese legal system after being swindled by her ex-husband, in this caustically comic contemporary fable from superstar director Feng Xiaogang (Aftershock).\n",
 			"production": "Sparkle Roll Media Corporation, Huayi Brothers Media Corporation, Huayi Brothers Pictures LTD., Beijing Skywheel Entertainment CO., LTD., Zhejiang Dongyang Mayla Media CO., LTD.",
 			"producers": "",
@@ -28875,25 +28988,26 @@
 			"editors": "",
 			"score": "",
 			"sound": "",
-			"cast": "Fan Bingbing",
+			"cast": "Fan Bingbing, Guo Tao, Da Peng",
 			"image": "https://images.contentful.com/22n7d68fswlw/5hi9cgH7j22mumwimk6eMk/d4ee5a734ffd5c1db5531111469d86d5/iamnotmadamebovary_02.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/i-am-not-madame-bovary"
 		},
 		{
 			"name": "Trespass Against Us",
+			"program": "Special Presentations",
 			"director": "Adam Smith",
 			"countries": "United Kingdom",
 			"runtime": "94 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "The son and presumptive heir of a British criminal clan (Michael Fassbender) comes into conflict with the family patriarch (Brendan Gleeson) when he tries to break away from the outlaw life.\n",
 			"production": "Potboiler Productions, Albert Granville",
 			"producers": "Andrea Calderwood, Gail Egan, Alastair Siddons",
 			"screenplay": "Alastair Siddons",
 			"cinematographers": "Edu Grau",
 			"editors": "Kristina Hetherington, Jake Roberts",
-			"score": "",
+			"score": "Tom Rowlands (The Chemical Brothers)",
 			"sound": "Andy Hoare",
 			"cast": "Michael Fassbender, Brendan Gleeson, Lyndsey Marshal, Killian Scott, Rory Kinnear, Sean Harris",
 			"image": "https://images.contentful.com/22n7d68fswlw/2aQsXRS1I8CMCqWsgyQYMs/3f23b68b1d17a3504b951dc8a9bb817b/trespassagainstus_02.jpg?w=300&q=40",
@@ -28901,19 +29015,20 @@
 		},
 		{
 			"name": "Planetarium",
+			"program": "Gala Presentations",
 			"director": "Rebecca Zlotowski",
 			"countries": "France / Belgium",
 			"runtime": "106 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "French English",
 			"pitch": "In 1930s France, two sisters (Natalie Portman and Lily-Rose Depp) who perform as supernatural mediums cross paths with a visionary film producer. \n",
 			"production": "Les Films Velvet",
 			"producers": "Frédéric Jouve",
 			"screenplay": "Rebecca Zlotowski, Robin Campillo",
 			"cinematographers": "George Lechaptois",
 			"editors": "Julien Lacheray",
-			"score": "",
+			"score": "Rob ",
 			"sound": "Olivier Hespel, Charles Autrand, Alexis Place, Sebastien Pierre, Marc Doisne",
 			"cast": "Natalie Portman, Lily-Rose Depp, Emmanuel Salinger, Amira Casar, Pierre Salvadori, Louis Garrel",
 			"image": "https://images.contentful.com/22n7d68fswlw/2I8y8XFscw64kkciQIsEsQ/bc2c3aa43d89fd1df657cb38dfe3e295/planetarium_01_mustuse.jpg?w=300&q=40",
@@ -28921,15 +29036,16 @@
 		},
 		{
 			"name": "Things to Come",
+			"program": "Special Presentations",
 			"director": "Mia Hansen-Løve",
 			"countries": "France / Germany",
 			"runtime": "100 minutes",
 			"premiere": "Canadian Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "French German",
 			"pitch": "French writer-director Mia Hansen-Løve (Eden, Goodbye First Love) directs the great Isabelle Huppert in this delicate and affecting tale about a middle-aged professor whose carefully structured life is thrown into disarray when her husband leaves her for another woman, and who finds an unlikely new companion in a former student and radical young communist.\n",
 			"production": "CG Cinéma, DETAIL FILM GmbH",
-			"producers": "Charles Gillibert, Fabian Gasmia",
+			"producers": "Charles Gillibert",
 			"screenplay": "Mia Hansen-Løve",
 			"cinematographers": "Denis Lenoir",
 			"editors": "Marion Monnier",
@@ -28941,6 +29057,7 @@
 		},
 		{
 			"name": "Strange Weather",
+			"program": "Gala Presentations",
 			"director": "Katherine Dieckmann",
 			"countries": "USA",
 			"runtime": "95 minutes",
@@ -28955,12 +29072,13 @@
 			"editors": "Madeleine Gavin",
 			"score": "Sharon Van Etten",
 			"sound": "James Eck Rippie",
-			"cast": "Holly Hunter, Carrie Coon, Kim Coates",
+			"cast": "Holly Hunter, Carrie Coon, Kim Coates, Ritchie Montgomery",
 			"image": "https://images.contentful.com/22n7d68fswlw/6nXAG4mYUgQI4iMKEwkMgK/ccfba5f751e83c974816df2bc347ef8c/strangeweather_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/strange-weather"
 		},
 		{
 			"name": "American Honey",
+			"program": "Special Presentations",
 			"director": "Andrea Arnold",
 			"countries": "United Kingdom / USA",
 			"runtime": "158 minutes",
@@ -28975,12 +29093,13 @@
 			"editors": "Joe Bini",
 			"score": "",
 			"sound": "Nicolas Becker",
-			"cast": "Shia LaBeouf, Sasha Lane, Riley Keogh",
+			"cast": "Shia LaBeouf, Sasha Lane, Riley Keough, Isaiah Stone, McCaul Lombardi, Raymond Coalson, Veronica Ezell",
 			"image": "https://images.contentful.com/22n7d68fswlw/1Ujj0b9g80I4qsyc4kmWo0/6cde867072119fddf58f4b3edf1469e5/AmericanHoney_02.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/american-honey"
 		},
 		{
 			"name": "Nocturnal Animals",
+			"program": "Special Presentations",
 			"director": "Tom Ford",
 			"countries": "USA / United Kingdom",
 			"runtime": "116 minutes",
@@ -29001,19 +29120,20 @@
 		},
 		{
 			"name": "Unless",
+			"program": "Special Presentations",
 			"director": "Alan Gilsenan",
 			"countries": "Canada / Ireland",
 			"runtime": "93 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "Academy Award nominee Catherine Keener and Hannah Gross (I Used to Be Darker) star in this adaptation of the final novel by the late, great Canadian novelist Carol Shields, about a writer who discovers her runaway daughter panhandling on the street and seemingly deprived of speech.\n",
 			"production": "Sienna Films Inc., Subotica Limited",
 			"producers": "Jennifer Kawaja, Julia Sereny, Tristan Orpen Lynch, Aoife O'Sullivan",
 			"screenplay": "Alan Gilsenan",
 			"cinematographers": "Celiana Cárdenas",
 			"editors": "Emer Reynolds",
-			"score": "",
+			"score": "Jonathan Goldsmith",
 			"sound": "Fionan Higgins, Stephen Marian, Robert Fletcher",
 			"cast": "Catherine Keener, Matt Craven, Hannah Gross, Chloe Rose, Abigail Winter, Martha Henry, Brendan Coyle, Hanna Schygulla, Linda Kash, Benjamin Ayres",
 			"image": "https://images.contentful.com/22n7d68fswlw/54qkNn0R7OgUeo8cayC6QG/85627b4dcfebe8e0bd9979e58c49b9eb/unless_01.jpg?w=300&q=40",
@@ -29021,19 +29141,20 @@
 		},
 		{
 			"name": "Barakah Meets Barakah",
+			"program": "Special Presentations",
 			"director": "Mahmoud Sabbagh",
 			"countries": "Saudi Arabia",
 			"runtime": "88 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Arabic",
 			"pitch": "Saudi Arabia’s first rom-com features comedian and social-media superstar Hisham Fageeh as a mild-mannered civil servant who runs up against his society’s strict mores when he sets out to romance the outspoken daughter of a wealthy couple.\n",
 			"production": "El Housh Productions",
 			"producers": "Mahmoud Sabbagh",
 			"screenplay": "Mahmoud Sabbagh",
 			"cinematographers": "Victor Credi",
 			"editors": "Sofía Subercaseaux, Daniel Garcia, Anas Batahaf",
-			"score": "",
+			"score": "Zeid Hamdan, Maii Waleed",
 			"sound": "Marwan Ghaziri",
 			"cast": "Hisham Fageeh, Fatima Al Banawi",
 			"image": "https://images.contentful.com/22n7d68fswlw/2x23nOCywgiA0AeqyIMK4i/7667828b30d40140ec353fafab13c5b3/BarakahMeetsBarakah_01.jpg?w=300&q=40",
@@ -29041,19 +29162,20 @@
 		},
 		{
 			"name": "Neruda",
+			"program": "Special Presentations",
 			"director": "Pablo Larraín",
 			"countries": "Chile / Argentina / Spain / France",
 			"runtime": "108 minutes",
 			"premiere": "Canadian Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Spanish French",
 			"pitch": "Pablo Larraín (The Club, No, Tony Manero) weaves an engrossing metafictional fable around the 1948 manhunt for celebrated poet and politician Pablo Neruda, who goes underground when Chile outlaws communism and is pursued by an ambitious police inspector (Gael García Bernal) hoping to make a name for himself by capturing the famous fugitive.\n",
 			"production": "Fabula, Funny Balloons, AZ Films, Setembro Cine",
-			"producers": "Juan De Dios Larrain",
+			"producers": "Juan de Dios Larraín",
 			"screenplay": "Guillermo Calderón",
 			"cinematographers": "Sergio Armstrong",
 			"editors": "Hervé Schneid",
-			"score": "",
+			"score": "Federico Jusid",
 			"sound": "Miguel Hormazábal, Rubén Piputto",
 			"cast": "Gael García Bernal, Luis Gnecco, Mercedes Morán, Diego Muñoz, Pablo Derqui, Alfredo Castro, Michael Silva",
 			"image": "https://images.contentful.com/22n7d68fswlw/1AWRNjkGGgEsUKm4AmyQIq/2f0a173c74bc61ba66bccf22c6fcf2d1/neruda_01.jpg?w=300&q=40",
@@ -29061,26 +29183,28 @@
 		},
 		{
 			"name": "Loving",
+			"program": "Gala Presentations",
 			"director": "Jeff Nichols",
 			"countries": "USA",
 			"runtime": "123 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "Jeff Nichols (Mud) directs Joel Edgerton and Ruth Negga in the true story of Richard and Mildred Loving, who waged a decade-long legal battle that led to the overturning of the state of Virginia’s law prohibiting interracial marriage.\n",
 			"production": "Raindog Films, Big Beach, Augusta Films, Tri-State Pictures",
 			"producers": "Ged Doherty, Colin Firth, Nancy Buirski, Sarah Green, Marc Turtletaub, Peter Saraf",
 			"screenplay": "Jeff Nichols",
 			"cinematographers": "Adam Stone",
 			"editors": "Julie Monroe",
-			"score": "",
+			"score": "David Wingo",
 			"sound": "Pud Cusack",
-			"cast": "Joel Edgerton, Ruth Negga, Marton Csokas, Nick Kroll, Terri Abney, Alano Miller, Jon Bass, Michael Shannon",
+			"cast": "Joel Edgerton, Ruth Negga, Marton Csokas, Nick Kroll, Terri Abney, Alano Miller, Jon Bass, Michael Shannon, Chris Greene",
 			"image": "https://images.contentful.com/22n7d68fswlw/3YW28mBrLOGYUMEsWSscYs/a65a99102bbc6879f85b7e823a557f0f/loving_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/loving"
 		},
 		{
 			"name": "Carrie Pilby",
+			"program": "Special Presentations",
 			"director": "Susan Johnson",
 			"countries": "USA",
 			"runtime": "98 minutes",
@@ -29089,11 +29213,11 @@
 			"language": "",
 			"pitch": "Awkward, isolated and disapproving of most of the people around her, a precocious 19-year-old genius is challenged to put her convictions to the test by venturing out on to the NYC dating scene, in this adaptation of Caren Lissner’s best-selling 2003 novel.\n",
 			"production": "Braveart, SMF Productions, Storefront Pictures",
-			"producers": "Susan Johnson, Suzanne Farwell, Susan Cartsonis, Brent Emery, Lisa Wolofsky",
+			"producers": "Suzanne Farwell, Susan Johnson, Susan Cartsonis, Brent Emery, Lisa Wolofsky",
 			"screenplay": "Kara Holden",
 			"cinematographers": "Gonzalo Amat",
 			"editors": "Phillip Bartell",
-			"score": "",
+			"score": "Michael Penn",
 			"sound": "",
 			"cast": "Bel Powley, Nathan Lane, Gabriel Byrne, Vanessa Bayer, Colin O'Donoghue, Jason Ritter, William Moseley",
 			"image": "https://images.contentful.com/22n7d68fswlw/4GNGWpfSu4K2yu42c0syIW/a58594dc23e34fee28df964c9b433993/carriepilby_01.jpg?w=300&q=40",
@@ -29101,12 +29225,13 @@
 		},
 		{
 			"name": "The Rolling Stones Olé Olé Olé! : A Trip Across Latin America",
+			"program": "Gala Presentations",
 			"director": "Paul Dugdale",
 			"countries": "United Kingdom",
 			"runtime": "105 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English Spanish Portuguese",
 			"pitch": "This exhilarating rock 'n' roll road movie follows The Rolling Stones on their 2016 tour of Latin America, climaxing with their historic concert in Havana, Cuba.\n",
 			"production": "JA Digital, Eagle Rock Film Productions",
 			"producers": "Sam Bridger",
@@ -29121,12 +29246,13 @@
 		},
 		{
 			"name": "Arrival",
+			"program": "Gala Presentations",
 			"director": "Denis Villeneuve",
 			"countries": "USA",
 			"runtime": "116 minutes",
 			"premiere": "Canadian Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "Visionary Quebecois auteur Denis Villeneuve (Prisoners, Enemy, Sicario) directs Amy Adams, Jeremy Renner and Forest Whitaker in this sci-fi drama about the panic that follows a wave of mysterious spacecraft landings across the globe. \n",
 			"production": "21 Laps Entertainment, FilmNation Entertainment, Lava Bear Films",
 			"producers": "Shawn Levy, Dan Levine, Aaron Ryder, David Linde",
@@ -29141,12 +29267,13 @@
 		},
 		{
 			"name": "Frantz",
+			"program": "Special Presentations",
 			"director": "François Ozon",
 			"countries": "France / Germany",
 			"runtime": "113 minutes",
 			"premiere": "Canadian Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "French German",
 			"pitch": "Director François Ozon’s elegiac tale of love and remembrance is set in a small German town in the aftermath of World War I, where a young woman mourning the death of her fiancé forms a bond with a mysterious Frenchman who has arrived to lay flowers on her beloved’s grave.\n",
 			"production": "Mandarin Production, X Filme Creative Pool Gmbh",
 			"producers": "Eric Altmayer, Nicolas Altmayer, Stefan Arndt, Uwe Schott",
@@ -29161,19 +29288,20 @@
 		},
 		{
 			"name": "Birth of the Dragon",
+			"program": "Special Presentations",
 			"director": "George Nolfi",
 			"countries": "USA / China / Canada",
 			"runtime": "103 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English Mandarin",
 			"pitch": "Set against the backdrop of San Francisco’s Chinatown, this cross-cultural film chronicles Bruce Lee’s emergence as a martial-arts superstar after his legendary secret showdown with fellow martial artist Wong Jack Man.\n",
 			"production": "Groundswell Productions, Kylin Network (Beijing) Movie & Culture Media Co., Ltd.",
-			"producers": "Michael London, Janice Williams, James Hong Pang, Leo Shi Young, Stephen J. Rivele, Christopher Wilkinson",
+			"producers": "Michael London, Janice Williams, James H. Pang, Leo Shi Young, Stephen J. Rivele, Christopher Wilkinson",
 			"screenplay": "Stephen J. Rivele, Christopher Wilkinson",
 			"cinematographers": "Amir Mokri",
 			"editors": "Joel Viertel",
-			"score": "",
+			"score": "Scott Salinas, Reza Safinia",
 			"sound": "Darren Brisker",
 			"cast": "Billy Magnussen, Xia Yu, Philip Wan-Lung Ng",
 			"image": "https://images.contentful.com/22n7d68fswlw/1seoCblEeAueGAmIGuuk8C/123c7c780ed7d70a4c9176f82022df12/BirthOfTheDragon_01.jpg?w=300&q=40",
@@ -29181,19 +29309,20 @@
 		},
 		{
 			"name": "A United Kingdom",
+			"program": "Gala Presentations",
 			"director": "Amma Asante",
 			"countries": "United Kingdom",
 			"runtime": "105 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "Amma Asante (Belle) helms this biopic of Seretse Khama (David Oyelowo), the former African royal who courted controversy with his interracial marriage to Englishwoman Ruth Williams (Rosamund Pike) and later led his nation to independence from the British Empire as the first president of Botswana.  \n",
 			"production": "AUK Production Services Ltd, Pathe UK, BBC Films, BFI, Ingenious",
 			"producers": "David Oyelowo, Rick McCallum, Justin Moore-Lewy, Brunson Green, Charlie Mason, Peter Heslop",
 			"screenplay": "Guy Hibbert",
 			"cinematographers": "Sam McCurdy",
 			"editors": "Jon Gregory, Jon Amos",
-			"score": "",
+			"score": "Patrick Doyle",
 			"sound": "Igor Pokorny",
 			"cast": "David Oyelowo, Rosamund Pike, Jack Davenport, Tom Felton, Terry Pheto, Laura Carmichael",
 			"image": "https://images.contentful.com/22n7d68fswlw/6AV6SVK8Lu0Uo4ysyw0m8U/a33cda02375045bf39e434bdc065c9b4/unitedkingdom_02.jpg?w=300&q=40",
@@ -29201,12 +29330,13 @@
 		},
 		{
 			"name": "Orphan",
+			"program": "Special Presentations",
 			"director": "Arnaud des Pallières",
 			"countries": "France",
 			"runtime": "111 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "French",
 			"pitch": "Gemma Arterton (Gemma Bovery), Adèle Exarchopoulos (Blue Is the Warmest Color) and Sergi López (Pan’s Labyrinth) star in the new film from French director Arnaud des Pallieres, a narratively fractured portrait of a young woman who is portrayed by a succession of different actors through the course of the film.\n",
 			"production": "Les Films Hatari, Les Films d'ici",
 			"producers": "Michel Klein, Serge Lalou",
@@ -29221,19 +29351,20 @@
 		},
 		{
 			"name": "A Death in the Gunj",
+			"program": "Special Presentations",
 			"director": "Konkona Sensharma",
 			"countries": "India",
 			"runtime": "110 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English Hindi Bengali",
 			"pitch": "Award-winning actor Konkona Sensharma makes her feature debut as a writer-director with this coming-of-age story about a shy young Indian student who quietly and fatefully unravels during a family road trip.  \n",
 			"production": "Studioz IDrream Entertainment Private Limited, Macguffin Pictures Productions",
 			"producers": "Honey Trehan, Abhishek Chaubey, Raagii Bhatnagar, Ashish Bhatnagar, Vijay Kumar R Swami",
 			"screenplay": "Konkona Sensharma",
 			"cinematographers": "Sirsha Ray",
 			"editors": "Aarif Sheikh, Manas Mittal",
-			"score": "",
+			"score": "Sagar Desai",
 			"sound": "Kunal Sharma",
 			"cast": "Vikrant Massey, Ranvir Shorey, Kalki Koechlin, Gulshan Devaiah, Tillotama Shome, Jim Sarbh, Tanuja Mukherjee, Om Puri, Arya Sharma",
 			"image": "https://images.contentful.com/22n7d68fswlw/1y8aW2SKYQaOeCKWIaeEKu/d325371439447ea124426355cd9dd962/DeathInTheGunj_01.jpg?w=300&q=40",
@@ -29241,19 +29372,20 @@
 		},
 		{
 			"name": "LBJ",
+			"program": "Gala Presentations",
 			"director": "Rob Reiner",
 			"countries": "USA",
 			"runtime": "98 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "English",
 			"pitch": "Rob Reiner directs Woody Harrelson in the title role as legendary and controversial Texas politician Lyndon B. Johnson, who succeeded the assassinated John F. Kennedy as President of the United States and unexpectedly helped usher in a new era of civil rights — while plunging the country into the inferno of Vietnam.\n",
 			"production": "Acacia Filmed Entertainment, Castle Rock Entertainment, Savvy Media Holdings, Star Thrower Entertainment",
 			"producers": "Rob Reiner, Matthew George, Liz Glotzer, Trevor White",
 			"screenplay": "Joey Hartstone",
 			"cinematographers": "Barry Markowitz",
 			"editors": "Bob Joyce",
-			"score": "",
+			"score": "Marc Shaiman",
 			"sound": "Lon Bender, Erik Magnus",
 			"cast": "Woody Harrelson, Jennifer Jason Leigh, Richard Jenkins, Bill Pullman, Jeffrey Donovan, Michael Stahl-David",
 			"image": "https://images.contentful.com/22n7d68fswlw/48Unua9HaUaiC46aqI88KQ/54e74e77ed9e241de30d36d7ed8b383a/lbj_02.JPG?w=300&q=40",
@@ -29261,6 +29393,7 @@
 		},
 		{
 			"name": "93 Days",
+			"program": "City to City",
 			"director": "Steve Gukas",
 			"countries": "Nigeria",
 			"runtime": "124 minutes",
@@ -29275,12 +29408,13 @@
 			"editors": "Antonio Ribeiro",
 			"score": "George Kallis",
 			"sound": "Pius Fatoke, Mzukisi Mtshiselo",
-			"cast": "Danny Glover, Bimbo Akintola, Somkele Idhalama, Tim Reid, Alastair Mackenzie, Keppy Ekpenyong",
+			"cast": "Danny Glover, Bimbo Akintola, Somkele Idhalama, Tim Reid, Alastair Mackenzie, Keppy Ekpenyong, Abimbola Mary-Anne Akintola, Okeke Gideon Echezonachi, Bassey-Inyang Ekpenyong Edet, Sylvia Ngozi Ezeokafor",
 			"image": "https://images.contentful.com/22n7d68fswlw/2Gp3lWjBDWmgooE0qGCSG6/82586606b5d89053f05f229411d82883/93Days_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/93-days"
 		},
 		{
 			"name": "76",
+			"program": "City to City",
 			"director": "Izu Ojukwu",
 			"countries": "Nigeria",
 			"runtime": "118 minutes",
@@ -29301,6 +29435,7 @@
 		},
 		{
 			"name": "Pan's Labyrinth",
+			"program": "TIFF Cinematheque",
 			"director": "Guillermo del Toro",
 			"countries": "Mexico / Spain / USA",
 			"runtime": "119 minutes",
@@ -29321,6 +29456,7 @@
 		},
 		{
 			"name": "We Can't Make the Same Mistake Twice",
+			"program": "Masters",
 			"director": "Alanis Obomsawin",
 			"countries": "Canada",
 			"runtime": "163 minutes",
@@ -29341,6 +29477,7 @@
 		},
 		{
 			"name": "City of Tiny Lights",
+			"program": "Special Presentations",
 			"director": "Pete Travis",
 			"countries": "United Kingdom",
 			"runtime": "107 minutes",
@@ -29353,7 +29490,7 @@
 			"screenplay": "Patrick Neate",
 			"cinematographers": "Felix Wiedemann",
 			"editors": "David Charap",
-			"score": "",
+			"score": "Ruth Barrett",
 			"sound": "Kevin Brazier",
 			"cast": "Riz Ahmed, Cush Jumbo, James Floyd, Billie Piper, Roshan Seth",
 			"image": "https://images.contentful.com/22n7d68fswlw/1aGaMLHLMAMOiYQG4eIC8a/e6e40e1e6fb400180444d66877e47992/CityOfTinyLights_01.jpg?w=300&q=40",
@@ -29361,6 +29498,7 @@
 		},
 		{
 			"name": "Window Horses (The Poetic Persian Epiphany of Rosie Ming)",
+			"program": "Special Presentations",
 			"director": "Ann Marie Fleming",
 			"countries": "Canada",
 			"runtime": "88 minutes",
@@ -29373,14 +29511,15 @@
 			"screenplay": "Ann Marie Fleming",
 			"cinematographers": "",
 			"editors": "Ann Marie Fleming, Ileana Pietrobruno, Jean Denis Rouette",
-			"score": "",
+			"score": "Taymaz Saba",
 			"sound": "Gordon Durity",
-			"cast": "Sandra Oh, Ellen Page, Shohreh Aghdashloo, Don McKellar, Omid Abtahi, Navid Neghaban, Nancy Kwan, Eddy Ko",
+			"cast": "Sandra Oh, Ellen Page, Shohreh Aghdashloo, Don McKellar, Omid Abtahi, Navid Neghaban, Nancy Kwan, Eddy Ko, Payman Maadi",
 			"image": "https://images.contentful.com/22n7d68fswlw/3bcosPR6jCYy0aA8gyYucM/3a8416428b6063ae424c4f0a0cdab2f8/windowhorses_01.png?w=300&q=40",
 			"url": "http://tiff.net/films/window-horses"
 		},
 		{
 			"name": "Two Lovers and a Bear",
+			"program": "Special Presentations",
 			"director": "Kim Nguyen",
 			"countries": "Canada",
 			"runtime": "96 minutes",
@@ -29401,6 +29540,7 @@
 		},
 		{
 			"name": "Maliglutit (Searchers)",
+			"program": "Platform",
 			"director": "Zacharias Kunuk",
 			"countries": "Canada",
 			"runtime": "94 minutes",
@@ -29421,6 +29561,7 @@
 		},
 		{
 			"name": "Certain Women",
+			"program": "Masters",
 			"director": "Kelly Reichardt",
 			"countries": "USA",
 			"runtime": "107 minutes",
@@ -29441,6 +29582,7 @@
 		},
 		{
 			"name": "The Stairs",
+			"program": "TIFF Docs",
 			"director": "Hugh Gibson",
 			"countries": "Canada",
 			"runtime": "95 minutes",
@@ -29461,6 +29603,7 @@
 		},
 		{
 			"name": "Old Stone",
+			"program": "Discovery",
 			"director": "Johnny Ma",
 			"countries": "Canada / China",
 			"runtime": "80 minutes",
@@ -29473,14 +29616,15 @@
 			"screenplay": "Johnny Ma",
 			"cinematographers": "Leung Ming-Kai",
 			"editors": "Mike Long",
-			"score": "",
+			"score": "Lee Sanders",
 			"sound": "Alek Rost, T. Terressa Tate",
-			"cast": "Chen Gang, An Nai, Wang Hongwei, Zhang Zebin, Luo Xue'er",
+			"cast": "Chen Gang, Nai An, Wang Hongwei, Zhang Zebin, Luo Xue'er",
 			"image": "https://images.contentful.com/22n7d68fswlw/3mJx2eWGKI88QUuqgSEKom/b6866b32041b043ce3595c9f0012e374/oldstone_01.png?w=300&q=40",
 			"url": "http://tiff.net/films/old-stone"
 		},
 		{
 			"name": "Hissein Habre, A Chadian Tragedy",
+			"program": "Masters",
 			"director": "Mahamat-Saleh Haroun",
 			"countries": "France / Chad",
 			"runtime": "82 minutes",
@@ -29501,6 +29645,7 @@
 		},
 		{
 			"name": "Julieta",
+			"program": "Masters",
 			"director": "Pedro Almodóvar",
 			"countries": "Spain",
 			"runtime": "99 minutes",
@@ -29515,12 +29660,13 @@
 			"editors": "José Salcedo",
 			"score": "Alberto Iglesias",
 			"sound": "Sergio Burman",
-			"cast": "Dario Grandinetti, Daniel Grao, Inma Cuesta, Adriana Ugarte, Michelle Jenner, Emma Suárez",
+			"cast": "Dario Grandinetti, Daniel Grao, Inma Cuesta, Adriana Ugarte, Michelle Jenner, Emma Suárez, Rossy De Palma",
 			"image": "https://images.contentful.com/22n7d68fswlw/gE4O5rymM8CioCaeQEK4I/15cd3cc225bcd9af61ed408060afff3e/Julieta_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/julieta"
 		},
 		{
 			"name": "Oko Ashewo",
+			"program": "City to City",
 			"director": "Daniel Emeke Oriahi",
 			"countries": "Nigeria",
 			"runtime": "100 minutes",
@@ -29541,6 +29687,7 @@
 		},
 		{
 			"name": "The Journey",
+			"program": "Special Presentations",
 			"director": "Nick Hamm",
 			"countries": "United Kingdom",
 			"runtime": "94 minutes",
@@ -29561,6 +29708,7 @@
 		},
 		{
 			"name": "Goldstone",
+			"program": "Platform",
 			"director": "Ivan Sen",
 			"countries": "Australia",
 			"runtime": "110 minutes",
@@ -29581,6 +29729,7 @@
 		},
 		{
 			"name": "Sweet Dreams",
+			"program": "Masters",
 			"director": "Marco Bellocchio",
 			"countries": "Italy",
 			"runtime": "134 minutes",
@@ -29601,6 +29750,7 @@
 		},
 		{
 			"name": "The Ornithologist",
+			"program": "Wavelengths",
 			"director": "João Pedro Rodrigues",
 			"countries": "Portugal / France / Brazil",
 			"runtime": "118 minutes",
@@ -29621,6 +29771,7 @@
 		},
 		{
 			"name": "Apprentice",
+			"program": "Contemporary World Cinema",
 			"director": "Boo Junfeng",
 			"countries": "Singapore / Germany / France / Hong Kong / Qatar",
 			"runtime": "96 minutes",
@@ -29636,11 +29787,12 @@
 			"score": "",
 			"sound": "Ting Li Lim",
 			"cast": "Fir Rahman, Wan Hanafi Su, Mastura Ahmad",
-			"image": "https://downloads.contentful.com/22n7d68fswlw/37iIRWMBLi8m2ccqqoU2qc/af49c2308ae602623d9dc861025ae44c/APPRENTICE_01.jpg?w=300&q=40",
+			"image": "https://images.contentful.com/22n7d68fswlw/6NkF7yfk3e2ooCkOYmioAm/8bcc447b7e4b7b5ee82477aa62d10eb9/APPRENTICE_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/apprentice"
 		},
 		{
 			"name": "Land of the Gods",
+			"program": "Masters",
 			"director": "Goran Paskaljevic",
 			"countries": "India / Serbia",
 			"runtime": "92 minutes",
@@ -29661,6 +29813,7 @@
 		},
 		{
 			"name": "Home",
+			"program": "Platform",
 			"director": "Fien Troch",
 			"countries": "Belgium",
 			"runtime": "103 minutes",
@@ -29681,6 +29834,7 @@
 		},
 		{
 			"name": "Heaven Will Wait",
+			"program": "Contemporary World Cinema",
 			"director": "Marie-Castille Mention-Schaar",
 			"countries": "France",
 			"runtime": "104 minutes",
@@ -29701,6 +29855,7 @@
 		},
 		{
 			"name": "Weirdos",
+			"program": "Special Presentations",
 			"director": "Bruce McDonald",
 			"countries": "Canada",
 			"runtime": "89 minutes",
@@ -29713,7 +29868,7 @@
 			"screenplay": "Daniel MacIvor",
 			"cinematographers": "Becky Parsons",
 			"editors": "Duff Smith",
-			"score": "",
+			"score": "Asif Illyas",
 			"sound": "Andrew Rillie",
 			"cast": "Dylan Authors, Julia Sarah Stone, Molly Parker, Allan Hawco",
 			"image": "https://images.contentful.com/22n7d68fswlw/AxbNSjoK6ymokM4y2sEoe/bc14d1e1efd59c4a6259baac949f4e2c/weirdos_01.jpg?w=300&q=40",
@@ -29721,6 +29876,7 @@
 		},
 		{
 			"name": "Moonlight",
+			"program": "Platform",
 			"director": "Barry Jenkins",
 			"countries": "USA",
 			"runtime": "111 minutes",
@@ -29741,6 +29897,7 @@
 		},
 		{
 			"name": "Zoology",
+			"program": "Contemporary World Cinema",
 			"director": "Ivan I. Tverdovsky",
 			"countries": "Russia / France / Germany",
 			"runtime": "87 minutes",
@@ -29761,6 +29918,7 @@
 		},
 		{
 			"name": "Brimstone",
+			"program": "Special Presentations",
 			"director": "Martin Koolhoven",
 			"countries": "Netherlands / France / Germany / Sweden / United Kingdom",
 			"runtime": "148 minutes",
@@ -29773,7 +29931,7 @@
 			"screenplay": "Martin Koolhoven",
 			"cinematographers": "Rogier Stoffers",
 			"editors": "Job ter Burg",
-			"score": "",
+			"score": "Gregory Reveret",
 			"sound": "Herman Pieete",
 			"cast": "Guy Pearce, Dakota Fanning, Emilia Jones, Carice Van Houten, Kit Harrington",
 			"image": "https://images.contentful.com/22n7d68fswlw/2KIdNN1ZO84kaOG0suaCeI/3930c0869369e7f2e3b25457edfb7167/brimstone_banner.jpg?w=300&q=40",
@@ -29781,6 +29939,7 @@
 		},
 		{
 			"name": "Colossal",
+			"program": "Vanguard",
 			"director": "Nacho Vigalondo",
 			"countries": "Canada",
 			"runtime": "110 minutes",
@@ -29801,6 +29960,7 @@
 		},
 		{
 			"name": "An Insignificant Man",
+			"program": "TIFF Docs",
 			"director": "Khushboo Ranka, Vinay Shukla",
 			"countries": "India",
 			"runtime": "100 minutes",
@@ -29821,6 +29981,7 @@
 		},
 		{
 			"name": "Dog Eat Dog",
+			"program": "Midnight Madness",
 			"director": "Paul Schrader",
 			"countries": "USA",
 			"runtime": "93 minutes",
@@ -29841,6 +30002,7 @@
 		},
 		{
 			"name": "Paterson",
+			"program": "Special Presentations",
 			"director": "Jim Jarmusch",
 			"countries": "USA",
 			"runtime": "118 minutes",
@@ -29861,6 +30023,7 @@
 		},
 		{
 			"name": "Amanda Knox",
+			"program": "TIFF Docs",
 			"director": "Brian McGinn, Rod Blackhurst",
 			"countries": "USA / Denmark",
 			"runtime": "92 minutes",
@@ -29881,26 +30044,28 @@
 		},
 		{
 			"name": "Barry",
+			"program": "Special Presentations",
 			"director": "Vikram Gandhi",
 			"countries": "USA",
 			"runtime": "104 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "English",
 			"pitch": "Devon Terrell and Anya Taylor-Joy (The Witch) star in this biopic about the young Barack Obama’s college days in New York City.\n",
 			"production": "Black Bear Pictures, Cinetic Media",
-			"producers": "Vikram Gandhi, Teddy  Schwarzman, Dana O'Keefe, Ben Stillman",
+			"producers": "Dana O'Keefe, Teddy  Schwarzman, Ben Stillman, Vikram Gandhi",
 			"screenplay": "Adam Mansbach",
 			"cinematographers": "Adam Newport-Berra",
 			"editors": "Jacob Craycroft",
-			"score": "",
+			"score": "Danny Bensi, Saunder Jurriaans",
 			"sound": "Mikhail Sterkin",
-			"cast": "Devon Terrell, Anya Taylor-Joy, Jason Mitchell, Ellar Coltrane, Ashley Judd",
+			"cast": "Devon Terrell, Anya Taylor-Joy, Jason Mitchell, Ellar Coltrane, Ashley Judd, Jenna Elfman",
 			"image": "https://images.contentful.com/22n7d68fswlw/6A9z0dKxtm4OAQcqWWUaYY/b73b83277b6bc657dec38ffd56a1b6d7/Barry_01.JPG?w=300&q=40",
 			"url": "http://tiff.net/films/barry"
 		},
 		{
 			"name": "I Am Not Your Negro",
+			"program": "TIFF Docs",
 			"director": "Raoul Peck",
 			"countries": "USA / France / Belgium / Switzerland",
 			"runtime": "93 minutes",
@@ -29921,6 +30086,7 @@
 		},
 		{
 			"name": "X Quinientos",
+			"program": "Contemporary World Cinema",
 			"director": "Juan Andrés Arango",
 			"countries": "Canada / Colombia / Mexico",
 			"runtime": "108 minutes",
@@ -29941,6 +30107,7 @@
 		},
 		{
 			"name": "Nelly",
+			"program": "Vanguard",
 			"director": "Anne Émond",
 			"countries": "Canada",
 			"runtime": "101 minutes",
@@ -29961,6 +30128,7 @@
 		},
 		{
 			"name": "Beauties of the Night",
+			"program": "TIFF Docs",
 			"director": "María José Cuevas",
 			"countries": "Mexico",
 			"runtime": "91 minutes",
@@ -29981,6 +30149,7 @@
 		},
 		{
 			"name": "Werewolf",
+			"program": "Discovery",
 			"director": "Ashley McKenzie",
 			"countries": "Canada",
 			"runtime": "78 minutes",
@@ -29993,7 +30162,7 @@
 			"screenplay": "Ashley McKenzie",
 			"cinematographers": "Scott Moore",
 			"editors": "Ashley McKenzie, Steven Wilton",
-			"score": "",
+			"score": "Youth Haunts",
 			"sound": "Graham Colwell",
 			"cast": "Andrew Gillis, Bhreagh MacNeil",
 			"image": "https://images.contentful.com/22n7d68fswlw/1jWsgVo0AU0GSQOyYCUw2A/c1d48e33226208da05fe010d2c7f5edb/werewolf_01.jpg?w=300&q=40",
@@ -30001,6 +30170,7 @@
 		},
 		{
 			"name": "Afterimage",
+			"program": "Masters",
 			"director": "Andrzej Wajda",
 			"countries": "Poland",
 			"runtime": "98 minutes",
@@ -30021,9 +30191,10 @@
 		},
 		{
 			"name": "The Ivory Game",
+			"program": "TIFF Docs",
 			"director": "Kief Davidson, Richard Ladkani",
 			"countries": "Austria / USA",
-			"runtime": "112 minutes",
+			"runtime": "116 minutes",
 			"premiere": "International Premiere",
 			"year": "2016",
 			"language": "English Swahili Mandarin",
@@ -30041,6 +30212,7 @@
 		},
 		{
 			"name": "Safari",
+			"program": "Masters",
 			"director": "Ulrich Seidl",
 			"countries": "Austria",
 			"runtime": "90 minutes",
@@ -30061,6 +30233,7 @@
 		},
 		{
 			"name": "Santa & Andres",
+			"program": "Contemporary World Cinema",
 			"director": "Carlos Lechuga",
 			"countries": "Cuba / Colombia / France",
 			"runtime": "105 minutes",
@@ -30081,6 +30254,7 @@
 		},
 		{
 			"name": "Never Ever",
+			"program": "Masters",
 			"director": "Benoit Jacquot",
 			"countries": "France / Portugal",
 			"runtime": "86 minutes",
@@ -30101,6 +30275,7 @@
 		},
 		{
 			"name": "Prevenge",
+			"program": "Vanguard",
 			"director": "Alice Lowe",
 			"countries": "United Kingdom",
 			"runtime": "88 minutes",
@@ -30121,6 +30296,7 @@
 		},
 		{
 			"name": "In Exile",
+			"program": "TIFF Docs",
 			"director": "Tin Win Naing",
 			"countries": "Germany / Myanmar",
 			"runtime": "72 minutes",
@@ -30141,6 +30317,7 @@
 		},
 		{
 			"name": "General Report on Certain Matters of Interest For a Public Screening",
+			"program": "TIFF Cinematheque",
 			"director": "Pere Portabella",
 			"countries": "Spain",
 			"runtime": "154 minutes",
@@ -30161,6 +30338,7 @@
 		},
 		{
 			"name": "Headshot",
+			"program": "Midnight Madness",
 			"director": "Timo Tjahjanto, Kimo Stamboel",
 			"countries": "Indonesia",
 			"runtime": "117 minutes",
@@ -30181,6 +30359,7 @@
 		},
 		{
 			"name": "The Belko Experiment",
+			"program": "Midnight Madness",
 			"director": "Greg McLean",
 			"countries": "USA",
 			"runtime": "88 minutes",
@@ -30195,12 +30374,13 @@
 			"editors": "Julia Wong",
 			"score": "Tyler Bates",
 			"sound": "",
-			"cast": "John Gallagher Jr, Tony Goldwyn, Adria Arjona, John C. McGinley, Melonie Diaz, Owain Yeoman, Sean Gunn, Brent Sexton, Josh Brener, David Dastmalchian, David Del Rio, Gregg Henry, Rusty Schwimmer, Gail Bean, James Earl, Abraham Benrubi",
+			"cast": "John Gallagher Jr, Tony Goldwyn, Adria Arjona, John C. McGinley, Melonie Diaz, Owain Yeoman, Sean Gunn, Brent Sexton, Josh Brener, David Dastmalchian, David Del Rio, Gregg Henry, Michael Rooker, Rusty Schwimmer, Gail Bean, James Earl, Abraham Benrubi",
 			"image": "https://images.contentful.com/22n7d68fswlw/1gvGXd6wxQyAegckg6Q42I/8bd96f8b65e8df578d42820163564334/belkoexperiment_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-belko-experiment"
 		},
 		{
 			"name": "A Decent Woman",
+			"program": "Contemporary World Cinema",
 			"director": "Lukas Valenta Rinner",
 			"countries": "Austria / South Korea / Argentina",
 			"runtime": "100 minutes",
@@ -30221,6 +30401,7 @@
 		},
 		{
 			"name": "By the Time it Gets Dark",
+			"program": "Wavelengths",
 			"director": "Anocha Suwichakornpong",
 			"countries": "Thailand / Netherlands / France / Qatar",
 			"runtime": "105 minutes",
@@ -30241,6 +30422,7 @@
 		},
 		{
 			"name": "Rats",
+			"program": "Midnight Madness",
 			"director": "Morgan Spurlock",
 			"countries": "USA",
 			"runtime": "84 minutes",
@@ -30261,6 +30443,7 @@
 		},
 		{
 			"name": "Interchange",
+			"program": "Vanguard",
 			"director": "Dain Iskandar Said",
 			"countries": "Malaysia / Indonesia",
 			"runtime": "103 minutes",
@@ -30281,6 +30464,7 @@
 		},
 		{
 			"name": "Rodnye (Close Relations)",
+			"program": "TIFF Docs",
 			"director": "Vitaly Mansky",
 			"countries": "Latvia / Germany / Estonia / Ukraine",
 			"runtime": "112 minutes",
@@ -30301,6 +30485,7 @@
 		},
 		{
 			"name": "Anatomy of Violence",
+			"program": "Masters",
 			"director": "Deepa Mehta",
 			"countries": "Canada / India",
 			"runtime": "93 minutes",
@@ -30315,12 +30500,13 @@
 			"editors": "Darby MacInnis",
 			"score": "",
 			"sound": "",
-			"cast": "Janki Bisht, Vansh Bhardwaj, Davinder Singh, Jagjeet Sandhu, Mukti Das, Suman Jha, Mahesh Saini, Tia Bhatia, Seema Biswas, Ramanjit Kaur, Debina Rakshit, Zorawar Shukla",
+			"cast": "Janki Bisht, Vansh Bhardwaj, Davinder Singh, Mukti Das, Suman Jha, Mahesh Saini, Tia Bhatia, Seema Biswas, Ramanjit Kaur, Debina Rakshit, Zorawar Shukla",
 			"image": "https://images.contentful.com/22n7d68fswlw/1er3QqomD2m0ammiI46Oqs/0c83e972d245c89f1eddcc9a90f83b2a/anatomyofviolence_01.png?w=300&q=40",
 			"url": "http://tiff.net/films/anatomy-of-violence"
 		},
 		{
 			"name": "Forever Pure",
+			"program": "TIFF Docs",
 			"director": "Maya Zinshtein",
 			"countries": "Israel / United Kingdom / Ireland / Norway",
 			"runtime": "87 minutes",
@@ -30341,6 +30527,7 @@
 		},
 		{
 			"name": "Yourself and Yours",
+			"program": "Masters",
 			"director": "Hong Sang-soo",
 			"countries": "South Korea",
 			"runtime": "86 minutes",
@@ -30361,6 +30548,7 @@
 		},
 		{
 			"name": "Buster's Mal Heart",
+			"program": "Vanguard",
 			"director": "Sarah Adina Smith",
 			"countries": "USA",
 			"runtime": "96 minutes",
@@ -30381,19 +30569,20 @@
 		},
 		{
 			"name": "nirvanna the band the show",
+			"program": "Primetime",
 			"director": "Matt Johnson",
 			"countries": "Canada",
-			"runtime": "46 minutes",
+			"runtime": "75 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "Can-con bad boy Matt Johnson (The Dirties, Operation Avalanche) revives his cult-hit web series about a hapless two-piece Toronto band who will do anything to play a show at The Rivoli — apart from actually writing and rehearsing any actual songs.\n",
+			"pitch": "Can-con bad boy Matt Johnson (The Dirties, Operation Avalanche) and co-conspirator Jay McCarrol revive their cult-hit web series about a hapless two-piece Toronto band who will do anything to play a show at The Rivoli — apart from actually writing and rehearsing any actual songs.\n",
 			"production": "Vice Studios Canada, Rogers Media Inc., Zapruder Films Inc.",
 			"producers": "Vicki Lean, Daniel Morin",
-			"screenplay": "Andrew Appelle, Robert Hyland, Curt Lobb, Jay McCarrol, Matthew Miller, Jared Raab",
+			"screenplay": "Andrew Appelle, Robert Hyland, Curt Lobb, Matthew Miller, Jay McCarrol, Jared Raab",
 			"cinematographers": "Andrew Appelle, Jared Raab",
 			"editors": "Andrew Appelle, Robert Hyland, Curt Lobb",
-			"score": "",
+			"score": "Jay McCarrol",
 			"sound": "Matthew Chan",
 			"cast": "Matt Johnson, Jay McCarrol",
 			"image": "https://images.contentful.com/22n7d68fswlw/4LzyCna4qQuiQW4MuWqO0a/0eee76cf3b4d398b99b4e0e990812d59/nirvannathebandtheshow_01.jpg?w=300&q=40",
@@ -30401,6 +30590,7 @@
 		},
 		{
 			"name": "Kékszakállú",
+			"program": "Wavelengths",
 			"director": "Gastón Solnicki",
 			"countries": "Argentina",
 			"runtime": "72 minutes",
@@ -30421,6 +30611,7 @@
 		},
 		{
 			"name": "One Sings, the Other Doesn't",
+			"program": "TIFF Cinematheque",
 			"director": "Agnès Varda",
 			"countries": "France",
 			"runtime": "120 minutes",
@@ -30441,6 +30632,7 @@
 		},
 		{
 			"name": "Godspeed",
+			"program": "Vanguard",
 			"director": "Chung Mong-Hong ",
 			"countries": "Taiwan",
 			"runtime": "111 minutes",
@@ -30461,6 +30653,7 @@
 		},
 		{
 			"name": "The Women's Balcony",
+			"program": "Contemporary World Cinema",
 			"director": "Emil Ben Shimon",
 			"countries": "Israel",
 			"runtime": "96 minutes",
@@ -30481,6 +30674,7 @@
 		},
 		{
 			"name": "Tamara and the Ladybug",
+			"program": "Contemporary World Cinema",
 			"director": "Lucía Carreras",
 			"countries": "Mexico / Spain",
 			"runtime": "107 minutes",
@@ -30495,12 +30689,13 @@
 			"editors": "José Manuel Rocha, Lucía Carreras",
 			"score": "Pablo Cervantes",
 			"sound": "Daniel Balboa",
-			"cast": "Ángeles Cruz, Angelina Peláez, Mercedes Pascual, Harold Torres, Gustavo Sánchez Parra ",
+			"cast": "Ángeles Cruz, Angelina Peláez, Mercedes Pascual, Harold Torres, Gustavo Sánchez Parra , Cecilia Cantú",
 			"image": "https://images.contentful.com/22n7d68fswlw/6mg1fLNhKwkA0CeucGG8oW/bc3e12b370dbb144961e534393ad4149/tamaraandladybug_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/tamara-and-the-ladybug"
 		},
 		{
 			"name": "Okafor's Law",
+			"program": "City to City",
 			"director": "Omoni Oboli",
 			"countries": "Nigeria",
 			"runtime": "110 minutes",
@@ -30521,6 +30716,7 @@
 		},
 		{
 			"name": "Just Not Married",
+			"program": "City to City",
 			"director": "Uduak-Obong Patrick",
 			"countries": "Nigeria",
 			"runtime": "102 minutes",
@@ -30541,6 +30737,7 @@
 		},
 		{
 			"name": "Chasing Trane: The John Coltrane Documentary",
+			"program": "TIFF Docs",
 			"director": "John Scheinfeld",
 			"countries": "USA",
 			"runtime": "99 minutes",
@@ -30561,6 +30758,7 @@
 		},
 		{
 			"name": "The Sixth Beatle",
+			"program": "TIFF Docs",
 			"director": "Tony Guma, John Rose",
 			"countries": "USA / United Kingdom / Germany",
 			"runtime": "100 minutes",
@@ -30581,6 +30779,7 @@
 		},
 		{
 			"name": "The Wedding Party",
+			"program": "City to City",
 			"director": "Kemi Adetiba",
 			"countries": "Nigeria",
 			"runtime": "110 minutes",
@@ -30595,12 +30794,13 @@
 			"editors": "Andrew Webber",
 			"score": "",
 			"sound": "Pius Fatoke",
-			"cast": "Banky Wellington, Adesua Etomi, Richard Mofe-Damijo, Iretiola Doyle, Atunyota Akpobome, Sola Sobowale",
+			"cast": "Banky Wellington, Adesua Etomi, Richard Mofe-Damijo, Iretiola Doyle, Atunyota Akpobome, Sola Sobowale, Somkele Iyamah-Idhalama, Olusola Abiodun Sobowale",
 			"image": "https://images.contentful.com/22n7d68fswlw/6Oh2IQjk088gIQu2CwYQKO/22377dd2e003db98c8993df8d22e9cc4/WeddingParty_01.JPG?w=300&q=40",
 			"url": "http://tiff.net/films/the-wedding-party"
 		},
 		{
 			"name": "Bleed for This",
+			"program": "Special Presentations",
 			"director": "Ben Younger",
 			"countries": "USA",
 			"runtime": "116 minutes",
@@ -30621,6 +30821,7 @@
 		},
 		{
 			"name": "Salt and Fire",
+			"program": "Special Presentations",
 			"director": "Werner Herzog",
 			"countries": "France / USA / Germany / Mexico",
 			"runtime": "93 minutes",
@@ -30641,19 +30842,20 @@
 		},
 		{
 			"name": "The Age of Shadows",
+			"program": "Special Presentations",
 			"director": "Kim Jee woon",
 			"countries": "South Korea",
 			"runtime": "139 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Korean Japanese",
 			"pitch": "Korean superstars Song Kang-ho, Han Ji-min, and Gong Yoo headline the latest from cutting-edge director Kim Jee-woon (The Good, the Bad, the Weird), an epic-scale period thriller about a double agent sent to infiltrate a band of freedom fighters during the Japanese occupation of Korea in the 1920s.\n",
 			"production": "Grimm Pictures, Warner Bros. Korea Local Production, Harbin Films",
 			"producers": "Kim Jee woon, Choi Jae weon, Kim Jee woon, Lee Jin sook, Choi Jeong hwa",
 			"screenplay": "Lee Ji min, Park Jong dae",
 			"cinematographers": "Kim Ji yong",
 			"editors": "Yang Jin mo",
-			"score": "",
+			"score": "Mowg ",
 			"sound": "Choi Tae young",
 			"cast": "Song Kang ho, Gong Yoo, Han Ji min",
 			"image": "https://images.contentful.com/22n7d68fswlw/3xbSJPHeB2mQKSquCIqGGA/c4eb75bc12f495bc61ffd45c555f0a83/ageofshadows_01_mustuse.jpg?w=300&q=40",
@@ -30661,19 +30863,20 @@
 		},
 		{
 			"name": "The Oath",
+			"program": "Special Presentations",
 			"director": "Baltasar Kormákur",
 			"countries": "Iceland",
 			"runtime": "110 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Icelandic",
 			"pitch": "Icelandic auteur Baltasar Kormákur (Contraband, 2 Guns, Everest) directs and stars in this psychological thriller about a father who tries to pull his daughter out of her world of drugs and petty crime, only to find that danger can be found in unexpected places.\n",
 			"production": "RVK Studios",
 			"producers": "Magnus Vidar Sigurdsson, Baltasar Kormákur",
 			"screenplay": "Ólafur Egill Egilsson, Baltasar Kormákur",
 			"cinematographers": "Óttar Guðnason",
 			"editors": "Sigvaldi J Kárason",
-			"score": "",
+			"score": "Hildur Guðnadóttir",
 			"sound": "Huldar Freyr Arnarson",
 			"cast": "Baltasar Kormákur, Hera Hilmar, Gísli Örn Garðarsson",
 			"image": "https://images.contentful.com/22n7d68fswlw/42UKghPeM8IAO8ksK082OY/95d65ca620aa39d665677249a15fde65/Oath_01.jpg?w=300&q=40",
@@ -30681,6 +30884,7 @@
 		},
 		{
 			"name": "Blue Jay",
+			"program": "Special Presentations",
 			"director": "Alex Lehmann",
 			"countries": "USA",
 			"runtime": "85 minutes",
@@ -30693,7 +30897,7 @@
 			"screenplay": "Mark Duplass",
 			"cinematographers": "Alex Lehmann",
 			"editors": "Chris Donlon",
-			"score": "",
+			"score": "Julian Wass",
 			"sound": "Sean O'Malley",
 			"cast": "Mark Duplass, Sarah  Paulson",
 			"image": "https://images.contentful.com/22n7d68fswlw/32ee294Fu8U02o2csECukE/0042fa9c258ed7a541ba37d4b6326ad6/bluejay_01.png?w=300&q=40",
@@ -30701,6 +30905,7 @@
 		},
 		{
 			"name": "The Secret Scripture",
+			"program": "Gala Presentations",
 			"director": "Jim Sheridan",
 			"countries": "Ireland",
 			"runtime": "108 minutes",
@@ -30721,19 +30926,20 @@
 		},
 		{
 			"name": "Elle",
+			"program": "Special Presentations",
 			"director": "Paul Verhoeven",
 			"countries": "France",
 			"runtime": "131 minutes",
 			"premiere": "North American Premiere",
 			"year": "2015",
-			"language": "",
+			"language": "French",
 			"pitch": "Isabelle Huppert stars in the daring new film from perennial provocateur Paul Verhoeven, about a high-powered businesswoman whose brutal sexual assault elicits both erotic fantasies and dreams of revenge.\n",
 			"production": "Sony Pictures Classics",
 			"producers": "",
 			"screenplay": "David Birke",
 			"cinematographers": "Stéphane Fontaine",
 			"editors": "Job ter Burg",
-			"score": "",
+			"score": "Anne Dudley",
 			"sound": "Jean-Paul Mugel, Alexis Place, Katia Boutin",
 			"cast": "Isabelle Huppert, Laurent Lafitte, Anne Consigny, Charles Berling, Virginie Efira, Christian Berkel, Judith Magre, Jonas Bloquet, Alice Isaaz, Vimala Pons, Raphaël L Lenglet, Arthur Mazet, Lucas Prisor, Hugo Conzelmann, Stéphane Bak",
 			"image": "https://images.contentful.com/22n7d68fswlw/26mlDufBB2A4WoSGsYUCK8/a3ddd552a5eceae888152d8285174d1e/elle_01.jpg?w=300&q=40",
@@ -30741,6 +30947,7 @@
 		},
 		{
 			"name": "Foreign Body",
+			"program": "Special Presentations",
 			"director": "Raja Amari",
 			"countries": "France / Tunisia",
 			"runtime": "92 minutes",
@@ -30761,7 +30968,8 @@
 		},
 		{
 			"name": "Asura: The City of Madness",
-			"director": "Kim Sung-soo",
+			"program": "Special Presentations",
+			"director": "Sung-soo Kim",
 			"countries": "South Korea",
 			"runtime": "136 minutes",
 			"premiere": "World Premiere",
@@ -30770,17 +30978,18 @@
 			"pitch": "A shady cop finds himself in over his head when he gets caught between Internal Affairs and the city’s corrupt mayor, in this scintillating crime drama from Korean maestro Kim Sung-soo (Musa: The Warrior).\n",
 			"production": "Sanai Pictures",
 			"producers": "Han Jae-duk",
-			"screenplay": "Kim Sung-soo",
+			"screenplay": "Sung-soo Kim",
 			"cinematographers": "Lee Mo-gae",
 			"editors": "Kim Sang-bum, Kim Jae-bum",
 			"score": "Lee Jae-jin",
 			"sound": "Kim Chang-sub",
-			"cast": "Jung Woo-sung, Hwang Jung-min, Kwak Do-won, Ju Ji-hoon, Jung Man-sik",
+			"cast": "Woo-sung Jung, Hwang Jung-min, Ju Ji-hoon, Kwak Do-won, Jung Man-sik",
 			"image": "https://images.contentful.com/22n7d68fswlw/56qtVOwmjmkkcOKOeSciQi/c872dac69cb4520c368faf44373fc42d/Asura_02-USEFORANNOUNCEMENT.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/asura-the-city-of-madness"
 		},
 		{
 			"name": "All I See Is You",
+			"program": "Special Presentations",
 			"director": "Marc Forster",
 			"countries": "USA / Thailand",
 			"runtime": "110 minutes",
@@ -30793,7 +31002,7 @@
 			"screenplay": "Marc Forster, Sean Conway",
 			"cinematographers": "Matthias Koenigswieser",
 			"editors": "Hughes Winborne",
-			"score": "",
+			"score": "Marc Streitenfeld",
 			"sound": "Ethan Van der Ryn, Erik Aadahl, Tim LeBlanc, Will Files, Preethep Boondech, Thongchai Somsri, Aitor Berenguer",
 			"cast": "Blake Lively, Jason Clarke, Yvonne Strahovski, Danny Huston, Ahna O'Reilly, Wes Chatham",
 			"image": "https://images.contentful.com/22n7d68fswlw/2sAGDcGJQsKE008gAMem22/43b01036e95ce8053391007372e30210/alliseeisyou_USEFORPRESSANNOUNCEMENT.jpg?w=300&q=40",
@@ -30801,6 +31010,7 @@
 		},
 		{
 			"name": "The Edge of Seventeen",
+			"program": "Gala Presentations",
 			"director": "Kelly Fremon Craig",
 			"countries": "USA",
 			"runtime": "102 minutes",
@@ -30821,26 +31031,28 @@
 		},
 		{
 			"name": "Mascots",
+			"program": "Special Presentations",
 			"director": "Christopher Guest",
 			"countries": "USA",
-			"runtime": "",
+			"runtime": "89 minutes",
 			"premiere": "World Premiere",
-			"year": "",
-			"language": "",
+			"year": "2015",
+			"language": "English",
 			"pitch": "Director Christopher Guest (Best in Show, A Mighty Wind) and members of his beloved stock company — Parker Posey, Bob Balaban, Jane Lynch, Jennifer Coolidge, Ed Begley Jr., and Fred Willard — along with new additions Chris O'Dowd and Zach Woods, usher us into the high-stakes world of professional sports mascots, who are engaged in a cutthroat competition for the annual \"Gold Fluffy Award.\"\n",
-			"production": "",
-			"producers": "",
-			"screenplay": "",
-			"cinematographers": "",
-			"editors": "",
-			"score": "",
-			"sound": "",
-			"cast": "Jennifer Coolidge, Jane Lynch, Fred Willard",
+			"production": "Netflix, Inc.",
+			"producers": "Karen Murphy",
+			"screenplay": "Christopher Guest, Jim Piddock",
+			"cinematographers": "Kristian Kachikis",
+			"editors": "Andrew Dickler",
+			"score": "CJ Vanston",
+			"sound": "Hamilton Sterling",
+			"cast": "Jennifer Coolidge, Sarah Baker, Bob Balaban, Ed Begley, Jr., Tom Bennett, Kerry Godliman, Matt Griesser, John Michael Higgins, Michael Hitchcock, Don Lake, Christopher Moynihan, Chris O'Dowd, Jim Piddock, Parker Posey, Zach Woods, Susan Yeagley, Maria Blasucci, Jane Lynch, Fred Willard, Carrie Aizley",
 			"image": "https://images.contentful.com/22n7d68fswlw/nAjO8pjVTiOGwa484e6aM/9b6ef4ff8c795f53c46dfde52c2cdc42/mascots_01_banner.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/mascots"
 		},
 		{
 			"name": "The Salesman",
+			"program": "Special Presentations",
 			"director": "Asghar Farhadi",
 			"countries": "Iran / France",
 			"runtime": "125 minutes",
@@ -30861,19 +31073,20 @@
 		},
 		{
 			"name": "The Commune",
+			"program": "Special Presentations",
 			"director": "Thomas Vinterberg",
 			"countries": "Denmark / Sweden / Netherlands",
 			"runtime": "111 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
-			"language": "",
+			"language": "Danish",
 			"pitch": "The new film from Danish auteur Thomas Vinterberg (The Hunt, The Celebration) focuses on a middle-aged professional couple in 1970s Denmark who decide to experiment with communal living by inviting a group of friends and random eccentrics to cohabit with them in a sprawling house.\n",
 			"production": "Zentropa, Zentropa International Sweden, Topkapi Films",
 			"producers": "Sisse Graum Jørgensen, Morten Kaufmann",
 			"screenplay": "Thomas Vinterberg, Tobias Lindholm",
 			"cinematographers": "Jesper Tøffner",
 			"editors": "Anne Østerud, Janus Billeskov Jansen",
-			"score": "",
+			"score": "Fons Merkies",
 			"sound": "Anne Jensen, Kristian Selin Eidnes Andersen",
 			"cast": "Trine Dyrholm, Ulrich Thomsen, Helene Reingaard Neumann",
 			"image": "https://images.contentful.com/22n7d68fswlw/4Ax1Sbb7pmEs06IoAmkwSk/85ed0a6f9fc09d5311f4a918d8010f26/thecommune_01.jpg?w=300&q=40",
@@ -30881,6 +31094,7 @@
 		},
 		{
 			"name": "Gods Acre",
+			"program": "Short Cuts",
 			"director": "Kelton Stepanowich",
 			"countries": "Canada",
 			"runtime": "15 minutes",
@@ -30901,6 +31115,7 @@
 		},
 		{
 			"name": "350 MYA",
+			"program": "Wavelengths",
 			"director": "Terra Long",
 			"countries": "Morocco / Canada",
 			"runtime": "5 minutes",
@@ -30921,6 +31136,7 @@
 		},
 		{
 			"name": "Oh What a Wonderful Feeling",
+			"program": "Short Cuts",
 			"director": "François Jaros",
 			"countries": "Canada",
 			"runtime": "15 minutes",
@@ -30941,13 +31157,14 @@
 		},
 		{
 			"name": "Mariner",
+			"program": "Short Cuts",
 			"director": "Thyrone Tommy",
 			"countries": "Canada",
 			"runtime": "20 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "A taut and unsettling drama about an ambitious marine navigation cadet. On the verge of cracking during his final exams, he is haunted by an incident from his past — and must find a way to turn his personal demons into a source of strength. \n",
+			"pitch": "Mariner is a taut and unsettling drama about an ambitious marine navigation cadet on the verge of cracking during his final exams. The recruit is haunted by an incident from his past — and fights to find a way to turn his personal demons into a source of strength.\n",
 			"production": "Leilani Films, Voltaire Communications",
 			"producers": "Thyrone Tommy, Alona Metzer",
 			"screenplay": "Thyrone Tommy",
@@ -30961,13 +31178,14 @@
 		},
 		{
 			"name": "Shahzad",
+			"program": "Short Cuts",
 			"director": "Haya Waseem",
 			"countries": "Canada",
 			"runtime": "11 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
 			"language": "English Urdu",
-			"pitch": "Shahzad is a young Pakistani boy recently arrived in Canada. The friendships he strikes up with his new, easygoing buddies seem in sharp contrast to his rigid relationship with his father… until Shahzad discovers what lies beneath the formality. \n",
+			"pitch": "Shahzad is a young Pakistani boy recently arrived in Canada. The friendships he strikes up with his new, easygoing buddies seem in sharp contrast to his rigid relationship with his father... until Shahzad discovers what lies beneath the formality. \n",
 			"production": "Turn and Punch Productions Inc.",
 			"producers": "Prionnsias Murphy",
 			"screenplay": "Haya Waseem",
@@ -30981,6 +31199,7 @@
 		},
 		{
 			"name": "Black Code",
+			"program": "TIFF Docs",
 			"director": "Nicholas de Pencier",
 			"countries": "Canada",
 			"runtime": "90 minutes",
@@ -30993,7 +31212,7 @@
 			"screenplay": "",
 			"cinematographers": "Nicholas de Pencier",
 			"editors": "Eric Pedicelli",
-			"score": "",
+			"score": "Phil Strong",
 			"sound": "Nicholas de Pencier, Phil Strong, Tattersall Sound and Picture",
 			"cast": "Ronald Deibert",
 			"image": "https://images.contentful.com/22n7d68fswlw/7sVLOaWbo4Ikc62g8m8kwS/ea7ddd3f812b076cc420a1c6b6e9daa7/blackcode_01.jpg?w=300&q=40",
@@ -31001,6 +31220,7 @@
 		},
 		{
 			"name": "Strange Vision of Seeing Things",
+			"program": "Wavelengths",
 			"director": "Ryan Ferko",
 			"countries": "Canada / Serbia",
 			"runtime": "14 minutes",
@@ -31021,6 +31241,7 @@
 		},
 		{
 			"name": "A Cool Sound from Hell",
+			"program": "TIFF Cinematheque",
 			"director": "Sidney J. Furie",
 			"countries": "Canada",
 			"runtime": "72 minutes",
@@ -31041,6 +31262,7 @@
 		},
 		{
 			"name": "Nutag - Homeland",
+			"program": "Short Cuts",
 			"director": "Alisi Telengut",
 			"countries": "Canada",
 			"runtime": "6 minutes",
@@ -31061,6 +31283,7 @@
 		},
 		{
 			"name": "Jean of the Joneses",
+			"program": "Discovery",
 			"director": "Stella Meghie",
 			"countries": "Canada",
 			"runtime": "82 minutes",
@@ -31073,7 +31296,7 @@
 			"screenplay": "Stella Meghie",
 			"cinematographers": "Kris Belchevski",
 			"editors": "Aren Hansen",
-			"score": "",
+			"score": "Robi Botos",
 			"sound": "Eric Ladouceur",
 			"cast": "Taylour Paige, Sherri Shepherd, Erica Ash, Michelle Hurst, Mamoudou Athie, Francois Arnaud, Gloria Reuben",
 			"image": "https://images.contentful.com/22n7d68fswlw/1vyV5uZUBWie24GUcug8ce/9d7be4f8663b6016a0d05381ec307059/jeanofthejoneses_01.jpg?w=300&q=40",
@@ -31081,13 +31304,14 @@
 		},
 		{
 			"name": "Emma",
+			"program": "Short Cuts",
 			"director": "Martin Edralin",
 			"countries": "Canada",
 			"runtime": "13 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "14-year-old Emma struggles to hide her alopecia, a condition of rapid, unpredictable hair loss. Director Martin Edralin delicately details the uneasy path towards self-acceptance in this quiet and sublime film. \n",
+			"pitch": "Fourteen-year-old Emma struggles to hide her alopecia\nareata, a condition of rapid, unpredictable hair loss.\nDirector Martin Edralin delicately details the uneasy path\ntowards self-acceptance in this quiet and sublime film. \n",
 			"production": "Circus Zero Films Inc., LoCo Motion Pictures",
 			"producers": "Martin Edralin, Lauren Corber",
 			"screenplay": "Martin Edralin",
@@ -31101,6 +31325,7 @@
 		},
 		{
 			"name": "CYCLES",
+			"program": "Short Cuts",
 			"director": "Joe Cobden",
 			"countries": "Canada",
 			"runtime": "4 minutes",
@@ -31121,6 +31346,7 @@
 		},
 		{
 			"name": "5 Films About Technology",
+			"program": "Short Cuts",
 			"director": "Peter Huang",
 			"countries": "Canada",
 			"runtime": "5 minutes",
@@ -31141,6 +31367,7 @@
 		},
 		{
 			"name": "Untitled, 1925",
+			"program": "Wavelengths",
 			"director": "Madi Piller",
 			"countries": "Canada",
 			"runtime": "9 minutes",
@@ -31161,6 +31388,7 @@
 		},
 		{
 			"name": "Boundaries",
+			"program": "Contemporary World Cinema",
 			"director": "Chloé Robichaud",
 			"countries": "Canada",
 			"runtime": "100 minutes",
@@ -31173,7 +31401,7 @@
 			"screenplay": "Chloé Robichaud",
 			"cinematographers": "Jessica Lee Gagné",
 			"editors": "Michel Arcand",
-			"score": "",
+			"score": "Simon Bertrand",
 			"sound": "François Grenon, Luc Boudrias, Jean-François Sauvé",
 			"cast": "Macha Grenon, Emily VanCamp, Nathalie Doummar, Rémy Girard, Alexandre Landry, Serge Houde, Yves Jacques, Sophie Faucher, Micheline Lanctôt",
 			"image": "https://images.contentful.com/22n7d68fswlw/2DFT8UAyxSQqQaUy8aqYwQ/6a607f583dafc7b31403e0692f243406/boundaries_02.jpg?w=300&q=40",
@@ -31181,13 +31409,14 @@
 		},
 		{
 			"name": "Mutants",
+			"program": "Short Cuts",
 			"director": "Alexandre Dostie",
 			"countries": "Canada",
 			"runtime": "16 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "French",
-			"pitch": "A teenager just trying to make it through the summer of 1996, Keven begins his baseball season with an accident that leaves him with a truly hideous black eye. This leads to a crash course in sex, sports, and scandal — taught by a hilariously unconventional coach — that does a demolition job on coming-of-age story conventions. \n",
+			"pitch": "A teenager just trying to make it through the summer of 1996, Keven begins his baseball season with an accident that leaves him with a truly hideous black eye. This leads to a crash course in sex, sports, and scandal — taught by a hilariously unconventional coach — that demolishes coming-of-age story conventions.\n",
 			"production": "Art & Essai",
 			"producers": "Hany Ouichou, Gabrielle Tougas-Fréchette",
 			"screenplay": "Alexandre Dostie",
@@ -31201,6 +31430,7 @@
 		},
 		{
 			"name": "Wild Skin",
+			"program": "Short Cuts",
 			"director": "Ariane Louis-Seize",
 			"countries": "Canada",
 			"runtime": "19 minutes",
@@ -31221,6 +31451,7 @@
 		},
 		{
 			"name": "Red of the Yew Tree",
+			"program": "Short Cuts",
 			"director": "Marie-Hélène Turcotte",
 			"countries": "Canada",
 			"runtime": "12 minutes",
@@ -31241,13 +31472,14 @@
 		},
 		{
 			"name": "The Smoke",
+			"program": "Short Cuts",
 			"director": "Rebecca Addelman",
 			"countries": "Canada",
 			"runtime": "9 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "In this hilariously acerbic slice of middle-age malaise, a woman returns to her hometown for a Bat Mitzvah and becomes stuck in the abyss of mortification that only family can deliver so well. \n",
+			"pitch": "In this hilariously acerbic slice of middle-age malaise, a woman returns to her hometown for a bat mitzvah and becomes stuck in the abyss of mortification that only family can deliver so well. \n",
 			"production": "First Generation Films, SBT Films Inc.",
 			"producers": "Jennifer Shin",
 			"screenplay": "Rebecca Addelman, Sarabeth Tucek",
@@ -31261,6 +31493,7 @@
 		},
 		{
 			"name": "Plain and Simple",
+			"program": "Short Cuts",
 			"director": "Raphaël",
 			"countries": "Canada",
 			"runtime": "12 minutes",
@@ -31281,6 +31514,7 @@
 		},
 		{
 			"name": "The River of My Dreams: A Portrait of Gordon Pinsent",
+			"program": "TIFF Docs",
 			"director": "Brigitte Berman",
 			"countries": "Canada",
 			"runtime": "104 minutes",
@@ -31301,13 +31535,14 @@
 		},
 		{
 			"name": "Ape Sodom",
+			"program": "Short Cuts",
 			"director": "Maxwell McCabe-Lokos",
 			"countries": "Canada",
 			"runtime": "14 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English Hungarian",
-			"pitch": "On the slopes of a mountain of garbage, a man searches for sustenance, though he’d clearly be happy with a little unused toilet paper. That first image is hardly the last with the capacity to startle in this deranged, deft satire of post-consumerist enlightenment by Maxwell McCabe-Lokos (with an appropriately biological cameo by David Cronenberg). \n",
+			"pitch": "On the slopes of a mountain of garbage, a man searches for sustenance, though he’d clearly be happy with a little unused toilet paper. That first image is hardly the last with the capacity to startle in this deranged satire of post-consumerist enlightenment.  \n",
 			"production": "Chara Pictures, Anthropoid, Ontario Inc.",
 			"producers": "Chris Hatcher",
 			"screenplay": "Maxwell McCabe-Lokos",
@@ -31321,6 +31556,7 @@
 		},
 		{
 			"name": "Whispering Breeze",
+			"program": "Short Cuts",
 			"director": "Jonathan Tremblay",
 			"countries": "Canada",
 			"runtime": "10 minutes",
@@ -31341,19 +31577,20 @@
 		},
 		{
 			"name": "Nothing About Moccasins",
+			"program": "Short Cuts",
 			"director": "Eden Mallina Awashish",
 			"countries": "Canada",
 			"runtime": "4 minutes",
 			"premiere": "North American Premiere",
 			"year": "2015",
 			"language": "French Atikamekw",
-			"pitch": "Director Eden Mallina Awashish struggles to understand why her grandmother refuses to allow her to shoot a film about moccasins. Her failed attempt turns into a playful deconstruction of cultural loss, a record of the resolve to protect Atikamekw tradition. \n",
+			"pitch": "When her grandmother refuses to allow her to shoot a film about moccasins, the director playfully reconstructs the idea of cultural loss and creates a record of the resolve to protect Atikamekw tradition. \n",
 			"production": "Wapikoni",
 			"producers": "Manon Barbeau",
 			"screenplay": "Eden Mallina Awashish",
 			"cinematographers": "Eden Mallina Awashish, Philippe David Gagné, Jean-Marc E.Roy",
 			"editors": "Eden Mallina Awashish, Philippe David Gagné",
-			"score": "",
+			"score": "Philippe David Gagné",
 			"sound": "",
 			"cast": "Stéphane Awashish, Joséphine D. Awashish",
 			"image": "https://images.contentful.com/22n7d68fswlw/3Dd6G5bVawiy8g0IEICc4i/4dac233d12ccea38104d580ba6145944/nothingaboutmoccasins_01.jpg?w=300&q=40",
@@ -31361,13 +31598,14 @@
 		},
 		{
 			"name": "Your Mother and I",
+			"program": "Short Cuts",
 			"director": "Anna Maguire",
 			"countries": "Canada / United Kingdom",
 			"runtime": "13 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "Julia Sarah Stone (a TIFF 2014 Rising Star) and the one and only Don McKellar are in top form, playing a skeptical daughter and her impressively loquacious father, in Anna Maguire’s funny and poignant adaptation of a Dave Eggers story. \n",
+			"pitch": "Julia Sarah Stone and the one and only Don McKellar are in top form as a skeptical daughter and her impressively loquacious father, in Anna Maguire’s funny and poignant adaptation of a Dave Eggers story. \n",
 			"production": "Paper Bag Productions, Low Sky Productions, Meraki Moving Pictures",
 			"producers": "Kat Hidalgo, Peter Kuplowsky, Anna Maguire",
 			"screenplay": "Anna Maguire, Julia Hart",
@@ -31375,13 +31613,14 @@
 			"editors": "Maureen Grant",
 			"score": "Ben Fox",
 			"sound": "Victor Jaramillo",
-			"cast": "Don McKellar, Julia Sarah Stone",
+			"cast": "Don McKellar, Julia Sarah Stone, Clive Walton, Jayden Greig",
 			"image": "https://images.contentful.com/22n7d68fswlw/381CARxmCQ8oyggUcWw2SW/60c36ee6bc130b4a5625de2bbf4f3fca/yourmotherandi_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/your-mother-and-i"
 		},
 		{
 			"name": "Mostly Sunny",
-			"director": "Dilip  Mehta",
+			"program": "TIFF Docs",
+			"director": "Dilip Mehta",
 			"countries": "Canada",
 			"runtime": "90 minutes",
 			"premiere": "World Premiere",
@@ -31390,24 +31629,25 @@
 			"pitch": "Veteran filmmaker Dilip Mehta (Cooking with Stella) returns to the Festival with this fascinating documentary portrait of porn actress turned Bollywood starlet Sunny Leone.\n",
 			"production": "Ballinran Entertainment, Hamilton Mehta Productions",
 			"producers": "Craig Thompson",
-			"screenplay": "Craig Thompson, Dilip  Mehta, Deepa Mehta",
-			"cinematographers": "Decebal Dascau",
+			"screenplay": "Craig Thompson, Dilip Mehta, Deepa Mehta",
+			"cinematographers": "Dilip Mehta, Decebal Dascau",
 			"editors": "Decebal Dascau",
-			"score": "",
+			"score": "Michael Vuscan",
 			"sound": "Michael Vuscan",
-			"cast": "Sunny Leone",
+			"cast": "Sunny Leone, Daniel Weber",
 			"image": "https://images.contentful.com/22n7d68fswlw/5Xhd3zj236cgkOQKm4YIcC/42f07814235c69a1429e6fb89147d2c7/mostlysunny_04.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/mostly-sunny"
 		},
 		{
 			"name": "Blind Vaysha",
+			"program": "Short Cuts",
 			"director": "Theodore Ushev",
 			"countries": "Canada",
 			"runtime": "8 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "With one eye that can only see the past and one that can only see the future, a man is tormented by two irreconcilable realities. Blind Vaysha is a vivid and gorgeously crafted 3D fable about living in the present. \n",
+			"pitch": "With one eye that can only see the past and one that can only see the future, a girl is tormented by two irreconcilable realities. Blind Vaysha is a vivid and gorgeously crafted 3D fable about living in the present.\n",
 			"production": "National Film Board of Canada",
 			"producers": "Marc Bertrand",
 			"screenplay": "",
@@ -31421,13 +31661,14 @@
 		},
 		{
 			"name": "HAND.LINE.COD.",
+			"program": "Short Cuts",
 			"director": "Justin Simms",
 			"countries": "Canada",
 			"runtime": "12 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "Off the rugged coast of Fogo Island, cod fishermen have returned to a catching method that dates back to the 1600s. Director Justin Simms illuminates the interconnection between the people and the cod — and how traditional practice can be reinvented as a forward-thinking, sustainable approach to economic independence. \n",
+			"pitch": "O the rugged coast of Fogo Island, cod fi shermen have returned to a catching method that dates back to the 1600s. Director Justin Simms shows us how traditional practices can be reinvented as forward-thinking, sustainable solutions. \n",
 			"production": "NFB",
 			"producers": "Annette Clarke",
 			"screenplay": "Justin Simms",
@@ -31441,19 +31682,20 @@
 		},
 		{
 			"name": "SNIP",
+			"program": "Short Cuts",
 			"director": "Terril Calder",
 			"countries": "Canada",
 			"runtime": "15 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "In this richly layered stop-motion animation, Annie and Gordon travel through a portal in time to help two children escape the horrors of residential school. Written and narrated by award-winning author Joseph Boyden, Snip is a potent indictment of Canada’s residential school policy and its profound impact on young Indigenous people. \n",
+			"pitch": "In this richly layered stop-motion animation, written and\nnarrated by award-winning author Joseph Boyden, Annie\nand Gordon travel through a portal in time to help two children\nescape the horrors of residential school. \n",
 			"production": "Terril Calder Films",
 			"producers": "Jason Ryle",
 			"screenplay": "Joseph Boyden",
 			"cinematographers": "Terril Calder",
 			"editors": "Terril Calder",
-			"score": "",
+			"score": "South River Sound",
 			"sound": "Shawn Delnick, Michael Dilauro",
 			"cast": "Joseph Boyden",
 			"image": "https://images.contentful.com/22n7d68fswlw/5yDCUzSfni6yUoCCAIScmg/b4cb9337b82ae1de7f21124f0b6f125f/snip_01.jpg?w=300&q=40",
@@ -31461,6 +31703,7 @@
 		},
 		{
 			"name": "Tshiuetin",
+			"program": "Short Cuts",
 			"director": "Caroline Monnet",
 			"countries": "Canada",
 			"runtime": "10 minutes",
@@ -31481,13 +31724,14 @@
 		},
 		{
 			"name": "Small Fry",
+			"program": "Short Cuts",
 			"director": "Eva Michon",
 			"countries": "USA / Poland / Canada",
 			"runtime": "7 minutes",
 			"premiere": "World Premiere",
 			"year": "2015",
 			"language": "English",
-			"pitch": "A car ride gets bumpier for an American teenager trying to bond with her dad while visiting him in Poland. This tightly controlled, consistently surprising two-hander by Toronto’s Eva Michon makes the most of a breakout turn by Lucia Santina Ribisi and a hard-rocking musical interlude.\n",
+			"pitch": "A car ride gets bumpier for an American teenager trying to bond\nwith her dad while visiting him in Poland. This consistently\nsurprising two-hander makes the most of a breakout turn by\nLucia Santina Ribisi and a hard-rocking musical interlude.\n",
 			"production": "Ways & Means, Opus Film",
 			"producers": "Jett Steiger, Lukasz Dziecol",
 			"screenplay": "Eva Michon",
@@ -31501,6 +31745,7 @@
 		},
 		{
 			"name": "Late Night Drama",
+			"program": "Short Cuts",
 			"director": "Patrice Laliberté",
 			"countries": "Canada",
 			"runtime": "8 minutes",
@@ -31521,6 +31766,7 @@
 		},
 		{
 			"name": "Prank",
+			"program": "Discovery",
 			"director": "Vincent Biron",
 			"countries": "Canada",
 			"runtime": "78 minutes",
@@ -31541,6 +31787,7 @@
 		},
 		{
 			"name": "Giants of Africa",
+			"program": "TIFF Docs",
 			"director": "Hubert Davis",
 			"countries": "Canada",
 			"runtime": "83 minutes",
@@ -31561,6 +31808,7 @@
 		},
 		{
 			"name": "A Funeral For Lightning",
+			"program": "Short Cuts",
 			"director": "Emily Kai Bock",
 			"countries": "Canada / USA",
 			"runtime": "25 minutes",
@@ -31581,13 +31829,14 @@
 		},
 		{
 			"name": "Twisted",
+			"program": "Short Cuts",
 			"director": "Jay Cheel",
 			"countries": "Canada",
 			"runtime": "14 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "In Thorold, Ontario, one night in the summer of 1996, a movie legend was made when a real-life tornado hit a drive-in theatre during a screening of Twister. But how much truth really lies inside this tale of life (or weather) imitating art? Jay Cheel’s quest for answers yields something surprising and delightful. \n",
+			"pitch": "In Thorold, Ontario in the summer of 1996, a movie legend was made when a real-life tornado hit a drive-in theatre during a screening of Twister. But how much truth really lies inside this tale of life (or weather) imitating art? \n",
 			"production": "Fast & Scientific Productions",
 			"producers": "Dan Montgomery",
 			"screenplay": "",
@@ -31601,13 +31850,14 @@
 		},
 		{
 			"name": "The Taste of Vietnam",
+			"program": "Short Cuts",
 			"director": "Pier-Luc Latulippe",
 			"countries": "Canada",
 			"runtime": "9 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "French English",
-			"pitch": "Arnaud likes Chloe — so much so that he’s doing all he can to make her last night in town a memorable one. Over the course of their final hours together, the two reveal more about themselves than intended, which makes for an unusually astute and tender tale of oh-so-millennial romance. \n",
+			"pitch": "Arnaud is doing all he can to make Chloe’s last night in town memorable. In their final hours together, the two reveal more about themselves than intended, making for an unusually astute tale of millennial romance. \n",
 			"production": "Pier-Luc Latulippe",
 			"producers": "Pier-Luc Latulippe",
 			"screenplay": "Pier-Luc Latulippe",
@@ -31621,6 +31871,7 @@
 		},
 		{
 			"name": "3-Way (Not Calling)",
+			"program": "Short Cuts",
 			"director": "Molly McGlynn",
 			"countries": "Canada",
 			"runtime": "10 minutes",
@@ -31635,12 +31886,13 @@
 			"editors": "Christine Armstrong",
 			"score": "Casey Manierka-Quaile",
 			"sound": "Kyle Edgar",
-			"cast": "Emma Hunter, Kristian Bruun, Emily Coutts",
+			"cast": "Emma Hunter, Kristian Bruun, Emily Coutts, Marni Van Dyk",
 			"image": "https://images.contentful.com/22n7d68fswlw/MuB7txQaUUyYAya0ymCuE/f427fb45c63061b1f9bc9b7d74371916/3waynotcalling_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/3-way-not-calling"
 		},
 		{
 			"name": "Dark Adaptation",
+			"program": "Wavelengths",
 			"director": "Chris Gehman",
 			"countries": "Canada",
 			"runtime": "14 minutes",
@@ -31661,6 +31913,7 @@
 		},
 		{
 			"name": "Cleo",
+			"program": "Short Cuts",
 			"director": "Sanja Zivkovic",
 			"countries": "Canada",
 			"runtime": "13 minutes",
@@ -31681,13 +31934,14 @@
 		},
 		{
 			"name": "DataMine",
+			"program": "Short Cuts",
 			"director": "Timothy Barron Tracey",
 			"countries": "Canada",
 			"runtime": "5 minutes",
 			"premiere": "Toronto Premiere",
 			"year": "2016",
 			"language": "No Dialogue",
-			"pitch": "An astonishingly detailed stop-motion animation, set in a world of industrial decay whose plugged-in masses fail to notice the sinister agent who has them under surveillance and control. \n",
+			"pitch": "DataMine is an astonishingly detailed stop-motion animation set in a world of industrial decay whose plugged-in masses fail to notice the sinister agent who watches and controls them. \n",
 			"production": "Warrior Poet Films",
 			"producers": "Timothy Barron Tracey",
 			"screenplay": "Timothy Barron Tracey",
@@ -31701,6 +31955,7 @@
 		},
 		{
 			"name": "ARQ",
+			"program": "Discovery",
 			"director": "Tony Elliott",
 			"countries": "USA / Canada",
 			"runtime": "88 minutes",
@@ -31721,6 +31976,7 @@
 		},
 		{
 			"name": "Imitations",
+			"program": "Short Cuts",
 			"director": "Fabian Velasco, Milos Mitrovic",
 			"countries": "Canada",
 			"runtime": "10 minutes",
@@ -31741,6 +31997,7 @@
 		},
 		{
 			"name": "The Road to Webequie",
+			"program": "Short Cuts",
 			"director": "Ryan Noth, Tess Girard",
 			"countries": "Canada",
 			"runtime": "19 minutes",
@@ -31761,6 +32018,7 @@
 		},
 		{
 			"name": "TMG_103 (rough cut)",
+			"program": "Short Cuts",
 			"director": "Walter Woodman",
 			"countries": "Canada",
 			"runtime": "5 minutes",
@@ -31781,6 +32039,7 @@
 		},
 		{
 			"name": "Four Faces of the Moon",
+			"program": "Short Cuts",
 			"director": "Amanda Strong",
 			"countries": "Canada",
 			"runtime": "12 minutes",
@@ -31801,6 +32060,7 @@
 		},
 		{
 			"name": "All Governments Lie: Truth, Deception, and the Spirit of I.F. Stone",
+			"program": "TIFF Docs",
 			"director": "Fred Peabody",
 			"countries": "Canada",
 			"runtime": "91 minutes",
@@ -31809,18 +32069,19 @@
 			"language": "English",
 			"pitch": "Vancouver-based filmmaker and TV news veteran Fred Peabody explores the life and legacy of the maverick American journalist I.F. Stone, whose long one-man crusade against government deception lives on in the work of such contemporary filmmakers and journalists as Laura Poitras, Glenn Greenwald, David Corn, and Matt Taibbi.\n",
 			"production": "White Pine Pictures",
-			"producers": "Peter Raymont, Fred Peabody, Andrew Munger, Steve Ord",
+			"producers": "Peter Raymont, Andrew Munger, Steve Ord",
 			"screenplay": "",
 			"cinematographers": "John Westheuser",
 			"editors": "James Yates, Jim Munro",
-			"score": "",
+			"score": "Mark Korven",
 			"sound": "Jason Milligan, Sanjay Mehta, Peter Sawade",
-			"cast": "",
+			"cast": "Amy Goodman, Nermeen Shaikh, Matt Taibbi, Jeff Cohen, Jeremy Scahill, Myra MacPherson",
 			"image": "https://images.contentful.com/22n7d68fswlw/4dkBcpTpBmgw2uOaKAmQyI/4357f2759272b9e1bfa26385cc0a672a/allgovernmentslie_01.jpeg?w=300&q=40",
 			"url": "http://tiff.net/films/all-governments-lie-truth-deception-and-the-spirit-of-if-stone"
 		},
 		{
 			"name": "The Horse Thief",
+			"program": "TIFF Cinematheque",
 			"director": "Tian Zhuangzhuang",
 			"countries": "China",
 			"runtime": "88 minutes",
@@ -31841,6 +32102,7 @@
 		},
 		{
 			"name": "The Untamed",
+			"program": "Vanguard",
 			"director": "Amat Escalante",
 			"countries": "Mexico / Denmark / France / Germany / Norway / Switzerland",
 			"runtime": "100 minutes",
@@ -31855,12 +32117,13 @@
 			"editors": "Fernanda de la Peza, Jacob Secher Schulsinger",
 			"score": "",
 			"sound": "Sergio Diaz, Vincent Arnardi, Raúl Locatelli",
-			"cast": "Ruth Ramos, Simone Bucio, Jesús Meza, Edén Villavicencio",
+			"cast": "Ruth Ramos, Simone Bucio, Jesús Meza, Edén Villavicencio, Kenny Johnston",
 			"image": "https://images.contentful.com/22n7d68fswlw/4idyCH8D7OyEQSUcu2qGYK/408d61f30414027f12a21a290a7c4f43/untamed_01NEW.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-untamed"
 		},
 		{
 			"name": "Anna",
+			"program": "Short Cuts",
 			"director": "Or Sinai",
 			"countries": "Israel",
 			"runtime": "24 minutes",
@@ -31881,6 +32144,7 @@
 		},
 		{
 			"name": "Message from the King",
+			"program": "Vanguard",
 			"director": "Fabrice Du Welz",
 			"countries": "United Kingdom / France / Belgium",
 			"runtime": "102 minutes",
@@ -31893,14 +32157,15 @@
 			"screenplay": "Stephen Cornwell, Oliver Butcher",
 			"cinematographers": "Monica Lenczewska",
 			"editors": "Beatrice Sisul",
-			"score": "Matthias Weber",
-			"sound": "Craig Mann",
-			"cast": "Chadwick Boseman, Teresa Palmer, Luke Evans, Alfred Molina",
+			"score": "Vincent Cahay, Felix Penny",
+			"sound": "Craig Mann, Laura Weist, Craig Mann, Anna MacKenzie, Shawn Holden",
+			"cast": "Chadwick Boseman, Teresa Palmer, Luke Evans, Alfred Molina, Natalie Martinez",
 			"image": "https://images.contentful.com/22n7d68fswlw/5tUZveArIWiGguYeoW4iE8/a9b43609ad87dcfeb9d98cf92c47aa3f/messagefromtheking_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/message-from-the-king"
 		},
 		{
 			"name": "Before the Flood",
+			"program": "TIFF Docs",
 			"director": "Fisher Stevens",
 			"countries": "USA",
 			"runtime": "93 minutes",
@@ -31921,6 +32186,7 @@
 		},
 		{
 			"name": "The Autopsy of Jane Doe",
+			"program": "Midnight Madness",
 			"director": "André Øvredal",
 			"countries": "USA",
 			"runtime": "99 minutes",
@@ -31941,6 +32207,7 @@
 		},
 		{
 			"name": "India In a Day",
+			"program": "TIFF Docs",
 			"director": "Richie Mehta",
 			"countries": "India / United Kingdom",
 			"runtime": "86 minutes",
@@ -31961,6 +32228,7 @@
 		},
 		{
 			"name": "BLACK HEAD COW",
+			"program": "Short Cuts",
 			"director": "Elizabeth Nichols",
 			"countries": "Tanzania",
 			"runtime": "12 minutes",
@@ -31981,6 +32249,7 @@
 		},
 		{
 			"name": "Gimme Danger",
+			"program": "TIFF Docs",
 			"director": "Jim Jarmusch",
 			"countries": "USA",
 			"runtime": "108 minutes",
@@ -32001,6 +32270,7 @@
 		},
 		{
 			"name": "Andy Goes In",
+			"program": "Short Cuts",
 			"director": "Josh Polon",
 			"countries": "USA",
 			"runtime": "16 minutes",
@@ -32021,6 +32291,7 @@
 		},
 		{
 			"name": "Red Apples",
+			"program": "Short Cuts",
 			"director": "George Sikharulidze",
 			"countries": "Armenia / Georgia / USA",
 			"runtime": "15 minutes",
@@ -32041,13 +32312,14 @@
 		},
 		{
 			"name": "All Rivers Run to the Sea",
+			"program": "Short Cuts",
 			"director": "Alexandru Badea",
 			"countries": "Romania",
 			"runtime": "20 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "Romanian",
-			"pitch": "Stung by the absurd administration process regarding the practicalities of his mother’s passing, Radu is having a hard time dealing with her death — although the rest of his family has plenty of opinions to offer. \n",
+			"pitch": "Stung by the absurd administration process regarding the practicalities of his mother’s passing, Radu is having a hard time in this beautiful and evocative examination of what it means to say goodbye.\n",
 			"production": "UNATC",
 			"producers": "Alexandru Badea",
 			"screenplay": "Alexandru Badea",
@@ -32061,6 +32333,7 @@
 		},
 		{
 			"name": "I Am the Pretty Thing That Lives in the House",
+			"program": "Vanguard",
 			"director": "Osgood Perkins",
 			"countries": "Canada / USA",
 			"runtime": "87 minutes",
@@ -32081,6 +32354,7 @@
 		},
 		{
 			"name": "A New Home",
+			"program": "Short Cuts",
 			"director": "Ziga Virc",
 			"countries": "Slovenia",
 			"runtime": "14 minutes",
@@ -32101,13 +32375,14 @@
 		},
 		{
 			"name": "Inner Workings",
+			"program": "Short Cuts",
 			"director": "Leo Matsuda",
 			"countries": "USA",
 			"runtime": "6 minutes",
 			"premiere": "Canadian Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "Inner Workings goes inside a man's psyche to show us the battle between his practical side and his carefree impulses. With great heart, a fun beat, and verve galore, this is a charming animation — boasting a unique blend of cutting-edge and classic techniques — from the story artist for Big Hero 6 and Wreck-It Ralph. \n",
+			"pitch": "Inner Workings goes inside a man’s psyche to show us the battle between his practical side and his carefree impulses. With great heart, a fun beat, and verve galore, this is a charming blend of cutting-edge and classic animation from the story artist for Big Hero 6 and Wreck-It Ralph. \n",
 			"production": "Walt Disney Animation Studios",
 			"producers": "Sean Lurie",
 			"screenplay": "",
@@ -32121,6 +32396,7 @@
 		},
 		{
 			"name": "The Bad Batch",
+			"program": "Vanguard",
 			"director": "Ana Lily Amirpour",
 			"countries": "USA",
 			"runtime": "115 minutes",
@@ -32141,6 +32417,7 @@
 		},
 		{
 			"name": "Girl Unbound",
+			"program": "TIFF Docs",
 			"director": "Erin Heidenreich",
 			"countries": "Pakistan / Canada / Hong Kong / South Korea",
 			"runtime": "80 minutes",
@@ -32161,6 +32438,7 @@
 		},
 		{
 			"name": "Fluffy",
+			"program": "Short Cuts",
 			"director": "Lee Filipovski",
 			"countries": "Serbia / Canada",
 			"runtime": "24 minutes",
@@ -32181,6 +32459,7 @@
 		},
 		{
 			"name": "Blair Witch",
+			"program": "Midnight Madness",
 			"director": "Adam Wingard",
 			"countries": "USA",
 			"runtime": "89 minutes",
@@ -32201,13 +32480,14 @@
 		},
 		{
 			"name": "In the Hills",
+			"program": "Short Cuts",
 			"director": "Hamid Ahmadi",
 			"countries": "United Kingdom",
 			"runtime": "21 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "Shahram tends a fish ’n’ chips shop in the English countryside. A relatively new immigrant, he’d like to feel more a part of his community. However, the means by which he hopes to fit in are themselves anything but \"normal\". \n",
+			"pitch": "Shahram tends a fish 'n' chips shop in the English countryside. A relatively new immigrant, he’d like to feel more a part of his community. However, the means by which he hopes to fit in are themselves anything but \"normal\". \n",
 			"production": "The London Film School",
 			"producers": "Harry Baker",
 			"screenplay": "Hamid Ahmadi",
@@ -32221,6 +32501,7 @@
 		},
 		{
 			"name": "Dadyaa",
+			"program": "Short Cuts",
 			"director": "Pooja Gurung, Bibhusan Basnet",
 			"countries": "Nepal / France",
 			"runtime": "17 minutes",
@@ -32241,6 +32522,7 @@
 		},
 		{
 			"name": "Trespass",
+			"program": "Short Cuts",
 			"director": "Mirrah Foulkes",
 			"countries": "Australia",
 			"runtime": "11 minutes",
@@ -32261,6 +32543,7 @@
 		},
 		{
 			"name": "Import",
+			"program": "Short Cuts",
 			"director": "Ena Sendijarevic",
 			"countries": "Netherlands",
 			"runtime": "17 minutes",
@@ -32281,6 +32564,7 @@
 		},
 		{
 			"name": "Semiliberi",
+			"program": "Short Cuts",
 			"director": "Matteo Gentiloni",
 			"countries": "Italy",
 			"runtime": "10 minutes",
@@ -32301,13 +32585,14 @@
 		},
 		{
 			"name": "Sevince (When you love)",
+			"program": "Short Cuts",
 			"director": "Süheyla Schwenk",
 			"countries": "Germany",
 			"runtime": "30 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "Turkish",
-			"pitch": "Peri, a Turkish housewife and mother living behind the veil in Germany, is stunned when her husband brings home news that will uproot the family yet again. Restricted as she is by her daily routine, Peri has nonetheless found a sliver of pleasure in this new, Western life, and she is loath to let go of it. \n",
+			"pitch": "Peri, a Turkish housewife and mother living in Germany, is\nstunned when her husband brings home news that will uproot\nthe family yet again. Peri has found a sliver of pleasure in this\nnew life, and she is loath to let go of it. \n",
 			"production": "Deutsche Film Und Fernsehakademie Berlin (dffb)",
 			"producers": "Süheyla Schwenk, Florian Wurzer",
 			"screenplay": "Süheyla Schwenk",
@@ -32321,6 +32606,7 @@
 		},
 		{
 			"name": "Romantik",
+			"program": "Short Cuts",
 			"director": "Mateusz Rakowicz",
 			"countries": "France / Poland",
 			"runtime": "21 minutes",
@@ -32341,6 +32627,7 @@
 		},
 		{
 			"name": "Battalion To My Beat",
+			"program": "Short Cuts",
 			"director": "Eimi Imanishi",
 			"countries": "Algeria / USA / Western Sahara",
 			"runtime": "13 minutes",
@@ -32361,13 +32648,14 @@
 		},
 		{
 			"name": "Standby",
+			"program": "Short Cuts",
 			"director": "Charlotte Regan",
 			"countries": "United Kingdom",
 			"runtime": "6 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "English",
-			"pitch": "Gary and Jenny share the same cramped “office space” as all beat cops: the front seat of a patrol car. Their evolving relationship is an emotional rollercoaster ride that stands in often-comedic contrast to the procession of thugs and criminals filling the back seat. \n",
+			"pitch": "Gary and Jenny share the same cramped \"office space\" as all beat cops: the front seat of a patrol car. Their evolving relationship is an emotional rollercoaster ride that stands in often-comedic contrast to the procession of thugs and criminals filling the back seat. \n",
 			"production": "",
 			"producers": "Charlotte Regan, Jack Hannon",
 			"screenplay": "Charlotte Regan",
@@ -32381,6 +32669,7 @@
 		},
 		{
 			"name": "Night Dancing",
+			"program": "Short Cuts",
 			"director": "Barney Cokeliss",
 			"countries": "United Kingdom",
 			"runtime": "6 minutes",
@@ -32401,13 +32690,14 @@
 		},
 		{
 			"name": "Samedi Cinema",
+			"program": "Short Cuts",
 			"director": "Mamadou Dia",
 			"countries": "Senegal / USA",
 			"runtime": "11 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "Fulah/ Pulaar Wolof French",
-			"pitch": "In northern Senegal, a couple of resourceful young cinephiles hatch a plan to raise the cash for a couple of movie tickets before the local cinema closes.\n",
+			"pitch": "In northern Senegal, a couple of resourceful young cinephiles hatch a plan to raise the cash for a couple of movie tickets before the local cinema closes. The two leads in this heartwarming tale about the bonds of friendship are a sheer delight.\n",
 			"production": "Films du samedi",
 			"producers": "Abbesi Akhamie, Cheikh Serge Ndao",
 			"screenplay": "Mamadou Dia",
@@ -32421,6 +32711,7 @@
 		},
 		{
 			"name": "And the Whole Sky Fit in the Dead Cow's Eye",
+			"program": "Short Cuts",
 			"director": "Francisca Alegría",
 			"countries": "Chile / USA",
 			"runtime": "18 minutes",
@@ -32441,6 +32732,7 @@
 		},
 		{
 			"name": "Decorado",
+			"program": "Short Cuts",
 			"director": "Alberto Vázquez",
 			"countries": "Spain / France",
 			"runtime": "11 minutes",
@@ -32461,6 +32753,7 @@
 		},
 		{
 			"name": "Into the Inferno",
+			"program": "TIFF Docs",
 			"director": "Werner Herzog, Clive Oppenheimer",
 			"countries": "United Kingdom / Austria",
 			"runtime": "104 minutes",
@@ -32481,6 +32774,7 @@
 		},
 		{
 			"name": "My Entire High School Sinking Into the Sea",
+			"program": "Vanguard",
 			"director": "Dash Shaw",
 			"countries": "USA",
 			"runtime": "72 minutes",
@@ -32501,6 +32795,7 @@
 		},
 		{
 			"name": "The Last Leatherman of the Vale of Cashmere",
+			"program": "Short Cuts",
 			"director": "Greg Loser",
 			"countries": "USA",
 			"runtime": "14 minutes",
@@ -32521,6 +32816,7 @@
 		},
 		{
 			"name": "The Pine Tree Villa",
+			"program": "Short Cuts",
 			"director": "Jan Koester",
 			"countries": "Germany",
 			"runtime": "13 minutes",
@@ -32541,13 +32837,14 @@
 		},
 		{
 			"name": "On the Origin of Fear",
+			"program": "Short Cuts",
 			"director": "Bayu Prihantoro Filemon",
 			"countries": "Indonesia",
 			"runtime": "12 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "Indonesian",
-			"pitch": "Tasked with overdubbing the roles of both torturer and victim in one of Indonesia’s most politically contentious movies, an indefatigable performer in a sound booth becomes the one-man embodiment of a whole era’s worst cruelties and sufferings. \n",
+			"pitch": "Overdubbing the roles of both torturer and victim in one of Indonesia’s most contentious movies, a performer in a sound booth becomes the one-man embodiment of a whole era’s worst cruelties and sufferings. \n",
 			"production": "KawanKawan Film, Limaenam Films",
 			"producers": "Amerta Kusuma, Yulia Evina Bhara",
 			"screenplay": "Bayu Prihantoro Filemon",
@@ -32561,6 +32858,7 @@
 		},
 		{
 			"name": "Mr. Sugar Daddy",
+			"program": "Short Cuts",
 			"director": "Dawid Ullgren",
 			"countries": "Sweden",
 			"runtime": "14 minutes",
@@ -32581,6 +32879,7 @@
 		},
 		{
 			"name": "Gaza Surf Club",
+			"program": "TIFF Docs",
 			"director": "Philip Gnadt, Mickey Yamine",
 			"countries": "Germany",
 			"runtime": "87 minutes",
@@ -32601,6 +32900,7 @@
 		},
 		{
 			"name": "Because The World Never Stops",
+			"program": "Short Cuts",
 			"director": "Maximilien Van Aertryck, Axel Danielson",
 			"countries": "Sweden",
 			"runtime": "10 minutes",
@@ -32621,18 +32921,19 @@
 		},
 		{
 			"name": "Bargain",
-			"director": "Chung-hyun Lee",
+			"program": "Short Cuts",
+			"director": "Lee Chung-hyun",
 			"countries": "South Korea",
 			"runtime": "14 minutes",
 			"premiere": "International Premiere",
 			"year": "2015",
 			"language": "Korean",
-			"pitch": "In a hotel room on an ordinary afternoon, a young woman in a school uniform has an illicit rendezvous with a man who’s arrived with certain expectations. Yet viewers would be wise to be wary of their own assumptions, given how they’ll be confounded by every twist and turn in Lee Chung-hyun’s cunning one-shot wonder. \n",
+			"pitch": "In a hotel room on an ordinary afternoon, a young woman in a school uniform has an illicit rendezvous with a man who’s arrived with certain expectations. Viewers will be confounded by every twist and turn in this cunning oneshot wonder. \n",
 			"production": "PRODUCTION KEZR",
 			"producers": "Dong-Ha Kim",
-			"screenplay": "Chung-hyun Lee",
+			"screenplay": "Lee Chung-hyun",
 			"cinematographers": "Sang-il Kim",
-			"editors": "Chung-hyun Lee",
+			"editors": "Lee Chung-hyun",
 			"score": "Seon-Uk Kwon",
 			"sound": "Geum-Yeol Lee, Ju-Hyun Kim",
 			"cast": "Hyoung Soo Park, Joo Young Lee",
@@ -32641,13 +32942,14 @@
 		},
 		{
 			"name": "Next",
+			"program": "Short Cuts",
 			"director": "Elena Brodach",
 			"countries": "Russia",
 			"runtime": "6 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "No Dialogue",
-			"pitch": "After rising from the bed where her nude lover still sleeps, a woman rearranges her apartment into a mysterious tableau vivant. Artistry and elegance distinguish this nocturnal vignette by Moscow’s Elena Brodach. \n",
+			"pitch": "After rising from the bed where her nude lover still sleeps, a woman has a mysterious response to the tableau vivant she left behind. Artistry and elegance distinguish this nocturnal vignette by Moscow’s Elena Brodach.\n",
 			"production": "Unifors Pictures, LLC Grachevski Film",
 			"producers": "Yuri Grachevski",
 			"screenplay": "Elena Brodach, Andrey Migachyov",
@@ -32661,6 +32963,7 @@
 		},
 		{
 			"name": "Cul-De-Sac",
+			"program": "Short Cuts",
 			"director": "Damon Russell",
 			"countries": "USA",
 			"runtime": "15 minutes",
@@ -32681,13 +32984,14 @@
 		},
 		{
 			"name": "Paraya",
+			"program": "Short Cuts",
 			"director": "Sheetal Magan, Martín Morgenfeld",
 			"countries": "South Africa / France",
 			"runtime": "13 minutes",
 			"premiere": "North American Premiere",
 			"year": "2016",
 			"language": "English Hindi Zulu",
-			"pitch": "A troubled young mother drifts through the bustling city of Durban in search of the disappeared father of her child. Paraya is a stark portrayal of a woman’s attempt to shape her future. \n",
+			"pitch": "A troubled young mother drifts through the bustling city of Durban in search of the disappeared father of her child. Paraya portrays a woman’s attempt to shape her future. \n",
 			"production": "Zidaka, DW",
 			"producers": "",
 			"screenplay": "Sheetal Magan, Martín Morgenfeld",
@@ -32701,6 +33005,7 @@
 		},
 		{
 			"name": "Transition",
+			"program": "Short Cuts",
 			"director": "Milica Tomovic",
 			"countries": "Serbia",
 			"runtime": "21 minutes",
@@ -32721,6 +33026,7 @@
 		},
 		{
 			"name": "Second to None",
+			"program": "Short Cuts",
 			"director": "Vincent Gallagher",
 			"countries": "Ireland",
 			"runtime": "7 minutes",
@@ -32741,6 +33047,7 @@
 		},
 		{
 			"name": "Half A Man",
+			"program": "Short Cuts",
 			"director": "Kristina Kumric",
 			"countries": "Croatia / France",
 			"runtime": "20 minutes",
@@ -32761,6 +33068,7 @@
 		},
 		{
 			"name": "Summer Camp Island",
+			"program": "Short Cuts",
 			"director": "Julia Pott",
 			"countries": "USA",
 			"runtime": "8 minutes",
@@ -32780,27 +33088,8 @@
 			"url": "http://tiff.net/films/summer-camp-island"
 		},
 		{
-			"name": "Bezness as Usual",
-			"director": "Alex Pitstra",
-			"countries": "Netherlands",
-			"runtime": "92 minutes",
-			"premiere": "North American Premiere",
-			"year": "2016",
-			"language": "Dutch English Arabic German",
-			"pitch": "Filmmaker Alex Pitstra investigates his own roots as the love child of a holiday romance in Tunisia, part of a wider phenomenon in the 1970s wherein young, impoverished Muslim men would target and seduce European women on vacation.\n",
-			"production": "Selfmade Films",
-			"producers": "Niek Koppen, Jan De Ruiter",
-			"screenplay": "Alex Pitstra, Katja Schoondergang",
-			"cinematographers": "Tadeusz Kieniewicz, Alex Pitstra, Rosan Breman",
-			"editors": "Jos Driessen",
-			"score": "Renger Koning",
-			"sound": "Pawel Uszynski, Alan van Ramshorst, Lennart Kleinen",
-			"cast": "Alex Pitstra, Jasmin Ameera, Mohsen Ben Hassen, Anneke Pitstra",
-			"image": "https://images.contentful.com/22n7d68fswlw/3hCoph8f9Kk6wIS8GyeMk0/06058acf398be91a056bc3e61e38dde2/beznessasusual_01.jpg?w=300&q=40",
-			"url": "http://tiff.net/films/bezness-as-usual"
-		},
-		{
 			"name": "Imago",
+			"program": "Short Cuts",
 			"director": "Raymund Ribay Gutierrez",
 			"countries": "Philippines",
 			"runtime": "15 minutes",
@@ -32820,7 +33109,29 @@
 			"url": "http://tiff.net/films/imago"
 		},
 		{
+			"name": "Bezness as Usual",
+			"program": "TIFF Docs",
+			"director": "Alex Pitstra",
+			"countries": "Netherlands",
+			"runtime": "92 minutes",
+			"premiere": "North American Premiere",
+			"year": "2016",
+			"language": "Dutch English Arabic German",
+			"pitch": "Filmmaker Alex Pitstra investigates his own roots as the love child of a holiday romance in Tunisia, part of a wider phenomenon in the 1970s wherein young, impoverished Muslim men would target and seduce European women on vacation.\n",
+			"production": "Selfmade Films",
+			"producers": "Niek Koppen, Jan De Ruiter",
+			"screenplay": "Alex Pitstra, Katja Schoondergang",
+			"cinematographers": "Tadeusz Kieniewicz, Alex Pitstra, Rosan Breman",
+			"editors": "Jos Driessen",
+			"score": "Renger Koning",
+			"sound": "Pawel Uszynski, Alan van Ramshorst, Lennart Kleinen",
+			"cast": "Alex Pitstra, Jasmin Ameera, Mohsen Ben Hassen, Anneke Pitstra",
+			"image": "https://images.contentful.com/22n7d68fswlw/3hCoph8f9Kk6wIS8GyeMk0/06058acf398be91a056bc3e61e38dde2/beznessasusual_01.jpg?w=300&q=40",
+			"url": "http://tiff.net/films/bezness-as-usual"
+		},
+		{
 			"name": "The White Helmets",
+			"program": "Short Cuts",
 			"director": "Orlando von Einsiedel",
 			"countries": "United Kingdom",
 			"runtime": "40 minutes",
@@ -32841,6 +33152,7 @@
 		},
 		{
 			"name": "Sandy Beach",
+			"program": "Short Cuts",
 			"director": "Thanos Papastergiou",
 			"countries": "Greece",
 			"runtime": "12 minutes",
@@ -32861,6 +33173,7 @@
 		},
 		{
 			"name": "The B-Side: Elsa Dorfman's Portrait Photography",
+			"program": "TIFF Docs",
 			"director": "Errol Morris",
 			"countries": "USA",
 			"runtime": "76 minutes",
@@ -32881,13 +33194,14 @@
 		},
 		{
 			"name": "Green",
+			"program": "Short Cuts",
 			"director": "Alonso Ruizpalacios",
 			"countries": "Mexico",
 			"runtime": "22 minutes",
 			"premiere": "World Premiere",
 			"year": "2016",
 			"language": "Spanish",
-			"pitch": "In Alonso Ruizpalacios’ bracing and stylish film, security guards in an armoured van try to manage the inevitable stress that comes from being close to a pile of cash in Mexico City. The team’s stability is imperilled, however, when one member nears his boiling point. \n",
+			"pitch": "In Alonso Ruizpalacios’ bracing and stylish film, security guards in an armoured van try to manage the stress that comes from being close to a pile of cash in Mexico City. The team’s stability is imperilled when one member nears his boiling point. \n",
 			"production": "Mexican Film Institute. IMCINE",
 			"producers": "Linda Ramos, Ramiro Ruiz",
 			"screenplay": "Alonso Ruizpalacios",
@@ -32901,6 +33215,7 @@
 		},
 		{
 			"name": "A Brief History of Princess X",
+			"program": "Short Cuts",
 			"director": "Gabriel Abrantes",
 			"countries": "France / Portugal / United Kingdom",
 			"runtime": "7 minutes",
@@ -32921,6 +33236,7 @@
 		},
 		{
 			"name": "Mali Blues",
+			"program": "TIFF Docs",
 			"director": "Lutz Gregor",
 			"countries": "Germany",
 			"runtime": "93 minutes",
@@ -32941,6 +33257,7 @@
 		},
 		{
 			"name": "Water and Sugar: Carlo Di Palma, the Colours of Life",
+			"program": "TIFF Docs",
 			"director": "Fariborz Kamkari",
 			"countries": "Italy",
 			"runtime": "90 minutes",
@@ -32961,6 +33278,7 @@
 		},
 		{
 			"name": "LUMIERE!",
+			"program": "TIFF Cinematheque",
 			"director": "Louis Lumière, Auguste Lumière, Thierry Frémaux",
 			"countries": "France",
 			"runtime": "90 minutes",
@@ -32981,6 +33299,7 @@
 		},
 		{
 			"name": "The Hedonists",
+			"program": "Short Cuts",
 			"director": "Jia Zhang-ke",
 			"countries": "China",
 			"runtime": "26 minutes",
@@ -33001,6 +33320,7 @@
 		},
 		{
 			"name": "SUBMARINE",
+			"program": "Short Cuts",
 			"director": "Mounia Akl",
 			"countries": "Lebanon",
 			"runtime": "20 minutes",
@@ -33021,6 +33341,7 @@
 		},
 		{
 			"name": "Children of Lir",
+			"program": "Wavelengths",
 			"director": "Katherin McInnis",
 			"countries": "USA",
 			"runtime": "5 minutes",
@@ -33041,6 +33362,7 @@
 		},
 		{
 			"name": "Heal the Living",
+			"program": "Platform",
 			"director": "Katell Quillévéré",
 			"countries": "France / Belgium",
 			"runtime": "104 minutes",
@@ -33061,6 +33383,7 @@
 		},
 		{
 			"name": "Hema Hema: Sing Me a Song While I Wait",
+			"program": "Platform",
 			"director": "Khyentse Norbu",
 			"countries": "Bhutan / Hong Kong",
 			"runtime": "95 minutes",
@@ -33081,6 +33404,7 @@
 		},
 		{
 			"name": "Jackie",
+			"program": "Platform",
 			"director": "Pablo Larraín",
 			"countries": "United Kingdom",
 			"runtime": "91 minutes",
@@ -33101,6 +33425,7 @@
 		},
 		{
 			"name": "Lady Macbeth",
+			"program": "Platform",
 			"director": "William Oldroyd",
 			"countries": "United Kingdom",
 			"runtime": "89 minutes",
@@ -33121,6 +33446,7 @@
 		},
 		{
 			"name": "Those Who Make Revolution Halfway Only Dig Their Own Graves",
+			"program": "Platform",
 			"director": "Mathieu Denis, Simon Lavoie",
 			"countries": "Canada",
 			"runtime": "183 minutes",
@@ -33141,6 +33467,7 @@
 		},
 		{
 			"name": "Incantati",
+			"program": "Wavelengths",
 			"director": "Danièle Huillet, Jean-Marie Straub",
 			"countries": "France",
 			"runtime": "6 minutes",
@@ -33161,6 +33488,7 @@
 		},
 		{
 			"name": "Ayhan and me",
+			"program": "Wavelengths",
 			"director": "belit sag",
 			"countries": "Netherlands",
 			"runtime": "14 minutes",
@@ -33181,6 +33509,7 @@
 		},
 		{
 			"name": "Singularity",
+			"program": "Wavelengths",
 			"director": "",
 			"countries": "Spain",
 			"runtime": "",
@@ -33201,26 +33530,28 @@
 		},
 		{
 			"name": "Wakefield",
+			"program": "Special Presentations",
 			"director": "Robin Swicord",
 			"countries": "USA",
 			"runtime": "106 minutes",
 			"premiere": "International Premiere",
-			"year": "",
-			"language": "",
+			"year": "2016",
+			"language": "English",
 			"pitch": "Bryan Cranston stars as a successful lawyer and family man who disappears from his own life and observes his baffled loved ones from a hiding place in the attic, in writer-director Robin Swicord's adaptation of the short story by E.L. Doctorow.\n",
-			"production": "",
-			"producers": "",
-			"screenplay": "",
-			"cinematographers": "",
-			"editors": "",
-			"score": "",
-			"sound": "",
+			"production": "Mockingbird Pictures",
+			"producers": "Julie Lynn, Bonnie Curtis, Elliot Webb, Wendy Federman, Carl Moellenberg",
+			"screenplay": "Robin Swicord",
+			"cinematographers": "Andrei Bowden Schwartz",
+			"editors": "Matt Maddox",
+			"score": "Aaron Zigman",
+			"sound": "Zach Seivers",
 			"cast": "Bryan Cranston, Jennifer Garner",
 			"image": "https://images.contentful.com/22n7d68fswlw/2s3oUJzAtaIuqU4cW0SqKC/f4f261d873a0da8071b025cbf7fb77a5/wakefield_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/wakefield"
 		},
 		{
 			"name": "Anima, Silueta de Cohetes (Firework Piece)",
+			"program": "Wavelengths",
 			"director": "Ana Mendieta",
 			"countries": "Mexico",
 			"runtime": "2 minutes",
@@ -33241,6 +33572,7 @@
 		},
 		{
 			"name": "Silueta Sangrienta",
+			"program": "Wavelengths",
 			"director": "Ana Mendieta",
 			"countries": "USA",
 			"runtime": "2 minutes",
@@ -33261,6 +33593,7 @@
 		},
 		{
 			"name": "Rudzienko",
+			"program": "Wavelengths",
 			"director": "",
 			"countries": "",
 			"runtime": "",
@@ -33281,6 +33614,7 @@
 		},
 		{
 			"name": "Once Again",
+			"program": "Masters",
 			"director": "Adoor Gopalakrishnan",
 			"countries": "India",
 			"runtime": "121 minutes",
@@ -33301,6 +33635,7 @@
 		},
 		{
 			"name": "Ears, Nose and Throat",
+			"program": "Wavelengths",
 			"director": "Kevin Jerome Everson",
 			"countries": "USA",
 			"runtime": "11 minutes",
@@ -33321,6 +33656,7 @@
 		},
 		{
 			"name": "I'll Remember You As You Were, Not As What You'll Become",
+			"program": "Wavelengths",
 			"director": "Sky Hopinka",
 			"countries": "USA",
 			"runtime": "12 minutes",
@@ -33341,6 +33677,7 @@
 		},
 		{
 			"name": "The Duelist",
+			"program": "Special Presentations",
 			"director": "Alexey Mizgirev",
 			"countries": "Russia",
 			"runtime": "110 minutes",
@@ -33361,6 +33698,7 @@
 		},
 		{
 			"name": "Untitled",
+			"program": "Wavelengths",
 			"director": "Björn Kämmerer",
 			"countries": "Austria",
 			"runtime": "4 minutes",
@@ -33381,6 +33719,7 @@
 		},
 		{
 			"name": "The Woman Who Left",
+			"program": "Wavelengths",
 			"director": "Lav Diaz",
 			"countries": "Philippines",
 			"runtime": "227 minutes",
@@ -33401,6 +33740,7 @@
 		},
 		{
 			"name": "Tuko Macho",
+			"program": "Primetime",
 			"director": "Jim Chuchu",
 			"countries": "Kenya",
 			"runtime": "31 minutes",
@@ -33421,6 +33761,7 @@
 		},
 		{
 			"name": "Zacma: Blindness",
+			"program": "Contemporary World Cinema",
 			"director": "Ryszard Bugajski",
 			"countries": "Poland",
 			"runtime": "110 minutes",
@@ -33441,6 +33782,7 @@
 		},
 		{
 			"name": "Wasteland",
+			"program": "Primetime",
 			"director": "Ivan Zachariás, Alice Nellis",
 			"countries": "Czech Republic",
 			"runtime": "449 minutes",
@@ -33461,6 +33803,7 @@
 		},
 		{
 			"name": "Cilaos",
+			"program": "Wavelengths",
 			"director": "Camilo Restrepo",
 			"countries": "France",
 			"runtime": "13 minutes",
@@ -33481,6 +33824,7 @@
 		},
 		{
 			"name": "Burning mountains that spew flame",
+			"program": "Wavelengths",
 			"director": "Helena Girón, Samuel M. Delgado",
 			"countries": "Spain",
 			"runtime": "14 minutes",
@@ -33501,6 +33845,7 @@
 		},
 		{
 			"name": "BLACK MIRROR: SAN JUNIPERO & NOSEDIVE",
+			"program": "Primetime",
 			"director": "Owen Harris, Joe Wright",
 			"countries": "United Kingdom / South Africa",
 			"runtime": "123 minutes",
@@ -33516,11 +33861,12 @@
 			"score": "",
 			"sound": "Adrian Bell, Alan Gerhardt",
 			"cast": "Gugu Mbatha-Raw, Mackenzie Davis, Bryce Dallas Howard, Alice Eve",
-			"image": "https://images.contentful.com/22n7d68fswlw/WKWCVv1DQ4GWeYim4YQ0c/4cbd56e8923345f833f4a3994f93478a/FEST16-no-image.jpg?w=300&q=40",
+			"image": "https://images.contentful.com/22n7d68fswlw/3IJjGUFwukw6s6WWawGcsG/ff7a4de5cb31d531b57e0f51039a919f/blackmirror_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/black-mirror-san-junipero-and-nosedive"
 		},
 		{
 			"name": "Brooks, Meadows and Lovely Faces",
+			"program": "Contemporary World Cinema",
 			"director": "Yousry Nasrallah",
 			"countries": "Egypt",
 			"runtime": "115 minutes",
@@ -33541,6 +33887,7 @@
 		},
 		{
 			"name": "In Between",
+			"program": "Contemporary World Cinema",
 			"director": "Maysaloun Hamoud",
 			"countries": "Israel / France",
 			"runtime": "96 minutes",
@@ -33556,11 +33903,12 @@
 			"score": "MG Saad",
 			"sound": "Tully Chen, Itzik Cohen",
 			"cast": "Mouna Hawa, Sana Jammelieh, Shaden Kanboura, Mahmoud Shalaby",
-			"image": "https://images.contentful.com/22n7d68fswlw/3o6w6wN6FyYQo8sEuIgA84/72d45f6b0f6979fcd7218eefeb4f886c/inbetween_01.jpg?w=300&q=40",
+			"image": "https://images.contentful.com/22n7d68fswlw/4dZclvxG6IwySWomg68G4M/cb1f2d5645a4b84309b7d5eadc513962/inbetween_05.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/in-between"
 		},
 		{
 			"name": "Brain on Fire",
+			"program": "Special Presentations",
 			"director": "Gerard Barrett",
 			"countries": "Ireland / Canada",
 			"runtime": "95 minutes",
@@ -33581,6 +33929,7 @@
 		},
 		{
 			"name": "Ten Mornings Ten Evenings and One Horizon",
+			"program": "Wavelengths",
 			"director": "Tomonari Nishikawa",
 			"countries": "Japan",
 			"runtime": "10 minutes",
@@ -33601,6 +33950,7 @@
 		},
 		{
 			"name": "Clair Obscur",
+			"program": "Contemporary World Cinema",
 			"director": "Yesim Ustaoglu",
 			"countries": "Turkey / Germany / Poland / France",
 			"runtime": "105 minutes",
@@ -33621,6 +33971,7 @@
 		},
 		{
 			"name": "Indivisible",
+			"program": "Contemporary World Cinema",
 			"director": "Edoardo de Angelis",
 			"countries": "Italy",
 			"runtime": "104 minutes",
@@ -33641,6 +33992,7 @@
 		},
 		{
 			"name": "The Long Excuse",
+			"program": "Special Presentations",
 			"director": "Miwa Nishikawa",
 			"countries": "Japan",
 			"runtime": "124 minutes",
@@ -33661,6 +34013,7 @@
 		},
 		{
 			"name": "Soul on a String",
+			"program": "Contemporary World Cinema",
 			"director": "Zhang Yang",
 			"countries": "China",
 			"runtime": "142 minutes",
@@ -33681,6 +34034,7 @@
 		},
 		{
 			"name": "The Human Surge",
+			"program": "Wavelengths",
 			"director": "Eduardo Williams",
 			"countries": "Argentina / Brazil / Portugal",
 			"runtime": "97 minutes",
@@ -33701,6 +34055,7 @@
 		},
 		{
 			"name": "Luna e Santur",
+			"program": "Wavelengths",
 			"director": "Joshua Gen Solondz",
 			"countries": "USA",
 			"runtime": "11 minutes",
@@ -33721,6 +34076,7 @@
 		},
 		{
 			"name": "Past Life",
+			"program": "Contemporary World Cinema",
 			"director": "Avi Nesher",
 			"countries": "Israel",
 			"runtime": "110 minutes",
@@ -33741,6 +34097,7 @@
 		},
 		{
 			"name": "What's New",
+			"program": "Wavelengths",
 			"director": "Nina Könnemann",
 			"countries": "Germany",
 			"runtime": "4 minutes",
@@ -33761,6 +34118,7 @@
 		},
 		{
 			"name": "The Dreamed Path",
+			"program": "Wavelengths",
 			"director": "Angela Schanelec",
 			"countries": "Germany",
 			"runtime": "86 minutes",
@@ -33781,6 +34139,7 @@
 		},
 		{
 			"name": "The Promise",
+			"program": "Gala Presentations",
 			"director": "Terry George",
 			"countries": "USA / Spain",
 			"runtime": "130 minutes",
@@ -33795,12 +34154,13 @@
 			"editors": "Steven Rosenblum",
 			"score": "Gabriel Yared",
 			"sound": "Paul Hsu, Phil Stockton, Peter Glossop",
-			"cast": "Oscar Isaac, Charlotte Le Bon, Christian Bale",
+			"cast": "Oscar Isaac, Charlotte Le Bon, Christian Bale, Shohreh Aghdashloo, Angela Sarafyan, Marwan Kenzari",
 			"image": "https://images.contentful.com/22n7d68fswlw/3kix06tFfiwiauwqqSmeGG/61d8b9bf309dc9f80c90a1f3aac2aa57/promise_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-promise"
 		},
 		{
 			"name": "The Rehearsal",
+			"program": "Contemporary World Cinema",
 			"director": "Alison Maclean",
 			"countries": "New Zealand",
 			"runtime": "102 minutes",
@@ -33821,6 +34181,7 @@
 		},
 		{
 			"name": "Austerlitz",
+			"program": "Wavelengths",
 			"director": "Sergei Loznitsa",
 			"countries": "Germany",
 			"runtime": "94 minutes",
@@ -33841,6 +34202,7 @@
 		},
 		{
 			"name": "The Watershow Extravaganza",
+			"program": "Wavelengths",
 			"director": "Sophie Michael",
 			"countries": "United Kingdom",
 			"runtime": "10 minutes",
@@ -33861,6 +34223,7 @@
 		},
 		{
 			"name": "After Love",
+			"program": "Contemporary World Cinema",
 			"director": "Joachim Lafosse",
 			"countries": "France / Belgium",
 			"runtime": "98 minutes",
@@ -33881,6 +34244,7 @@
 		},
 		{
 			"name": "Marie Curie, The Courage of Knowledge",
+			"program": "Contemporary World Cinema",
 			"director": "Marie Noëlle",
 			"countries": "Germany / France / Poland",
 			"runtime": "95 minutes",
@@ -33901,6 +34265,7 @@
 		},
 		{
 			"name": "The Fixer",
+			"program": "Contemporary World Cinema",
 			"director": "Adrian Sitaru",
 			"countries": "Romania / France",
 			"runtime": "98 minutes",
@@ -33921,6 +34286,7 @@
 		},
 		{
 			"name": "Foyer",
+			"program": "Wavelengths",
 			"director": "Ismaïl Bahri",
 			"countries": "France / Tunisia",
 			"runtime": "31 minutes",
@@ -33941,6 +34307,7 @@
 		},
 		{
 			"name": "Ember",
+			"program": "Contemporary World Cinema",
 			"director": "Zeki Demirkubuz",
 			"countries": "Turkey / Germany",
 			"runtime": "115 minutes",
@@ -33961,6 +34328,7 @@
 		},
 		{
 			"name": "The Wedding Ring",
+			"program": "Contemporary World Cinema",
 			"director": "Rahmatou Keïta",
 			"countries": "Niger / Burkina Faso / France",
 			"runtime": "96 minutes",
@@ -33975,32 +34343,13 @@
 			"editors": "Camille Cotte",
 			"score": "Ali Johnny Maïga, Philippe Miller",
 			"sound": "Laurent Malan",
-			"cast": "Magaajyia Silberfeld, Aïchatou Moussa, Aïchatou Lamine Fofana, Salamatou Kimba Farinwata, Harouna Amoud, Yazi Dogo",
+			"cast": "Magaajyia Silberfeld, Aïchatou Moussa, Aïchatou Lamine Fofana, Salamatou Kimba Farinwata, Harouna Amoud, Yazi Dogo, Mariam Kaba, Kudzo Do Tobias, Theo Kleiner",
 			"image": "https://images.contentful.com/22n7d68fswlw/7KsMPz0ujKgsAKaYQ2q2Cy/bf44882a0964a4ccc3ddb04dc0ba28ca/WeddingRing_01.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-wedding-ring"
 		},
 		{
-			"name": "Indefinite Pitch",
-			"director": "James N. Kienitz Wilkins",
-			"countries": "USA",
-			"runtime": "23 minutes",
-			"premiere": "North American Premiere",
-			"year": "2016",
-			"language": "English",
-			"pitch": "Framed as a pathetic movie pitch set in Berlin, Indefinite Pitch  points toward unconscious and elusive influences in life and in cinema mimicked by the rising and falling sonic frequency that, like an alarm, has an extremely indefinite pitch.\n",
-			"production": "Automatic Moving Co.",
-			"producers": "",
-			"screenplay": "James N. Kienitz Wilkins",
-			"cinematographers": "James N. Kienitz Wilkins",
-			"editors": "James N. Kienitz Wilkins",
-			"score": "",
-			"sound": "James N. Kienitz Wilkins, Josh Allen",
-			"cast": "James N. Kienitz Wilkins",
-			"image": "https://images.contentful.com/22n7d68fswlw/1yPm96dkYMYqcEiKqOsKmo/c40f43b6db4ab1118b6a6770f0fb555b/INDEFINITEPITCH_02.jpg?w=300&q=40",
-			"url": "http://tiff.net/films/indefinite-pitch"
-		},
-		{
 			"name": "Venus Delta",
+			"program": "Wavelengths",
 			"director": "Antoinette Zwirchmayr",
 			"countries": "Austria",
 			"runtime": "4 minutes",
@@ -34020,7 +34369,29 @@
 			"url": "http://tiff.net/films/venus-delta"
 		},
 		{
+			"name": "Indefinite Pitch",
+			"program": "Wavelengths",
+			"director": "James N. Kienitz Wilkins",
+			"countries": "USA",
+			"runtime": "23 minutes",
+			"premiere": "North American Premiere",
+			"year": "2016",
+			"language": "English",
+			"pitch": "Framed as a pathetic movie pitch set in Berlin, Indefinite Pitch  points toward unconscious and elusive influences in life and in cinema mimicked by the rising and falling sonic frequency that, like an alarm, has an extremely indefinite pitch.\n",
+			"production": "Automatic Moving Co.",
+			"producers": "",
+			"screenplay": "James N. Kienitz Wilkins",
+			"cinematographers": "James N. Kienitz Wilkins",
+			"editors": "James N. Kienitz Wilkins",
+			"score": "",
+			"sound": "James N. Kienitz Wilkins, Josh Allen",
+			"cast": "James N. Kienitz Wilkins",
+			"image": "https://images.contentful.com/22n7d68fswlw/1yPm96dkYMYqcEiKqOsKmo/c40f43b6db4ab1118b6a6770f0fb555b/INDEFINITEPITCH_02.jpg?w=300&q=40",
+			"url": "http://tiff.net/films/indefinite-pitch"
+		},
+		{
 			"name": "AS WITHOUT SO WITHIN",
+			"program": "Wavelengths",
 			"director": "Manuela De Laborde",
 			"countries": "Mexico / USA / United Kingdom",
 			"runtime": "25 minutes",
@@ -34041,6 +34412,7 @@
 		},
 		{
 			"name": "The Road to Mandalay",
+			"program": "Contemporary World Cinema",
 			"director": "Midi Z",
 			"countries": "Taiwan / Myanmar / France / Germany",
 			"runtime": "108 minutes",
@@ -34061,6 +34433,7 @@
 		},
 		{
 			"name": "I Had Nowhere to Go",
+			"program": "Wavelengths",
 			"director": "Douglas Gordon",
 			"countries": "Germany",
 			"runtime": "100 minutes",
@@ -34081,6 +34454,7 @@
 		},
 		{
 			"name": "Ayiti Mon Amour",
+			"program": "Contemporary World Cinema",
 			"director": "Guetty Felin",
 			"countries": "Haiti / USA",
 			"runtime": "88 minutes",
@@ -34101,6 +34475,7 @@
 		},
 		{
 			"name": "The Exception",
+			"program": "Special Presentations",
 			"director": "David Leveaux",
 			"countries": "United Kingdom",
 			"runtime": "107 minutes",
@@ -34121,6 +34496,7 @@
 		},
 		{
 			"name": "(re)ASSIGNMENT",
+			"program": "Special Presentations",
 			"director": "Walter Hill",
 			"countries": "Canada / France / USA",
 			"runtime": "95 minutes",
@@ -34141,6 +34517,7 @@
 		},
 		{
 			"name": "The Bait",
+			"program": "Masters",
 			"director": "Buddhadeb Dasgupta",
 			"countries": "India",
 			"runtime": "88 minutes",
@@ -34161,6 +34538,7 @@
 		},
 		{
 			"name": "Rage",
+			"program": "Special Presentations",
 			"director": "Sang-il Lee",
 			"countries": "Japan",
 			"runtime": "142 minutes",
@@ -34181,6 +34559,7 @@
 		},
 		{
 			"name": "In Dubious Battle",
+			"program": "Special Presentations",
 			"director": "James Franco",
 			"countries": "USA",
 			"runtime": "114 minutes",
@@ -34201,6 +34580,7 @@
 		},
 		{
 			"name": "Burn Your Maps",
+			"program": "Special Presentations",
 			"director": "Jordan Roberts",
 			"countries": "USA",
 			"runtime": "102 minutes",
@@ -34221,6 +34601,7 @@
 		},
 		{
 			"name": "The Beautiful Days of Aranjuez",
+			"program": "Masters",
 			"director": "Wim Wenders",
 			"countries": "France / Germany",
 			"runtime": "97 minutes",
@@ -34241,6 +34622,7 @@
 		},
 		{
 			"name": "Há Terra!",
+			"program": "Wavelengths",
 			"director": "Ana Vaz",
 			"countries": "France / Brazil",
 			"runtime": "13 minutes",
@@ -34261,6 +34643,7 @@
 		},
 		{
 			"name": "The Dreamed Ones",
+			"program": "Wavelengths",
 			"director": "Ruth Beckermann",
 			"countries": "Austria",
 			"runtime": "89 minutes",
@@ -34281,6 +34664,7 @@
 		},
 		{
 			"name": "We Are Never Alone",
+			"program": "Contemporary World Cinema",
 			"director": "Petr Vaclav",
 			"countries": "Czech Republic / France",
 			"runtime": "105 minutes",
@@ -34301,6 +34685,7 @@
 		},
 		{
 			"name": "Personal Shopper",
+			"program": "Masters",
 			"director": "Olivier Assayas",
 			"countries": "France",
 			"runtime": "105 minutes",
@@ -34321,6 +34706,7 @@
 		},
 		{
 			"name": "The Bleeder",
+			"program": "Special Presentations",
 			"director": "Philippe Falardeau",
 			"countries": "USA",
 			"runtime": "101 minutes",
@@ -34341,6 +34727,7 @@
 		},
 		{
 			"name": "Christine",
+			"program": "Special Presentations",
 			"director": "Antonio Campos",
 			"countries": "USA",
 			"runtime": "120 minutes",
@@ -34361,6 +34748,7 @@
 		},
 		{
 			"name": "An Aviation Field",
+			"program": "Wavelengths",
 			"director": "Joana Pimenta",
 			"countries": "Portugal / USA / Brazil",
 			"runtime": "14 minutes",
@@ -34381,6 +34769,7 @@
 		},
 		{
 			"name": "NORMAN: THE MODERATE RISE AND TRAGIC FALL OF A NEW YORK FIXER",
+			"program": "Gala Presentations",
 			"director": "Joseph Cedar",
 			"countries": "USA / Israel",
 			"runtime": "117 minutes",
@@ -34401,6 +34790,7 @@
 		},
 		{
 			"name": "Tramps",
+			"program": "Contemporary World Cinema",
 			"director": "Adam Leon",
 			"countries": "USA",
 			"runtime": "82 minutes",
@@ -34421,6 +34811,7 @@
 		},
 		{
 			"name": "150 Milligrams",
+			"program": "Special Presentations",
 			"director": "Emmanuelle Bercot",
 			"countries": "France",
 			"runtime": "128 minutes",
@@ -34441,6 +34832,7 @@
 		},
 		{
 			"name": "Graduation",
+			"program": "Masters",
 			"director": "Cristian Mungiu",
 			"countries": "Romania",
 			"runtime": "128 minutes",
@@ -34461,6 +34853,7 @@
 		},
 		{
 			"name": "The Unknown Girl",
+			"program": "Masters",
 			"director": "Luc Dardenne, Jean-Pierre Dardenne",
 			"countries": "Belgium / France",
 			"runtime": "106 minutes",
@@ -34481,6 +34874,7 @@
 		},
 		{
 			"name": "Voyage of Time: Life's Journey",
+			"program": "Special Presentations",
 			"director": "Terrence Malick",
 			"countries": "Germany",
 			"runtime": "90 minutes",
@@ -34501,6 +34895,7 @@
 		},
 		{
 			"name": "Flowers of the Sky",
+			"program": "Wavelengths",
 			"director": "Janie Geiser",
 			"countries": "USA",
 			"runtime": "9 minutes",
@@ -34521,6 +34916,7 @@
 		},
 		{
 			"name": "Mister Universo",
+			"program": "Contemporary World Cinema",
 			"director": "Tizza Covi, Rainer Frimmel",
 			"countries": "Austria / Italy",
 			"runtime": "90 minutes",
@@ -34541,6 +34937,7 @@
 		},
 		{
 			"name": "Sieranevada",
+			"program": "Masters",
 			"director": "Cristi Puiu",
 			"countries": "Romania",
 			"runtime": "176 minutes",
@@ -34561,6 +34958,7 @@
 		},
 		{
 			"name": "Death in Sarajevo",
+			"program": "Contemporary World Cinema",
 			"director": "Danis Tanovic",
 			"countries": "Bosnia and Herzegovina / France",
 			"runtime": "82 minutes",
@@ -34581,6 +34979,7 @@
 		},
 		{
 			"name": "Aquarius",
+			"program": "Contemporary World Cinema",
 			"director": "Kleber Mendonça Filho",
 			"countries": "Brazil / France",
 			"runtime": "145 minutes",
@@ -34601,6 +35000,7 @@
 		},
 		{
 			"name": "The Arbitration",
+			"program": "City to City",
 			"director": "Niyi Akinmolayan",
 			"countries": "Nigeria",
 			"runtime": "100 minutes",
@@ -34621,6 +35021,7 @@
 		},
 		{
 			"name": "J: Beyond Flamenco",
+			"program": "Masters",
 			"director": "Carlos Saura",
 			"countries": "Spain",
 			"runtime": "90 minutes",
@@ -34641,6 +35042,7 @@
 		},
 		{
 			"name": "Green White Green",
+			"program": "City to City",
 			"director": "Abba Makama",
 			"countries": "Nigeria",
 			"runtime": "102 minutes",
@@ -34650,7 +35052,7 @@
 			"pitch": "A group of young bohemian artists hang out and search for direction in their lives in the stagnant months leading up to the beginning of their university studies, in this richly textured and frequently funny look at Lagos’ new generation.\n",
 			"production": "Osiris Creatives, Project Act Nollywood",
 			"producers": "Abba Makama",
-			"screenplay": "Africa Ukoh, Abba Makama",
+			"screenplay": "Abba Makama, Africa Ukoh",
 			"cinematographers": "Segun Oladimeji",
 			"editors": "Abba Makama",
 			"score": "Shay Adams",
@@ -34661,6 +35063,7 @@
 		},
 		{
 			"name": "Ta'ang",
+			"program": "Wavelengths",
 			"director": "Wang Bing",
 			"countries": "Hong Kong / France",
 			"runtime": "147 minutes",
@@ -34681,6 +35084,7 @@
 		},
 		{
 			"name": "025 Sunset Red",
+			"program": "Wavelengths",
 			"director": "Laida Lertxundi",
 			"countries": "USA / Spain",
 			"runtime": "14 minutes",
@@ -34701,6 +35105,7 @@
 		},
 		{
 			"name": "Ma' Rosa",
+			"program": "Masters",
 			"director": "Brillante Ma Mendoza",
 			"countries": "Philippines",
 			"runtime": "110 minutes",
@@ -34721,6 +35126,7 @@
 		},
 		{
 			"name": "I, Daniel Blake",
+			"program": "Special Presentations",
 			"director": "Ken Loach",
 			"countries": "United Kingdom / France / Belgium",
 			"runtime": "100 minutes",
@@ -34741,6 +35147,7 @@
 		},
 		{
 			"name": "Ana Mendieta: Siluetas",
+			"program": "Wavelengths",
 			"director": "",
 			"countries": "",
 			"runtime": "",
@@ -34761,6 +35168,7 @@
 		},
 		{
 			"name": "Nightlife",
+			"program": "Wavelengths",
 			"director": "",
 			"countries": "",
 			"runtime": "15 minutes",
