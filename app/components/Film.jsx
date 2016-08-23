@@ -1,5 +1,6 @@
 import React from 'react';
 import LazyLoad from 'react-lazy-load';
+import ShowTimes from './ShowTimes'
 
 class Film extends React.Component {
   constructor(props){
@@ -19,15 +20,9 @@ class Film extends React.Component {
     console.log(this.props);
   }
   render() {
-    let data = this.props.schedule;
+    let data = this.props.schedule
     let showTimes = data.map(function(showtime, i) {
-      return (
-        <div className="film__showtime">
-          <span className="film__showtime--date">{showtime.date}</span><br />
-          <span className="film__showtime--time">{showtime.time} </span>
-          <span className="film__showtime--location">@ {showtime.location}</span>
-        </div>
-      );
+      return(<ShowTimes {...showtime} />)
     });
     return (
       <div className="film card">
@@ -36,11 +31,11 @@ class Film extends React.Component {
 
           <h4><span>{this.props.director}</span> | <span>{this.props.program}</span></h4>
 
-          <div className="film__image--container">
+        {/*  <div className="film__image--container">
             <LazyLoad height={185}>
               <img src={this.props.image} alt="" />
             </LazyLoad>
-          </div>
+          </div> */}
 
           <p><em><span>{this.props.language}</span> | <span>{this.props.premiere}</span> | <span>{this.props.year}</span></em></p>
         </div>
