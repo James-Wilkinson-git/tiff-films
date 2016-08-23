@@ -443,6 +443,11 @@ h1,h2,h3,h4,h5,h6 {
   color: #fff;
   padding: 10px;
 }
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 .container {
   margin: 0 auto;
   width: 95%;

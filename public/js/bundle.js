@@ -27393,11 +27393,6 @@
 	          this.props.pitch
 	        ),
 	        _react2.default.createElement(
-	          "button",
-	          { className: "film__button--add", onClick: this.addToWatchList },
-	          "Add To Watch List"
-	        ),
-	        _react2.default.createElement(
 	          "div",
 	          { className: "film__credits" },
 	          _react2.default.createElement(
@@ -32202,7 +32197,7 @@
 			"score": "Danny Bensi, Saunder Jurriaans",
 			"sound": "",
 			"cast": "Emile Hirsch, Brian Cox, Olwen Kelly, Michael McElhatton, Ophelia Lovibond",
-			"image": "https://images.contentful.com/22n7d68fswlw/2FJYjw4qpa0eOimMOWQ2Ic/fbb60b66e4b8a2e9699edb939d0f2b3c/autopsyofjanedoe_still_01.jpg?w=300&q=40",
+			"image": "https://images.contentful.com/22n7d68fswlw/1GoZedKEs0cmemoaOeiICK/02a5e1bf71ab5eab92fd0336a9b097f0/autopsyofjanedoe_still_02.jpg?w=300&q=40",
 			"url": "http://tiff.net/films/the-autopsy-of-jane-doe"
 		},
 		{
