@@ -32,7 +32,7 @@ class Film extends React.Component {
 
         <p>{this.props.pitch}</p>
 
-        <button className="film__button--add" onClick={this.addToWatchList}>Add To Watch List</button>
+        {/* <button className="film__button--add" onClick={this.addToWatchList}>Add To Watch List</button>*/}
 
         <div className="film__credits">
           <p><button onClick={this.creditsToggle}>Click to Show/Hide Credits</button><br /></p>
