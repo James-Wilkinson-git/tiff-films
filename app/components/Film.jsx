@@ -18,6 +18,16 @@ class Film extends React.Component {
     console.log(this.props);
   }
   render() {
+    let data = this.props.schedule;
+    let showTimes = data.map(function(showtime, i) {
+      return (
+        <div className="film__showtime">
+          <span className="film__showtime--date">{showtime.date}</span><br />
+          <span className="film__showtime--time">{showtime.time} </span>
+          <span className="film__showtime--location">@ {showtime.location}</span>
+        </div>
+      );
+    });
     return (
       <div className="film card">
         <div className="film__header">
@@ -31,7 +41,9 @@ class Film extends React.Component {
         </div>
 
         <p>{this.props.pitch}</p>
-
+        <div className="film__showtimes">
+        {showTimes}
+        </div>
         {/* <button className="film__button--add" onClick={this.addToWatchList}>Add To Watch List</button>*/}
 
         <div className="film__credits">
