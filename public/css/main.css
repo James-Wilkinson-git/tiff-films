@@ -465,6 +465,8 @@ button {
 }
 .film__image--container{
   width: 100%;
+  height: 185px;
+  overflow: hidden;
 }
 .film__image--container img {
   width: 100%;

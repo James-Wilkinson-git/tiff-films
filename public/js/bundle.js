@@ -27397,7 +27397,7 @@
 	            { className: 'film__image--container' },
 	            _react2.default.createElement(
 	              _reactLazyLoad2.default,
-	              { height: 200 },
+	              { height: 185 },
 	              _react2.default.createElement('img', { src: this.props.image, alt: '' })
 	            )
 	          ),
