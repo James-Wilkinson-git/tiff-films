@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazy-load';
 
 class Film extends React.Component {
   constructor(props){
@@ -35,7 +36,11 @@ class Film extends React.Component {
 
           <h4><span>{this.props.director}</span> | <span>{this.props.program}</span></h4>
 
-          <div className="film__image--container"><img src={this.props.image} alt="" /></div>
+          <div className="film__image--container">
+            <LazyLoad height={200}>
+              <img src={this.props.image} alt="" />
+            </LazyLoad>
+          </div>
 
           <p><em><span>{this.props.language}</span> | <span>{this.props.premiere}</span> | <span>{this.props.year}</span></em></p>
         </div>
