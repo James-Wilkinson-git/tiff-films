@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Film from './Film.jsx'
+import Film from './Film'
 import data from '!json!../data/films.json'
 
 class Films extends React.Component{
@@ -9,15 +9,15 @@ class Films extends React.Component{
   }
 
   render() {
-    let filmNodes = this.props.data.map(function(film, i) {
+    let filmNodes = data.map(function(film, i) {
       return (<Film {...film} key={i} />);
     });
     return (
-      <div>
+      <div id="films">
         {filmNodes}
       </div>
     );
   }
 };
 
-ReactDOM.render(<Films data={data} />, document.getElementById('app'));
+export default Films;

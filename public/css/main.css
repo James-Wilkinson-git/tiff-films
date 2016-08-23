@@ -443,6 +443,7 @@ h1,h2,h3,h4,h5,h6 {
   background: rgb(255, 255, 255);
   padding: 2%;
   border: 1px solid rgba(160, 160, 160, 0.298039);
+  margin: 10px 0;
 }
 .film__header {
   border-bottom: 1px solid rgba(160, 160, 160, 0.298039);
@@ -459,6 +460,12 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 12px;
   line-height: 2em;
   border-top: 1px solid rgba(160, 160, 160, 0.298039);
+}
+.film__credits div.hide {
+  display: none;
+}
+.film__credits div.show {
+  display: block;
 }
 @media (min-width: 768px) {
     .film {

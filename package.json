@@ -31,7 +31,8 @@
   },
   "homepage": "https://github.com/jwilkinson/tiff16-films#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "react-router": "^2.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
