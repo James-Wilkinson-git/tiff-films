@@ -31,11 +31,11 @@ class Film extends React.Component {
 
           <h4><span>{this.props.director}</span> | <span>{this.props.program}</span></h4>
 
-        {/*  <div className="film__image--container">
+          <div className="film__image--container">
             <LazyLoad height={185}>
               <img src={this.props.image} alt="" />
             </LazyLoad>
-          </div> */}
+          </div>
 
           <p><em><span>{this.props.language}</span> | <span>{this.props.premiere}</span> | <span>{this.props.year}</span></em></p>
         </div>
