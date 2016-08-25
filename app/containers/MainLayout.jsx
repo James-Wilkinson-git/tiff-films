@@ -8,7 +8,8 @@ class MainLayout extends React.Component {
     return (
       <div className="app">
         <header className="primary-header"><h1>TIFF 16 Film Reference</h1></header>
-        <div className="container"><p>Use of this data is provided under the terms and conditions of the Toronto Internation Film Festival site terms and conditions. Watch list functionailty is not currently programed. Search the page with your browser.</p>
+        <div className="container"><p>Use of this data is provided under the terms and conditions of the Toronto Internation Film Festival site terms and conditions.</p>
+        <p>Search the page with your browser (Cmd/Ctrl + F).</p>
         <p>Location Legend:<br />
           TBLB# = Tiff Bell Light Box Cinema # |
           SB## = ScotiaBank Theatre Cinema ## |

@@ -1,3 +1,4 @@
+const webpack = require("webpack")
 module.exports = {
   entry: './app/main.js',
   output: {
@@ -19,5 +20,17 @@ module.exports = {
   },
   resolve: {
     extensions: ['','.jsx','.js', '.json']
-  }
+  },
+  plugins:[
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress:{
+        warnings: true
+      }
+    })
+  ]
 };
