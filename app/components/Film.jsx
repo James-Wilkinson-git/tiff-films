@@ -57,7 +57,7 @@ class Film extends React.Component {
             <strong>Language:</strong> {this.props.language}<br />
             <strong>Cast:</strong> {this.props.cast}<br />
             <strong>Screenplay:</strong> {this.props.screenplay}<br />
-            <strong>Cinematography:</strong> {this.props.cinematographers}<br />
+            <strong>Cinematography: </strong> {this.props.cinematographers}<br />
             <strong>Editing:</strong> {this.props.editors}<br />
             <strong>Score:</strong> {this.props.score}<br />
             <strong>Sound:</strong> {this.props.sound}<br />
